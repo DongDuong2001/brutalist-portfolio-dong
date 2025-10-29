@@ -144,10 +144,8 @@ This repository appears to be a personal portfolio; if you plan to contribute:
 ## License
 
 ```
-MIT License
+LICENSE
 ```
-
-Add a `LICENSE` file at the repo root.
 
 ---
 
