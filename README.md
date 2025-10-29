@@ -1,4 +1,4 @@
-# Brutalist Portfolio — Duong Phu Đông
+# Brutalist Portfolio — Duong Phu Dong
 
 [Live demo](https://brutalist-portfolio-dong.vercel.app) • Portfolio website showcasing projects, skills and background.
 
@@ -24,7 +24,7 @@
 
 ## About
 
-This repository is a personal portfolio site for **Duong Phu Đông** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript. ([GitHub][1])
+This repository is a personal portfolio site for **Duong Phu DongDong** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript. ([GitHub][1])
 
 ---
 
@@ -142,8 +142,6 @@ This repository appears to be a personal portfolio; if you plan to contribute:
 ---
 
 ## License
-
-If no license file exists in the repo, add one (e.g. MIT) to clarify reuse. Example:
 
 ```
 MIT License
