@@ -1,8 +1,8 @@
 export function Education() {
   const education = [
     {
-      degree: "BACHELOR OF COMPUTER SCIENCE",
-      institution: "RMIT University",
+      degree: "BACHELOR OF SOFTWARE ENGINEERING",
+      institution: "RMIT University - SGS Campus",
       year: "Currently Studying",
       status: "IN PROGRESS",
       achievements: [
