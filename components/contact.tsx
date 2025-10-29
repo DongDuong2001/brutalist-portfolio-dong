@@ -44,11 +44,11 @@ export function Contact() {
               <div className="space-y-4 font-mono text-sm">
                 <div className="flex items-center gap-3 border-2 border-foreground p-3">
                   <span className="font-bold">LOCATION:</span>
-                  <span>Melbourne, Australia</span>
+                  <span>Ho Chi Minh, Vietnam</span>
                 </div>
                 <div className="flex items-center gap-3 border-2 border-foreground p-3">
                   <span className="font-bold">EDUCATION:</span>
-                  <span>RMIT University</span>
+                  <span>RMIT University - SGS Campus</span>
                 </div>
                 <div className="flex items-center gap-3 border-2 border-foreground p-3">
                   <span className="font-bold">STATUS:</span>
