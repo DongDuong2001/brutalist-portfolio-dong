@@ -1,0 +1,42 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/).
+
+---
+
+## [Unreleased]
+### Added
+- Planned: dark mode toggle
+- Planned: localization support (English/Vietnamese)
+- Planned: new animation transitions for project cards
+
+---
+
+## [1.1.0] - 2025-10-29
+### Added
+- Added `CONTRIBUTING.md` and `CHANGELOG.md`
+- Added live demo link in README
+- Improved README documentation for setup and deployment
+
+### Changed
+- Updated README formatting for professional clarity
+
+---
+
+## [1.0.0] - 2025-10-28
+### Added
+- Initial release of **Brutalist Portfolio — Duong Phu Đông**
+- Built with Next.js (App Router) and TypeScript
+- Sections: Home, Education, Skills, Projects, Activity, Interests, Contact
+- Deployed on Vercel at [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app)
+
+---
+
+### Repository
+- GitHub: [F4P1E/brutalist-portfolio-dong](https://github.com/F4P1E/brutalist-portfolio-dong)
+
+---
+
+> Maintained by **Duong Phu Đông**
