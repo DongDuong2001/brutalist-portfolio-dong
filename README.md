@@ -155,4 +155,4 @@ Add a `LICENSE` file at the repo root.
 
 ## Contact
 
-Duong Phu Đông — portfolio: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app). For repository-specific questions, open an issue on GitHub: `https://github.com/F4P1E/brutalist-portfolio-dong`. ([GitHub][1])
+Dương Phú Đông — portfolio: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app). For repository-specific questions, open an issue on GitHub: `https://github.com/F4P1E/brutalist-portfolio-dong`. ([GitHub][1])
