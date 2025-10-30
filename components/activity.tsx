@@ -19,6 +19,24 @@ export function Activity() {
       link: "https://github.com/F4P1E/Medical-Web-App-Gemini-API",
     },
     {
+      type: "ROLE",
+      title: "Project Researcher",
+      project: "Neo Culture Tech Club — RMIT University Vietnam",
+      date: "2024",
+      description:
+        "Conducted research and prototyping for club projects, performed literature reviews, and helped design experiment workflows and technical proposals.",
+      link: "#",
+    },
+    {
+      type: "ROLE",
+      title: "Project Contributor",
+      project: "Neo Culture Tech Club — RMIT University Vietnam",
+      date: "2025",
+      description:
+        "Contributed code, documentation, and testing for club projects; collaborated with team members on implementation and demos.",
+      link: "#",
+    },
+    {
       type: "COMPETITION",
       title: "VNISA 2023",
       project: "ASEAN Information Security",
@@ -40,7 +58,7 @@ export function Activity() {
           {activities.map((activity, index) => (
             <div key={index} className="border-4 border-foreground p-6 bg-card hover:bg-secondary transition-colors">
               <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="md:w-32 flex-shrink-0">
+                <div className="md:w-32 shrink-0">
                   <div className="border-2 border-foreground px-3 py-1 font-mono text-xs font-bold inline-block">
                     {activity.type}
                   </div>
@@ -63,7 +81,7 @@ export function Activity() {
                   )}
                 </div>
 
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   <div className="w-12 h-12 border-4 border-foreground flex items-center justify-center font-mono text-2xl font-bold">
                     {index + 1}
                   </div>

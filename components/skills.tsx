@@ -8,6 +8,7 @@ export function Skills() {
         { name: "Java", level: 80 },
         { name: "Python", level: 75 },
         { name: "C++", level: 70 },
+        { name: "Rust", level: 60 },
       ],
     },
     {
@@ -25,6 +26,11 @@ export function Skills() {
       skills: [
         { name: "Git & GitHub", level: 85 },
         { name: "VS Code", level: 90 },
+        { name: "IntelliJ IDEA", level: 85 },
+        { name: "WebStorm", level: 85 },
+        { name: "PyCharm", level: 80 },
+        { name: "RustRover", level: 75 },
+        { name: "Docker", level: 80 },
         { name: "MongoDB", level: 75 },
         { name: "REST APIs", level: 80 },
         { name: "WebSocket", level: 70 },
