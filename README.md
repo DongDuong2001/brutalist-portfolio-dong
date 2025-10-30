@@ -1,8 +1,9 @@
 # Brutalist Portfolio — Duong Phu Dong
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/dongduong8m)
 
 [Live demo](https://brutalist-portfolio-dong.vercel.app) • Portfolio website showcasing projects, skills and background.
 
-> A minimal, brutalist-style developer portfolio built with modern web tooling — designed to be fast, accessible and easy to customize. The live demo is deployed on Vercel. ([brutalist-portfolio-dong.vercel.app][2])
+> A minimal, brutalist-style developer portfolio built with modern web tooling — designed to be fast, accessible and easy to customize. The live demo is deployed on Vercel. 
 
 ---
 
