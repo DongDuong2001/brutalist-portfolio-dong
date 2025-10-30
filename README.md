@@ -144,9 +144,7 @@ This repository appears to be a personal portfolio; if you plan to contribute:
 
 ## License
 
-```
-[LICENSE](https://github.com/F4P1E/brutalist-portfolio-dong/blob/main/LICENSE)
-```
+This project is licensed under the terms of the [MIT License](https://github.com/F4P1E/brutalist-portfolio-dong/blob/main/LICENSE).
 
 ---
 
