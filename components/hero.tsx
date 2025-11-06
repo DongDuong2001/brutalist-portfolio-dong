@@ -68,6 +68,10 @@ export function Hero() {
                 <span>PROJECTS:</span>
                 <span className="font-bold">10+ COMPLETED</span>
               </div>
+              <div className="flex justify-between border-b-2 border-foreground pb-2">
+                <span>Founder:</span>
+                <span className="font-bold">@lab68dev</span>
+              </div>
               <div className="flex justify-between">
                 <span>STATUS:</span>
                 <span className="font-bold text-foreground">

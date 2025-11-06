@@ -1,8 +1,9 @@
 # Brutalist Portfolio — Duong Phu Dong
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/dongduong8m)
 
 [Live demo](https://brutalist-portfolio-dong.vercel.app) • Portfolio website showcasing projects, skills and background.
 
-> A minimal, brutalist-style developer portfolio built with modern web tooling — designed to be fast, accessible and easy to customize. The live demo is deployed on Vercel. ([brutalist-portfolio-dong.vercel.app][2])
+> A minimal, brutalist-style developer portfolio built with modern web tooling — designed to be fast, accessible and easy to customize. The live demo is deployed on Vercel. 
 
 ---
 
@@ -24,13 +25,13 @@
 
 ## About
 
-This repository is a personal portfolio site for **Duong Phu DongDong** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript. ([GitHub][1])
+This repository is a personal portfolio site for **Duong Phu DongDong** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript.
 
 ---
 
 ## Demo
 
-Live site: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app) — explore the layout, interactions and copy directly on the deployed site. ([brutalist-portfolio-dong.vercel.app][2])
+Live site: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app) — explore the layout, interactions and copy directly on the deployed site.
 
 ---
 
@@ -49,12 +50,12 @@ Live site: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portf
 Based on the repository structure and files, the project uses:
 
 * **Next.js** (App Router) — modern React framework for hybrid pages & SSR
-* **TypeScript** (primary language for source files). The repo indicates TypeScript as the main language. ([GitHub][1])
+* **TypeScript** (primary language for source files). The repo indicates TypeScript as the main language. 
 * **CSS / PostCSS** (likely Tailwind or utility-first CSS given the presence of `postcss.config.mjs` and `styles` folder)
 * **pnpm** (lockfile present — `pnpm-lock.yaml`)
-* Deployed on **Vercel** (deployment link). ([GitHub][1])
+* Deployed on **Vercel** (deployment link). 
 
-> If you want this README to list exact package versions and exact scripts, I can extract them directly from `package.json` and include precise commands — I saw the file in the repo but did not inline its raw contents here to keep the README concise. ([GitHub][1])
+> If you want this README to list exact package versions and exact scripts, I can extract them directly from `package.json` and include precise commands — I saw the file in the repo but did not inline its raw contents here to keep the README concise. 
 
 ---
 
@@ -143,9 +144,7 @@ This repository appears to be a personal portfolio; if you plan to contribute:
 
 ## License
 
-```
-[LICENSE](https://github.com/F4P1E/brutalist-portfolio-dong/blob/main/LICENSE)
-```
+This project is licensed under the terms of the [MIT License](https://github.com/F4P1E/brutalist-portfolio-dong/blob/main/LICENSE).
 
 ---
 

@@ -16,7 +16,7 @@ export function Projects() {
       description:
         "A comprehensive project management and workflow automation tool built with modern web technologies.",
       tech: ["Next.js", "React", "TypeScript", "Tailwind"],
-      link: "https://github.com/F4P1E/flow-forge",
+      link: "https://github.com/lab68dev/flow-forge",
     },
     {
       title: "PIXEL HAVEN",
