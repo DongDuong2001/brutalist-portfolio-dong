@@ -12,7 +12,16 @@ export function Hero() {
 
             <div className="border-l-4 border-accent pl-6">
               <p className="text-xl md:text-2xl font-medium leading-relaxed">
-                Software Engineering Student at RMIT specializing in building robust, user-friendly applications
+                Software Engineering Student at RMIT & Founder of{" "}
+                <a
+                  href="https://github.com/lab68dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-foreground underline decoration-accent decoration-2 hover:text-accent transition-colors"
+                >
+                  lab68dev
+                </a>
+                , specializing in building robust, user-friendly applications
               </p>
             </div>
 
@@ -35,6 +44,19 @@ export function Hero() {
           <div className="border-4 border-foreground p-8 bg-secondary">
             <div className="space-y-4 font-mono text-sm">
               <div className="flex justify-between border-b-2 border-foreground pb-2">
+                <span>ROLE:</span>
+                <span className="font-bold">
+                  <a
+                    href="https://github.com/lab68dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground underline decoration-accent decoration-2 hover:text-accent transition-colors"
+                  >
+                    FOUNDER @ LAB68DEV
+                  </a>
+                </span>
+              </div>
+              <div className="flex justify-between border-b-2 border-foreground pb-2">
                 <span>LOCATION:</span>
                 <span className="font-bold">HO CHI MINH, VN</span>
               </div>
@@ -44,11 +66,14 @@ export function Hero() {
               </div>
               <div className="flex justify-between border-b-2 border-foreground pb-2">
                 <span>PROJECTS:</span>
-                <span className="font-bold">6+ COMPLETED</span>
+                <span className="font-bold">10+ COMPLETED</span>
               </div>
               <div className="flex justify-between">
                 <span>STATUS:</span>
-                <span className="font-bold text-accent">ONLINE</span>
+                <span className="font-bold text-foreground">
+                  <span className="inline-block w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></span>
+                  ONLINE
+                </span>
               </div>
             </div>
           </div>

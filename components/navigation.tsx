@@ -1,9 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import { useTheme } from "next-themes"
+import { Moon, Sun } from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   const navItems = [
     { label: "HOME", href: "#home" },
@@ -15,11 +18,15 @@ export function Navigation() {
     { label: "CONTACT", href: "#contact" },
   ]
 
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
+  }
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b-4 border-foreground bg-background">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="font-mono text-xl font-bold tracking-tight">{">"} PORTFOLIO</div>
+          <div className="font-mono text-xl font-bold tracking-tight">{">"} Duong Phu Dong PORTFOLIO</div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -32,6 +39,15 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
+            
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="border-2 border-foreground p-2 hover:bg-accent transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -56,6 +72,22 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
+            
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="w-full mt-4 border-2 border-foreground px-3 py-2 font-mono text-sm hover:bg-accent transition-colors flex items-center justify-center gap-2"
+            >
+              {theme === "dark" ? (
+                <>
+                  <Sun className="h-4 w-4" /> LIGHT MODE
+                </>
+              ) : (
+                <>
+                  <Moon className="h-4 w-4" /> DARK MODE
+                </>
+              )}
+            </button>
           </div>
         )}
       </div>

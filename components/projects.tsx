@@ -86,6 +86,15 @@ export function Projects() {
       tech: ["React", "JavaScript", "HTML/CSS", "API Integration"],
       link: "https://github.com/F4P1E/meta-frontend-developer-project",
     },
+    {
+      title: "LAB68DEV PLATFORM",
+      category: "Start-up Project",
+      year: "2025 - Current",
+      description:
+        "Lab68 Dev Platform is a monorepo that powers a collaborative product development workspace. It provides dashboards for planning, documentation, meetings, AI-assisted workflows, and role-aware access controls—built on top of Next.js App Router, TypeScript, and a modular component system.",
+      tech: ["Next.js", "JavaScript", "TypeScript", "API Integration"],
+      link: "https://github.com/lab68dev/lab68dev-platform",
+    },
   ]
 
   return (

@@ -8,7 +8,7 @@ export function Skills() {
         { name: "Java", level: 80 },
         { name: "Python", level: 75 },
         { name: "C++", level: 70 },
-        { name: "Rust", level: 60 },
+        { name: "Rust", level: 65 },
       ],
     },
     {
@@ -29,8 +29,8 @@ export function Skills() {
         { name: "IntelliJ IDEA", level: 85 },
         { name: "WebStorm", level: 85 },
         { name: "PyCharm", level: 80 },
-        { name: "RustRover", level: 75 },
-        { name: "Docker", level: 80 },
+        { name: "RustRover", level: 70 },
+        { name: "Docker", level: 75 },
         { name: "MongoDB", level: 75 },
         { name: "REST APIs", level: 80 },
         { name: "WebSocket", level: 70 },
@@ -68,12 +68,17 @@ export function Skills() {
                       <span className="font-medium">{skill.name}</span>
                       <span className="font-mono text-sm font-bold">{skill.level}%</span>
                     </div>
-                    <div className="border-2 border-foreground h-8 relative overflow-hidden">
-                      <div className="absolute inset-y-0 left-0 bg-accent" style={{ width: `${skill.level}%` }} />
-                      <div className="absolute inset-0 flex items-center justify-center font-mono text-xs font-bold mix-blend-difference text-background">
-                        {Array.from({ length: Math.floor(skill.level / 10) }).map((_, i) => (
-                          <span key={i}>█</span>
-                        ))}
+                    <div className="border-2 border-foreground h-8 relative overflow-hidden bg-background">
+                      <div 
+                        className="absolute inset-y-0 left-0 bg-accent transition-all duration-300" 
+                        style={{ width: `${skill.level}%` } as React.CSSProperties}
+                      />
+                      <div className="absolute inset-0 flex items-center px-2 font-mono text-xs font-bold">
+                        <span className="text-foreground mix-blend-difference">
+                          {Array.from({ length: Math.floor(skill.level / 10) }).map((_, i) => (
+                            <span key={i}></span>
+                          ))}
+                        </span>
                       </div>
                     </div>
                   </div>
