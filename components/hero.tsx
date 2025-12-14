@@ -8,7 +8,7 @@ export function Hero() {
               <span className="font-mono text-sm bg-accent text-accent-foreground px-2 py-1">AVAILABLE FOR WORK</span>
             </div>
 
-            <h1 className="font-mono text-6xl md:text-8xl font-bold leading-none text-balance">DƯƠNG PHÚ ĐÔNG</h1>
+            <h1 className="font-mono text-6xl md:text-8xl font-bold leading-none text-balance">DUONG PHU DONG</h1>
 
             <div className="border-l-4 border-accent pl-6">
               <p className="text-xl md:text-2xl font-medium leading-relaxed">
