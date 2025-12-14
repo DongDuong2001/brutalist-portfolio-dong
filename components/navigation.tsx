@@ -26,7 +26,7 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b-4 border-foreground bg-background">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="font-mono text-xl font-bold tracking-tight">{">"} Duong Phu Dong PORTFOLIO</div>
+          <div className="font-mono text-xl font-bold tracking-tight">{">"} Duong Phu Dong </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">

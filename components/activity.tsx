@@ -11,6 +11,16 @@ export function Activity() {
       link: "https://github.com/lab68dev",
     },
     {
+      type: "LEADERSHIP",
+      title: "Project Leader - Backend",
+      project: "NCT SatEvent — Neo Culture Tech Club",
+      date: "2025",
+      year: 2025,
+      description:
+        "Led backend development for NCT SatEvent platform, architecting scalable APIs, managing database design, and coordinating with frontend teams to deliver event management solutions.",
+      link: "https://github.com/rmit-nct/nct-satevent",
+    },
+    {
       type: "HACKATHON",
       title: "GameJam 2025",
       project: "RMIT University",

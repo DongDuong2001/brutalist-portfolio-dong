@@ -1,20 +1,24 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-mono",
+const cooperHewittHeavy = localFont({
+  src: "../public/fonts/CooperHewitt-Heavy.otf",
+  variable: "--font-heavy",
+  weight: "900",
+  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
 })
 
-const ibmPlexSans = IBM_Plex_Sans({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-sans",
+const cooperHewittThin = localFont({
+  src: "../public/fonts/CooperHewitt-Thin.otf",
+  variable: "--font-thin",
+  weight: "100",
+  display: "swap",
+  fallback: ["system-ui", "sans-serif"],
 })
 
 export const metadata: Metadata = {
@@ -28,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${ibmPlexMono.variable} ${ibmPlexSans.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased">
+    <html lang="en" className={`${cooperHewittHeavy.variable} ${cooperHewittThin.variable}`} suppressHydrationWarning>
+      <body className="font-thin antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
