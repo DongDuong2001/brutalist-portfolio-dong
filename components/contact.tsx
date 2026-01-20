@@ -26,16 +26,16 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="border-b-4 border-foreground">
-      <div className="container mx-auto px-4 py-20">
-        <div className="border-4 border-foreground p-2 inline-block mb-12">
-          <h2 className="font-mono text-4xl md:text-6xl font-bold">{">"} CONTACT</h2>
+    <section id="contact" className="border-b-2 border-foreground">
+      <div className="container mx-auto px-4 py-12 md:py-20">
+        <div className="border-2 border-foreground p-2 inline-block mb-8 md:mb-12">
+          <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} CONTACT</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-8">
-            <div className="border-4 border-foreground p-8 bg-card">
-              <h3 className="font-mono text-2xl font-bold mb-6 border-b-4 border-foreground pb-4">GET IN TOUCH</h3>
+          <div className="space-y-6 md:space-y-8">
+            <div className="border-2 md:border-4 border-foreground p-6 md:p-8 bg-card">
+              <h3 className="font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6 border-b-2 md:border-b-4 border-foreground pb-4">GET IN TOUCH</h3>
               <p className="leading-relaxed mb-6">
                 I'm always interested in hearing about new projects and opportunities. Whether you have a question or
                 just want to connect, feel free to reach out through the form or social links below.
@@ -57,11 +57,11 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="border-4 border-foreground p-8 bg-secondary">
+            <div className="border-2 md:border-4 border-foreground p-6 md:p-8 bg-secondary">
               <h3 className="font-mono text-xl font-bold mb-6">SOCIAL LINKS</h3>
               <div className="grid grid-cols-2 gap-4">
                 <a
-                  href="https://github.com/F4P1E"
+                  href="https://github.com/DongDuong2001"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border-2 border-foreground p-4 font-mono text-sm font-bold text-center hover:bg-foreground hover:text-background transition-colors"
@@ -69,7 +69,7 @@ export function Contact() {
                   GITHUB
                 </a>
                 <a
-                  href="https://linkedin.com/in/dương-phú-đông-820481147"
+                  href="https://www.linkedin.com/in/duong-phu-dong/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border-2 border-foreground p-4 font-mono text-sm font-bold text-center hover:bg-foreground hover:text-background transition-colors"
@@ -91,8 +91,8 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="border-4 border-foreground p-8 bg-card">
-            <h3 className="font-mono text-2xl font-bold mb-6 border-b-4 border-foreground pb-4">SEND MESSAGE</h3>
+          <div className="border-2 md:border-4 border-foreground p-6 md:p-8 bg-card">
+            <h3 className="font-mono text-xl md:text-2xl font-bold mb-6 border-b-2 md:border-b-4 border-foreground pb-4">SEND MESSAGE</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -106,7 +106,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent"
+                  className="w-full border-2 md:border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent text-base"
                 />
               </div>
 
@@ -151,13 +151,13 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent resize-none"
+                  className="w-full border-2 md:border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent resize-none text-base"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full border-4 border-foreground p-4 font-mono font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
+                className="w-full border-2 md:border-4 border-foreground p-4 font-mono font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
               >
                 SEND MESSAGE {"->"}
               </button>
@@ -165,9 +165,9 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="mt-12 border-4 border-foreground p-6 bg-secondary text-center">
+        <div className="mt-8 md:mt-12 border-2 md:border-4 border-foreground p-6 bg-secondary text-center">
           <p className="font-mono text-sm">
-            © 2025 DƯƠNG PHÚ ĐÔNG. ALL RIGHTS RESERVED. | BUILT WITH NEXT.JS & TAILWIND CSS
+            © 2026 DƯƠNG PHÚ ĐÔNG. ALL RIGHTS RESERVED. | BUILT WITH NEXT.JS & TAILWIND CSS
           </p>
         </div>
       </div>
