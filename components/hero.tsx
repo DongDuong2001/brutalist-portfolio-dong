@@ -1,17 +1,23 @@
+import { TextScramble } from "@/components/ui/text-scramble"
+
 export function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center border-b-4 border-foreground pt-16">
-      <div className="container mx-auto px-4 py-20">
+    <section id="home" className="min-h-screen flex items-center border-b-2 border-foreground pt-16">
+      <div className="container mx-auto px-4 py-10 md:py-20">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6">
-            <div className="border-4 border-foreground p-2 inline-block">
-              <span className="font-mono text-sm bg-accent text-accent-foreground px-2 py-1">AVAILABLE FOR WORK</span>
+            <div className="border-2 border-foreground p-2 inline-block">
+              <span className="font-mono text-xs md:text-sm bg-accent text-accent-foreground px-2 py-1">
+                <TextScramble>AVAILABLE FOR WORK</TextScramble>
+              </span>
             </div>
 
-            <h1 className="font-mono text-6xl md:text-8xl font-bold leading-none text-balance">DUONG PHU DONG</h1>
+            <h1 className="font-mono text-4xl md:text-6xl lg:text-8xl font-bold leading-none text-balance">
+              <TextScramble duration={2.5}>DUONG PHU DONG</TextScramble>
+            </h1>
 
-            <div className="border-l-4 border-accent pl-6">
-              <p className="text-xl md:text-2xl font-medium leading-relaxed">
+            <div className="border-l-2 border-accent pl-4 md:pl-6">
+              <p className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
                 Software Engineering Student at RMIT & Founder of{" "}
                 <a
                   href="https://github.com/lab68dev"
@@ -28,20 +34,20 @@ export function Hero() {
             <div className="flex flex-wrap gap-4 pt-4">
               <a
                 href="#projects"
-                className="border-4 border-foreground px-8 py-4 font-mono font-bold hover:bg-foreground hover:text-background transition-colors"
+                className="border-2 border-foreground px-6 py-3 md:px-8 md:py-4 font-mono font-bold hover:bg-foreground hover:text-background transition-colors text-sm md:text-base"
               >
                 VIEW WORK
               </a>
               <a
                 href="#contact"
-                className="border-4 border-foreground px-8 py-4 font-mono font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
+                className="border-2 border-foreground px-6 py-3 md:px-8 md:py-4 font-mono font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors text-sm md:text-base"
               >
                 GET IN TOUCH
               </a>
             </div>
           </div>
 
-          <div className="border-4 border-foreground p-8 bg-secondary">
+          <div className="border-2 border-foreground p-6 md:p-8 bg-secondary mt-8 md:mt-0">
             <div className="space-y-4 font-mono text-sm">
               <div className="flex justify-between border-b-2 border-foreground pb-2">
                 <span>ROLE:</span>
