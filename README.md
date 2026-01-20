@@ -26,7 +26,7 @@
 
 ## About
 
-This repository is a personal portfolio site for **Duong Phu DongDong** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript.
+This repository is a personal portfolio site for **Duong Phu Dong** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript.
 
 ---
 
