@@ -6,6 +6,7 @@ import { Projects } from "@/components/projects"
 import { Activity } from "@/components/activity"
 import { Interests } from "@/components/interests"
 import { Contact } from "@/components/contact"
+import { HeroMarquee } from "@/components/hero-marquee"
 
 export default function Page() {
   return (
@@ -13,6 +14,7 @@ export default function Page() {
       <Navigation />
       <main>
         <Hero />
+        <HeroMarquee />
         <Education />
         <Skills />
         <Projects />
