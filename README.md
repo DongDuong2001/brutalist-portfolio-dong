@@ -1,6 +1,6 @@
 # Brutalist Portfolio — Duong Phu Dong
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/dongduong8m)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/lab68dev)
 
 [Live demo](https://brutalist-portfolio-dong.vercel.app) • Portfolio website showcasing projects, skills and background.
 
