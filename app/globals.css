@@ -65,8 +65,8 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-thin), "Cooper Hewitt", system-ui, sans-serif;
-  --font-mono: var(--font-heavy), "Cooper Hewitt", monospace;
+  --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
