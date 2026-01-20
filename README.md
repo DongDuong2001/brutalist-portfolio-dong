@@ -1,9 +1,10 @@
 # Brutalist Portfolio — Duong Phu Dong
+
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/dongduong8m)
 
 [Live demo](https://brutalist-portfolio-dong.vercel.app) • Portfolio website showcasing projects, skills and background.
 
-> A minimal, brutalist-style developer portfolio built with modern web tooling — designed to be fast, accessible and easy to customize. The live demo is deployed on Vercel. 
+> A minimal, brutalist-style developer portfolio built with modern web tooling — designed to be fast, accessible and easy to customize. The live demo is deployed on Vercel.
 
 ---
 
@@ -50,12 +51,12 @@ Live site: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portf
 Based on the repository structure and files, the project uses:
 
 * **Next.js** (App Router) — modern React framework for hybrid pages & SSR
-* **TypeScript** (primary language for source files). The repo indicates TypeScript as the main language. 
+* **TypeScript** (primary language for source files). The repo indicates TypeScript as the main language.
 * **CSS / PostCSS** (likely Tailwind or utility-first CSS given the presence of `postcss.config.mjs` and `styles` folder)
 * **pnpm** (lockfile present — `pnpm-lock.yaml`)
-* Deployed on **Vercel** (deployment link). 
+* Deployed on **Vercel** (deployment link).
 
-> If you want this README to list exact package versions and exact scripts, I can extract them directly from `package.json` and include precise commands — I saw the file in the repo but did not inline its raw contents here to keep the README concise. 
+> If you want this README to list exact package versions and exact scripts, I can extract them directly from `package.json` and include precise commands — I saw the file in the repo but did not inline its raw contents here to keep the README concise.
 
 ---
 
@@ -70,7 +71,7 @@ git clone https://github.com/F4P1E/brutalist-portfolio-dong.git
 cd brutalist-portfolio-dong
 ```
 
-2. Install dependencies (pnpm recommended since a `pnpm-lock.yaml` is present):
+1. Install dependencies (pnpm recommended since a `pnpm-lock.yaml` is present):
 
 ```bash
 pnpm install
@@ -78,7 +79,7 @@ pnpm install
 
 You can also use `npm install` or `yarn` if you prefer, but `pnpm` will match the lockfile.
 
-3. Run the development server:
+1. Run the development server:
 
 ```bash
 pnpm dev
@@ -88,7 +89,7 @@ npm run dev
 yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+1. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
@@ -150,4 +151,4 @@ This project is licensed under the terms of the [MIT License](https://github.com
 
 ## Contact
 
-Dương Phú Đông — portfolio: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app). For repository-specific questions, open an issue on GitHub: `https://github.com/F4P1E/brutalist-portfolio-dong`. 
+Dương Phú Đông — portfolio: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app). For repository-specific questions, open an issue on GitHub: `https://github.com/F4P1E/brutalist-portfolio-dong`.
