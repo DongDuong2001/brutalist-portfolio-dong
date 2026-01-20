@@ -48,16 +48,16 @@ export function Skills() {
   ]
 
   return (
-    <section id="skills" className="border-b-4 border-foreground">
-      <div className="container mx-auto px-4 py-20">
-        <div className="border-4 border-foreground p-2 inline-block mb-12">
-          <h2 className="font-mono text-4xl md:text-6xl font-bold">{">"} SKILLS</h2>
+    <section id="skills" className="border-b-2 border-foreground">
+      <div className="container mx-auto px-4 py-12 md:py-20">
+        <div className="border-2 border-foreground p-2 inline-block mb-8 md:mb-12">
+          <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} SKILLS</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {skillCategories.map((category, index) => (
-            <div key={index} className="border-4 border-foreground p-8 bg-card">
-              <h3 className="font-mono text-2xl font-bold mb-6 border-b-4 border-foreground pb-4">
+            <div key={index} className="border-2 md:border-4 border-foreground p-6 md:p-8 bg-card">
+              <h3 className="font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6 border-b-2 md:border-b-4 border-foreground pb-2 md:pb-4">
                 {category.category}
               </h3>
 
@@ -68,7 +68,7 @@ export function Skills() {
                       <span className="font-medium">{skill.name}</span>
                       <span className="font-mono text-sm font-bold">{skill.level}%</span>
                     </div>
-                    <div className="border-2 border-foreground h-8 relative overflow-hidden bg-background">
+                    <div className="border-2 border-foreground h-6 md:h-8 relative overflow-hidden bg-background">
                       <div 
                         className="absolute inset-y-0 left-0 bg-accent transition-all duration-300" 
                         style={{ width: `${skill.level}%` } as React.CSSProperties}
