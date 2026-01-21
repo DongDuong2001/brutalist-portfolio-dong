@@ -1,13 +1,18 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const navItems = [
     { label: "HOME", href: "#home" },
@@ -22,6 +27,8 @@ export function Navigation() {
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
+
+  if (!mounted) return null
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b-2 border-foreground bg-background">
