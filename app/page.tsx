@@ -6,22 +6,37 @@ import { Projects } from "@/components/projects"
 import { Activity } from "@/components/activity"
 import { Interests } from "@/components/interests"
 import { Contact } from "@/components/contact"
+
+import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { HeroMarquee } from "@/components/hero-marquee"
 
-export default function Page() {
+export default function Home() {
   return (
-    <div className="min-h-screen">
+    <main className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
       <Navigation />
-      <main>
-        <Hero />
+      <Hero />
+      <ScrollReveal width="100%" delay={0.2}>
         <HeroMarquee />
+      </ScrollReveal>
+      <ScrollReveal width="100%">
         <Education />
+      </ScrollReveal>
+      <ScrollReveal width="100%">
         <Skills />
+      </ScrollReveal>
+      <ScrollReveal width="100%">
         <Projects />
+      </ScrollReveal>
+      <ScrollReveal width="100%">
         <Activity />
+      </ScrollReveal>
+      <ScrollReveal width="100%">
         <Interests />
+      </ScrollReveal>
+      <ScrollReveal width="100%">
         <Contact />
-      </main>
-    </div>
+      </ScrollReveal>
+
+    </main>
   )
 }
