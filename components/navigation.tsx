@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -41,13 +42,38 @@ export function Navigation() {
             ))}
             
             {/* Theme Toggle Button */}
-            <button
+            <motion.button
               onClick={toggleTheme}
-              className="border-2 border-foreground p-2 hover:bg-accent transition-colors"
+              className="relative p-2 rounded-full border-2 border-foreground hover:bg-accent transition-colors overflow-hidden"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
+              <motion.div
+                initial={false}
+                animate={{
+                  rotate: theme === "dark" ? 0 : 180,
+                  scale: theme === "dark" ? 1 : 0,
+                  opacity: theme === "dark" ? 1 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                <Moon className="h-4 w-4" />
+              </motion.div>
+              <motion.div
+                initial={false}
+                animate={{
+                  rotate: theme === "dark" ? -180 : 0,
+                  scale: theme === "dark" ? 0 : 1,
+                  opacity: theme === "dark" ? 0 : 1,
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="flex items-center justify-center"
+              >
+                <Sun className="h-4 w-4" />
+              </motion.div>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
