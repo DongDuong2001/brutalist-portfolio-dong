@@ -1,6 +1,6 @@
 # Brutalist Portfolio — Duong Phu Dong
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/dongduong8m)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/lab68dev)
 
 [Live demo](https://brutalist-portfolio-dong.vercel.app) • Portfolio website showcasing projects, skills and background.
 
@@ -26,7 +26,7 @@
 
 ## About
 
-This repository is a personal portfolio site for **Duong Phu DongDong** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript.
+This repository is a personal portfolio site for **Duong Phu Dong** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript.
 
 ---
 
