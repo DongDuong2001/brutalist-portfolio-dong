@@ -32,8 +32,7 @@ export function Skills() {
         { name: "RustRover", level: 70 },
         { name: "Docker", level: 75 },
         { name: "MongoDB", level: 75 },
-        { name: "REST APIs", level: 80 },
-        { name: "WebSocket", level: 70 },
+
       ],
     },
     {
@@ -43,6 +42,8 @@ export function Skills() {
         { name: "Problem Solving", level: 90 },
         { name: "Critical Thinking", level: 85 },
         { name: "Responsive Design", level: 85 },
+        { name: "Project Management", level: 80 },
+        { name: "Timeline Management", level: 90 },
       ],
     },
   ]
