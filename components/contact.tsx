@@ -12,10 +12,34 @@ export function Contact() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
-    alert("Message sent! (This is a demo)")
+    setStatus("loading")
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setStatus("success")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+        alert("Message sent successfully!")
+      } else {
+        setStatus("error")
+        alert("Failed to send message. Please try again.")
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setStatus("error")
+      alert("Something went wrong. Please try again.")
+    } finally {
+      setStatus("idle")
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -157,9 +181,10 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full border-2 md:border-4 border-foreground p-4 font-mono font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
+                disabled={status === "loading"}
+                className="w-full border-2 md:border-4 border-foreground p-4 font-mono font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                SEND MESSAGE {"->"}
+                {status === "loading" ? "SENDING..." : "SEND MESSAGE ->"}
               </button>
             </form>
           </div>
