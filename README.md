@@ -1,154 +1,131 @@
-# Brutalist Portfolio — Duong Phu Dong
+# Brutalist Portfolio - Duong Phu Dong
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/lab68dev)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/DDuong884)
 
-[Live demo](https://brutalist-portfolio-dong.vercel.app) • Portfolio website showcasing projects, skills and background.
+[Live Demo](https://brutalist-portfolio-dong.vercel.app)
 
-> A minimal, brutalist-style developer portfolio built with modern web tooling — designed to be fast, accessible and easy to customize. The live demo is deployed on Vercel.
+A minimal, brutalist-style developer portfolio built with modern web tooling. Designed to be fast, accessible, and easy to customize. The live demo is deployed on Vercel.
 
----
-
-## Table of contents
+## Table of Contents
 
 * [About](#about)
 * [Demo](#demo)
 * [Features](#features)
-* [Tech stack](#tech-stack)
-* [Getting started](#getting-started)
+* [Technology Stack](#technology-stack)
+* [Getting Started](#getting-started)
 * [Development](#development)
 * [Deployment](#deployment)
-* [Customisation](#customisation)
+* [Customization](#customization)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
 
----
-
 ## About
 
-This repository is a personal portfolio site for **Duong Phu Dong** with a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js app architecture and TypeScript.
-
----
+This repository is a personal portfolio site for **Duong Phu Dong**, featuring a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js App Router architecture and TypeScript.
 
 ## Demo
 
-Live site: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app) — explore the layout, interactions and copy directly on the deployed site.
+**Live Site:** [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app)
 
----
+Explore the layout, interactions, and content directly on the deployed site.
 
 ## Features
 
-* Brutalist, minimal visual design with clear typographic hierarchy
-* Project and skills sections for quick scanning by recruiters and engineers
-* Mobile responsive and accessible-friendly layout
-* Single-page navigation with section anchors (Home / Education / Skills / Projects / Activity / Interests / Contact)
-* Fast, modern stack with TypeScript and the Next.js app router
+* Brutalist, minimal visual design with clear typographic hierarchy.
+* Dedicated Project and Skills sections for quick scanning.
+* Fully mobile-responsive and accessible layout.
+* Single-page navigation with section anchors.
+* Fast, modern stack with TypeScript and Next.js App Router.
 
----
+## Technology Stack
 
-## Tech stack
+This project is built using the following technologies:
 
-Based on the repository structure and files, the project uses:
+* **Framework:** Next.js 16 (App Router)
+* **Language:** TypeScript 5
+* **Styling:** Tailwind CSS 4, PostCSS
+* **UI Components:** Radix UI, Lucide React
+* **Animations:** Framer Motion 12
+* **Forms:** React Hook Form, Zod
+* **Package Manager:** pnpm
 
-* **Next.js** (App Router) — modern React framework for hybrid pages & SSR
-* **TypeScript** (primary language for source files). The repo indicates TypeScript as the main language.
-* **CSS / PostCSS** (likely Tailwind or utility-first CSS given the presence of `postcss.config.mjs` and `styles` folder)
-* **pnpm** (lockfile present — `pnpm-lock.yaml`)
-* Deployed on **Vercel** (deployment link).
+## Getting Started
 
-> If you want this README to list exact package versions and exact scripts, I can extract them directly from `package.json` and include precise commands — I saw the file in the repo but did not inline its raw contents here to keep the README concise.
+Follow these steps to run the project locally.
 
----
+### Prerequisites
 
-## Getting started
+Ensure you have Node.js installed. This project uses `pnpm` as the package manager.
 
-These are suggested steps to run the project locally. Adjust if your `package.json` contains different scripts.
+### Installation
 
-1. Clone the repo:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/F4P1E/brutalist-portfolio-dong.git
 cd brutalist-portfolio-dong
 ```
 
-1. Install dependencies (pnpm recommended since a `pnpm-lock.yaml` is present):
+1. Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-You can also use `npm install` or `yarn` if you prefer, but `pnpm` will match the lockfile.
+### Running Development Server
 
-1. Run the development server:
+Start the local development server:
 
 ```bash
 pnpm dev
-# or
-npm run dev
-# or
-yarn dev
 ```
 
-1. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
----
+## Development
 
-## Typical scripts (examples)
+Standard commands sourced from `package.json`:
 
-> Confirm actual scripts in your `package.json` and replace as needed.
-
-```json
-{
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write ."
-  }
-}
-```
-
----
+* `pnpm dev` - Start the development server.
+* `pnpm build` - Build the application for production.
+* `pnpm start` - Start the production server.
+* `pnpm lint` - Run ESLint to check for code quality issues.
 
 ## Deployment
 
-The site is deployed to Vercel — follow these steps to redeploy or connect to your own Vercel account:
+The site is optimized for deployment on Vercel.
 
-1. Push your branch to GitHub.
-2. Import repository in Vercel ([https://vercel.com/new](https://vercel.com/new)).
-3. Vercel will detect Next.js and set sensible defaults.
-4. Configure environment variables (if any) and deploy.
+1. Push your changes to a GitHub repository.
+2. Import the repository in Vercel.
+3. Vercel will automatically detect the Next.js configuration.
+4. Deploy.
 
----
+## Customization
 
-## Customisation
+To tailor the portfolio to your needs:
 
-To tailor the portfolio:
-
-* Replace copy (name, about, education, projects) under the `app` or `components` folder.
-* Update image and static assets in `public`.
-* Edit colors/spacing in `styles` or Tailwind config (if used).
-* Add or remove sections using the top navigation component.
-
----
+* **Content:** Update text in `app` or `components` directories.
+* **Assets:** Replace images and static files in the `public` directory.
+* **Styling:** Modify `globals.css` or Tailwind configuration for design changes.
+* **Structure:** Add or remove sections by modifying the navigation components.
 
 ## Contributing
 
-This repository appears to be a personal portfolio; if you plan to contribute:
+This repository is primarily a personal portfolio. However, suggestions and improvements are welcome.
 
-1. Open an issue describing the change / improvement.
-2. Create a small, focused branch and submit a pull request.
-3. Follow code style and linting rules present in the project.
-
----
+1. Open an issue describing the proposed change.
+2. Create a focused branch and submit a pull request.
+3. Adhere to the existing code style and linting rules.
 
 ## License
 
-This project is licensed under the terms of the [MIT License](https://github.com/F4P1E/brutalist-portfolio-dong/blob/main/LICENSE).
-
----
+This project is licensed under the terms of the [MIT License](https://github.com/DongDuong2001/brutalist-portfolio-dong/blob/main/LICENSE).
 
 ## Contact
 
-Dương Phú Đông — portfolio: [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app). For repository-specific questions, open an issue on GitHub: `https://github.com/F4P1E/brutalist-portfolio-dong`.
+**Duong Phu Dong**
+
+* **Portfolio:** [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app)
+* **Repository:** [https://github.com/DongDuong2001/brutalist-portfolio-dong](https://github.com/DongDuong2001/brutalist-portfolio-dong)
