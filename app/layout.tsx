@@ -19,8 +19,23 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Duong Phu Dong Portfolio",
-  description: "A brutalist portfolio showcasing education, skills, projects, and interests",
+  title: "Duong Phu Dong | Fullstack Developer",
+  description: "Portfolio of Duong Phu Dong - A brutalist showcase of projects, skills, and experience. Fullstack Developer & UI Designer based in Ho Chi Minh, Vietnam.",
+  openGraph: {
+    title: "Duong Phu Dong | Fullstack Developer",
+    description: "Building digital experiences with a focus on brutalist aesthetics and robust functionality.",
+    url: "https://duongphudong.com", // Placeholder URL, update if known
+    siteName: "Duong Phu Dong Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Duong Phu Dong | Fullstack Developer",
+    description: "Building digital experiences with a focus on brutalist aesthetics and robust functionality.",
+    creator: "@lab68dev",
+  },
+  metadataBase: new URL("https://duongphudong.com"), // Placeholder
 }
 
 export default function RootLayout({
