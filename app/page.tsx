@@ -19,13 +19,13 @@ export default function Home() {
         <HeroMarquee />
       </ScrollReveal>
       <ScrollReveal width="100%">
-        <Education />
-      </ScrollReveal>
-      <ScrollReveal width="100%">
         <Skills />
       </ScrollReveal>
       <ScrollReveal width="100%">
         <Projects />
+      </ScrollReveal>
+      <ScrollReveal width="100%">
+        <Education />
       </ScrollReveal>
       <ScrollReveal width="100%">
         <Activity />
