@@ -16,9 +16,9 @@ export function Navigation() {
 
   const navItems = [
     { label: "HOME", href: "#home" },
-    { label: "EDUCATION", href: "#education" },
     { label: "SKILLS", href: "#skills" },
     { label: "PROJECTS", href: "#projects" },
+    { label: "EDUCATION", href: "#education" },
     { label: "ACTIVITY", href: "#activity" },
     { label: "INTERESTS", href: "#interests" },
     { label: "CONTACT", href: "#contact" },
