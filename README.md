@@ -64,7 +64,7 @@ Ensure you have Node.js installed. This project uses `pnpm` as the package manag
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/F4P1E/brutalist-portfolio-dong.git
+git clone https://github.com/DongDuong2001/brutalist-portfolio-dong.git
 cd brutalist-portfolio-dong
 ```
 
