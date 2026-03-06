@@ -94,4 +94,14 @@ export const projects = [
         tech: ["Next.js", "JavaScript", "TypeScript", "API Integration"],
         link: "https://github.com/lab68dev/lab68dev-platform",
     },
+    {
+        title: "LAB68 CV BUILDER",
+        category: "STARTUP CREATOR PROJECT",
+        year: "2025 - Current",
+        description:
+            "A modern, multilingual CV/resume builder that lets users create professional resumes with real-time preview, customizable templates, and export functionality — built for speed and simplicity.",
+        tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        link: "https://lab68cvbuilder.vercel.app/en",
+        github: "https://github.com/lab68dev/lab68cvbuilder",
+    },
 ]
