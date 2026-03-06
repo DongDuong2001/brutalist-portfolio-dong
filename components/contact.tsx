@@ -50,7 +50,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="border-b-2 border-foreground">
+    <section id="contact">
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="border-2 border-foreground p-2 inline-block mb-8 md:mb-12">
           <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} CONTACT</h2>
@@ -145,7 +145,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent"
+                  className="w-full border-2 md:border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent text-base"
                 />
               </div>
 
@@ -160,7 +160,7 @@ export function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent"
+                  className="w-full border-2 md:border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent text-base"
                 />
               </div>
 

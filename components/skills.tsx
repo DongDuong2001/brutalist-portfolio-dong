@@ -2,7 +2,7 @@ import { skills as skillCategories } from "@/data/skills"
 
 export function Skills() {
   return (
-    <section id="skills" className="border-b-2 border-foreground">
+    <section id="skills">
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="border-2 border-foreground p-2 inline-block mb-8 md:mb-12">
           <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} SKILLS</h2>

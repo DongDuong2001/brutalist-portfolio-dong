@@ -23,17 +23,17 @@ export function Interests() {
   ]
 
   return (
-    <section id="interests" className="border-b-4 border-foreground">
+    <section id="interests">
       <div className="container mx-auto px-4 py-20">
-        <div className="border-4 border-foreground p-2 inline-block mb-12">
-          <h2 className="font-mono text-4xl md:text-6xl font-bold">{">"} INTERESTS</h2>
+        <div className="border-2 border-foreground p-2 inline-block mb-12">
+          <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  INTERESTS</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {interests.map((interest, index) => (
             <div
               key={index}
-              className="border-4 border-foreground p-8 bg-card hover:bg-accent hover:text-accent-foreground transition-colors group"
+              className="border-2 border-foreground p-8 bg-card hover:bg-accent hover:text-accent-foreground transition-colors group"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -43,7 +43,7 @@ export function Interests() {
                   </span>
                 </div>
 
-                <h3 className="font-mono text-xl font-bold border-t-4 border-foreground pt-4">{interest.title}</h3>
+                <h3 className="font-mono text-xl font-bold border-t-2 border-foreground pt-4">{interest.title}</h3>
 
                 <p className="leading-relaxed text-sm">{interest.description}</p>
               </div>

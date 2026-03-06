@@ -20,7 +20,7 @@ export function HeroMarquee() {
   ]
 
   return (
-    <div className="border-b-2 border-foreground bg-accent py-4 overflow-hidden">
+    <div className="bg-accent py-4 overflow-hidden">
       <Marquee speed={30}>
         {skills.map((skill, index) => (
           <span key={index} className="font-mono text-xl md:text-3xl font-bold text-accent-foreground mx-8">

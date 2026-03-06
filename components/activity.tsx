@@ -86,10 +86,10 @@ export function Activity() {
     .sort((a, b) => b - a)
 
   return (
-    <section id="activity" className="border-b-4 border-foreground">
+    <section id="activity">
       <div className="container mx-auto px-4 py-20">
-        <div className="border-4 border-foreground p-2 inline-block mb-12">
-          <h2 className="font-mono text-4xl md:text-6xl font-bold">{">"} ACTIVITY ROADMAP</h2>
+        <div className="border-2 border-foreground p-2 inline-block mb-12">
+          <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  ACTIVITY ROADMAP</h2>
         </div>
 
         <div className="space-y-12">
@@ -97,10 +97,10 @@ export function Activity() {
             <div key={year} className="relative">
               {/* Year header */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="border-4 border-foreground bg-accent px-6 py-3">
+                <div className="border-2 border-foreground bg-accent px-6 py-3">
                   <h3 className="font-mono text-3xl font-bold">{year}</h3>
                 </div>
-                <div className="flex-1 border-t-4 border-foreground"></div>
+                <div className="flex-1 border-t-2 border-foreground"></div>
               </div>
 
               {/* Activities for this year */}
@@ -108,10 +108,10 @@ export function Activity() {
                 {groupedByYear[year].map((activity, index) => (
                   <div
                     key={index}
-                    className="border-4 border-foreground p-6 bg-card hover:bg-secondary transition-colors relative"
+                    className="border-2 border-foreground p-6 bg-card hover:bg-secondary transition-colors relative"
                   >
                     {/* Timeline connector dot */}
-                    <div className="absolute -left-8 top-8 w-4 h-4 border-4 border-foreground bg-accent"></div>
+                    <div className="absolute -left-8 top-8 w-4 h-4 border-2 border-foreground bg-accent"></div>
                     
                     <div className="flex flex-col md:flex-row md:items-start gap-6">
                       <div className="md:w-40 shrink-0">

@@ -1,107 +1,127 @@
 "use client"
 
-import { useRef } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useState, useMemo } from "react"
+import { ExternalLink, Github } from "lucide-react"
 
 import { projects } from "@/data/projects"
 
-export function Projects() {
-  const scrollRef = useRef<HTMLDivElement>(null)
+const CATEGORIES = ["ALL", ...Array.from(new Set(projects.map((p) => p.category)))]
 
-  const scroll = (direction: "left" | "right") => {
-    scrollRef.current?.scrollBy({
-      left: direction === "left" ? -420 : 420,
-      behavior: "smooth",
-    })
-  }
+export function Projects() {
+  const [activeFilter, setActiveFilter] = useState("ALL")
+
+  const filtered = useMemo(
+    () => (activeFilter === "ALL" ? projects : projects.filter((p) => p.category === activeFilter)),
+    [activeFilter],
+  )
+
+  const isFeatured = (year: string) => year.includes("Current")
 
   return (
-    <section id="projects" className="border-b-2 border-foreground">
-      <div className="py-12 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex items-end justify-between mb-8 md:mb-12">
-            <div className="border-2 border-foreground p-2 inline-block">
+    <section id="projects">
+      <div className="container mx-auto px-4 py-12 md:py-20">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6 md:mb-10">
+          <div>
+            <div className="border-2 border-foreground p-2 inline-block mb-3">
               <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} PROJECTS</h2>
             </div>
-            <div className="hidden md:flex items-center gap-2">
-              <button
-                onClick={() => scroll("left")}
-                className="p-2 border-2 border-foreground hover:bg-accent transition-colors"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                onClick={() => scroll("right")}
-                className="p-2 border-2 border-foreground hover:bg-accent transition-colors"
-                aria-label="Scroll right"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-              <span className="font-mono text-xs text-muted-foreground ml-2">
-                {"<-"} SCROLL {"->"}
-              </span>
-            </div>
+            <p className="font-mono text-xs md:text-sm text-muted-foreground">
+              {filtered.length} PROJECT{filtered.length !== 1 && "S"}
+              {activeFilter !== "ALL" && ` IN ${activeFilter}`}
+            </p>
           </div>
         </div>
 
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-scroll snap-x snap-mandatory pb-6 px-4 md:pl-8 scrollbar-hide touch-pan-x touch-pan-y"
-        >
-          {projects.map((project, index) => (
-            <div key={index} className="snap-start shrink-0 w-[85vw] md:w-[420px] lg:w-[450px]">
-              <div className="h-full border-2 border-foreground bg-card group hover:bg-accent transition-colors">
-                <div className="border-b-2 border-foreground p-4 md:p-6 bg-secondary">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="font-mono text-[10px] md:text-xs font-bold border-2 border-foreground px-2 py-1">
+        {/* Category filters */}
+        <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
+              className={`font-mono text-[10px] md:text-xs font-bold px-3 py-1.5 border-2 border-foreground transition-colors ${
+                activeFilter === cat
+                  ? "bg-accent text-accent-foreground"
+                  : "bg-background hover:bg-secondary"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Project grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+          {filtered.map((project, index) => {
+            const featured = isFeatured(project.year)
+            return (
+              <div
+                key={index}
+                className={`group border-2 border-foreground bg-card flex flex-col transition-colors hover:bg-secondary ${
+                  featured ? "ring-2 ring-accent ring-offset-2 ring-offset-background" : ""
+                }`}
+              >
+                {/* Card header */}
+                <div className="border-b-2 border-foreground p-4 md:p-5 bg-secondary">
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="font-mono text-[10px] md:text-xs font-bold border-2 border-foreground px-2 py-0.5 bg-background shrink-0">
                       {project.category}
                     </span>
-                    <span className="font-mono text-[10px] md:text-xs font-bold">{project.year}</span>
-                  </div>
-                  <h3 className="font-mono text-xl md:text-2xl font-bold mt-4">{project.title}</h3>
-                </div>
-
-                <div className="p-4 md:p-6 space-y-4 md:space-y-6">
-                  <p className="leading-relaxed text-sm md:text-base">{project.description}</p>
-
-                  <div>
-                    <div className="font-mono text-[10px] md:text-xs font-bold mb-2 md:mb-3">TECH STACK:</div>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, i) => (
-                        <span key={i} className="border-2 border-foreground px-2 py-1 font-mono text-[10px] md:text-xs font-medium">
-                          {tech}
+                    <div className="flex items-center gap-2">
+                      {featured && (
+                        <span className="font-mono text-[10px] font-bold bg-accent text-accent-foreground px-2 py-0.5">
+                          ACTIVE
                         </span>
-                      ))}
+                      )}
+                      <span className="font-mono text-[10px] md:text-xs text-muted-foreground">{project.year}</span>
                     </div>
                   </div>
+                  <h3 className="font-mono text-lg md:text-xl font-bold leading-tight">{project.title}</h3>
+                </div>
 
-                  <div className="flex flex-wrap gap-2">
+                {/* Card body */}
+                <div className="p-4 md:p-5 flex flex-col flex-1 gap-4">
+                  <p className="text-sm leading-relaxed line-clamp-3">{project.description}</p>
+
+                  {/* Tech pills */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] md:text-xs text-muted-foreground"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action links — pushed to bottom */}
+                  <div className="flex gap-2 mt-auto pt-2">
                     <a
                       href={project.link}
-                      className="inline-flex items-center gap-2 font-mono text-xs md:text-sm font-bold border-2 border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
                     >
-                      VIEW PROJECT {"->"}
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      LIVE
                     </a>
                     {"github" in project && project.github && (
                       <a
                         href={project.github}
-                        className="inline-flex items-center gap-2 font-mono text-xs md:text-sm font-bold border-2 border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 hover:bg-foreground hover:text-background transition-colors"
                       >
-                        GITHUB {"->"}
+                        <Github className="h-3.5 w-3.5" />
+                        SOURCE
                       </a>
                     )}
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="md:hidden text-center mt-2">
-          <span className="font-mono text-[10px] text-muted-foreground">
-            {"<-"} SWIPE {"->"}
-          </span>
+            )
+          })}
         </div>
       </div>
     </section>
