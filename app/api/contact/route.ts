@@ -27,7 +27,7 @@ export async function POST(request: Request) {
         } else {
             // Fallback: log to console when RESEND_API_KEY is not set
             console.log('--- NEW CONTACT FORM SUBMISSION ---')
-            console.log('To: dongduong80@gmail.com')
+            console.log('To: dongduong840@gmail.com')
             console.log('Name:', name)
             console.log('Email:', email)
             console.log('Subject:', subject)
