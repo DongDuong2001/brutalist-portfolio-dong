@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef } from "react"
-import { TiltCard } from "@/components/ui/tilt-card"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 import { projects } from "@/data/projects"
@@ -48,11 +47,11 @@ export function Projects() {
 
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-4 md:pl-8 scrollbar-hide"
+          className="flex gap-6 overflow-x-scroll snap-x snap-mandatory pb-6 px-4 md:pl-8 scrollbar-hide touch-pan-x touch-pan-y"
         >
           {projects.map((project, index) => (
             <div key={index} className="snap-start shrink-0 w-[85vw] md:w-[420px] lg:w-[450px]">
-              <TiltCard className="h-full border-2 border-foreground bg-card group hover:bg-accent transition-colors">
+              <div className="h-full border-2 border-foreground bg-card group hover:bg-accent transition-colors">
                 <div className="border-b-2 border-foreground p-4 md:p-6 bg-secondary">
                   <div className="flex justify-between items-start mb-2">
                     <span className="font-mono text-[10px] md:text-xs font-bold border-2 border-foreground px-2 py-1">
@@ -94,7 +93,7 @@ export function Projects() {
                     )}
                   </div>
                 </div>
-              </TiltCard>
+              </div>
             </div>
           ))}
         </div>
