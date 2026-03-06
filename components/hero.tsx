@@ -1,11 +1,12 @@
 "use client"
 
-import Link from "next/link"
+interface HeroProps {
+  onNavigate?: (index: number) => void
+}
 
-
-export function Hero() {
+export function Hero({ onNavigate }: HeroProps) {
   return (
-    <section id="home" className="min-h-screen flex items-center border-b-2 border-foreground pt-16">
+    <section id="home" className="min-h-screen flex items-center border-b-2 border-foreground">
       <div className="container mx-auto px-4 py-10 md:py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -32,18 +33,18 @@ export function Hero() {
 
             <div>
               <div className="flex flex-wrap gap-4">
-                <Link
-                  href="#projects"
-                  className="bg-foreground text-background px-8 py-3 font-mono font-bold hover:bg-accent hover:text-accent-foreground transition-colors border-2 border-foreground"
+                <button
+                  onClick={() => onNavigate?.(2)}
+                  className="bg-foreground text-background px-8 py-3 font-mono font-bold hover:bg-accent hover:text-accent-foreground transition-colors border-2 border-foreground cursor-pointer"
                 >
                   VIEW WORK
-                </Link>
-                <Link
-                  href="#contact"
-                  className="bg-transparent text-foreground px-8 py-3 font-mono font-bold hover:bg-foreground hover:text-background transition-colors border-2 border-foreground"
+                </button>
+                <button
+                  onClick={() => onNavigate?.(6)}
+                  className="bg-transparent text-foreground px-8 py-3 font-mono font-bold hover:bg-foreground hover:text-background transition-colors border-2 border-foreground cursor-pointer"
                 >
                   CONTACT ME
-                </Link>
+                </button>
                 <a
                   href="/cv/DuongPhuDong_CV.pdf"
                   target="_blank"
