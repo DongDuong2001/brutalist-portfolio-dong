@@ -39,12 +39,22 @@ export function Projects() {
                       </div>
                     </div>
 
-                    <a
-                      href={project.link}
-                      className="inline-flex items-center gap-2 font-mono text-xs md:text-sm font-bold border-2 border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors"
-                    >
-                      VIEW PROJECT {"->"}
-                    </a>
+                    <div className="flex flex-wrap gap-2">
+                      <a
+                        href={project.link}
+                        className="inline-flex items-center gap-2 font-mono text-xs md:text-sm font-bold border-2 border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors"
+                      >
+                        VIEW PROJECT {"->"}
+                      </a>
+                      {"github" in project && project.github && (
+                        <a
+                          href={project.github}
+                          className="inline-flex items-center gap-2 font-mono text-xs md:text-sm font-bold border-2 border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors"
+                        >
+                          GITHUB {"->"}
+                        </a>
+                      )}
+                    </div>
                   </div>
                </TiltCard>
             </FadeInItem>
