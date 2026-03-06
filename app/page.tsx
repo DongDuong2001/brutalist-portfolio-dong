@@ -106,7 +106,7 @@ export default function Home() {
         onNavigate={navigateTo}
       />
 
-      <main className="flex-1 h-screen overflow-hidden md:ml-[200px] pb-14 md:pb-0">
+      <main className="flex-1 min-w-0 h-screen overflow-hidden md:ml-[200px] pb-14 md:pb-0">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={activeIndex}
@@ -116,7 +116,7 @@ export default function Home() {
             animate="center"
             exit="exit"
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="h-full overflow-y-auto"
+            className="h-full overflow-y-auto overflow-x-hidden"
           >
             {renderSection()}
           </motion.div>
