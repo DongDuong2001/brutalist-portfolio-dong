@@ -2,8 +2,18 @@
 
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
-import { Moon, Sun } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { Moon, Sun, Home, Code2, FolderKanban, GraduationCap, Activity, Heart, Mail } from "lucide-react"
+import { motion } from "framer-motion"
+
+const SECTION_ICONS: Record<string, React.ElementType> = {
+  home: Home,
+  skills: Code2,
+  projects: FolderKanban,
+  education: GraduationCap,
+  activity: Activity,
+  interests: Heart,
+  contact: Mail,
+}
 
 interface Section {
   id: string
@@ -19,7 +29,6 @@ interface SideNavigationProps {
 
 export function SideNavigation({ sections, activeIndex, onNavigate }: SideNavigationProps) {
   const [mounted, setMounted] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
@@ -84,75 +93,45 @@ export function SideNavigation({ sections, activeIndex, onNavigate }: SideNaviga
         </div>
       </nav>
 
-      {/* Mobile Bottom Bar */}
+      {/* Mobile Bottom Tab Bar */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t-2 border-foreground bg-background">
-        <AnimatePresence mode="wait">
-          {!mobileOpen ? (
-            <motion.div
-              key="collapsed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="flex items-center justify-between px-4 h-14"
-            >
-              <span className="font-mono text-xs font-bold">
-                {">"} {sections[activeIndex].label}
-              </span>
-              <div className="flex items-center gap-2">
-                <motion.button
-                  onClick={toggleTheme}
-                  className="p-2 border-2 border-foreground font-mono text-xs"
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {theme === "dark" ? <Moon className="h-3 w-3" /> : <Sun className="h-3 w-3" />}
-                </motion.button>
-                <button
-                  onClick={() => setMobileOpen(true)}
-                  className="px-3 py-2 border-2 border-foreground font-mono text-xs font-bold"
-                >
-                  MENU
-                </button>
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="expanded"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              className="bg-background"
-            >
-              <div className="flex items-center justify-between px-4 py-2 border-b border-foreground/20">
-                <span className="font-mono text-xs font-bold">NAVIGATE</span>
-                <button
-                  onClick={() => setMobileOpen(false)}
-                  className="px-3 py-1 border-2 border-foreground font-mono text-xs font-bold"
-                >
-                  CLOSE
-                </button>
-              </div>
-              <div className="grid grid-cols-4 gap-0">
-                {sections.map((section, index) => (
-                  <button
-                    key={section.id}
-                    onClick={() => {
-                      onNavigate(index)
-                      setMobileOpen(false)
-                    }}
-                    className={`p-3 font-mono text-[10px] font-bold border border-foreground/10 transition-colors ${
-                      activeIndex === index
-                        ? "bg-accent text-accent-foreground"
-                        : "hover:bg-secondary"
-                    }`}
-                  >
-                    <div className="text-[8px] opacity-50 mb-1">{section.shortcut}</div>
-                    {section.label}
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="flex items-stretch">
+          {sections.map((section, index) => {
+            const Icon = SECTION_ICONS[section.id] || Home
+            const isActive = activeIndex === index
+            return (
+              <button
+                key={section.id}
+                onClick={() => onNavigate(index)}
+                className={`relative flex-1 flex flex-col items-center justify-center gap-0.5 py-2 transition-colors ${
+                  isActive
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:bg-secondary"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="mobileActiveTab"
+                    className="absolute top-0 left-0 right-0 h-0.5 bg-foreground"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                <Icon className="h-4 w-4" />
+                <span className="font-mono text-[8px] font-bold leading-none">{section.label}</span>
+              </button>
+            )
+          })}
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="flex flex-col items-center justify-center gap-0.5 py-2 px-3 border-l border-foreground/20 text-muted-foreground hover:bg-secondary transition-colors"
+          >
+            {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            <span className="font-mono text-[8px] font-bold leading-none">
+              {theme === "dark" ? "DARK" : "LIGHT"}
+            </span>
+          </button>
+        </div>
       </div>
     </>
   )
