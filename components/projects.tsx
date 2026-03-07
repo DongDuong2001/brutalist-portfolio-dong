@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { ExternalLink, Github } from "lucide-react"
+import { Award, ExternalLink, Github } from "lucide-react"
 
 import { projects } from "@/data/projects"
 
@@ -16,6 +16,7 @@ export function Projects() {
   )
 
   const isFeatured = (year: string) => year.includes("Current")
+  const isHighlighted = (project: (typeof projects)[number]) => "highlighted" in project && project.highlighted
 
   return (
     <section id="projects">
@@ -34,12 +35,12 @@ export function Projects() {
         </div>
 
         {/* Category filters */}
-        <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
+        <div className="flex gap-2 mb-8 md:mb-10 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap md:overflow-visible md:pb-0 scrollbar-hide">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
-              className={`font-mono text-[10px] md:text-xs font-bold px-3 py-1.5 border-2 border-foreground transition-colors ${
+              className={`font-mono text-[10px] md:text-xs font-bold px-3 py-1.5 border-2 border-foreground transition-colors whitespace-nowrap shrink-0 md:shrink ${
                 activeFilter === cat
                   ? "bg-accent text-accent-foreground"
                   : "bg-background hover:bg-secondary"
@@ -54,12 +55,13 @@ export function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
           {filtered.map((project, index) => {
             const featured = isFeatured(project.year)
+            const highlighted = isHighlighted(project)
             return (
               <div
                 key={index}
                 className={`group border-2 border-foreground bg-card flex flex-col transition-colors hover:bg-secondary ${
                   featured ? "ring-2 ring-accent ring-offset-2 ring-offset-background" : ""
-                }`}
+                } ${highlighted ? "border-l-4 border-l-accent" : ""}`}
               >
                 {/* Card header */}
                 <div className="border-b-2 border-foreground p-4 md:p-5 bg-secondary">
@@ -68,6 +70,11 @@ export function Projects() {
                       {project.category}
                     </span>
                     <div className="flex items-center gap-2">
+                      {highlighted && (
+                        <span className="font-mono text-[10px] font-bold bg-foreground text-background px-2 py-0.5">
+                          ★ BEST PROJECT
+                        </span>
+                      )}
                       {featured && (
                         <span className="font-mono text-[10px] font-bold bg-accent text-accent-foreground px-2 py-0.5">
                           ACTIVE
@@ -82,6 +89,19 @@ export function Projects() {
                 {/* Card body */}
                 <div className="p-4 md:p-5 flex flex-col flex-1 gap-4">
                   <p className="text-sm leading-relaxed line-clamp-3">{project.description}</p>
+
+                  {/* Award badge */}
+                  {"award" in project && project.award && (
+                    <a
+                      href={(project.award as { label: string; platform: string; url: string }).url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 self-start border-2 border-foreground bg-accent/10 px-3 py-1.5 font-mono text-[10px] md:text-xs font-bold hover:bg-accent hover:text-accent-foreground transition-colors"
+                    >
+                      <Award className="h-3.5 w-3.5" />
+                      {(project.award as { label: string; platform: string; url: string }).label} — {(project.award as { label: string; platform: string; url: string }).platform}
+                    </a>
+                  )}
 
                   {/* Tech pills */}
                   <div className="flex flex-wrap gap-1.5">
