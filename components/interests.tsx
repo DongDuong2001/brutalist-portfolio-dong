@@ -20,6 +20,16 @@ export function Interests() {
       description: "Exploring AI APIs and machine learning applications in web development",
       icon: "()",
     },
+    {
+      title: "USABILITY ENGINEERING",
+      description: "Applying usability principles and user-centered design to build intuitive, accessible digital products",
+      icon: "##",
+    },
+    {
+      title: "PROJECT MANAGEMENT",
+      description: "Planning, coordinating, and delivering software projects efficiently through agile methodologies and clear communication",
+      icon: ">>",
+    },
   ]
 
   return (
