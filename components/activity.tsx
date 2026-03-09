@@ -1,6 +1,16 @@
 export function Activity() {
   const activities = [
     {
+      type: "EDUCATION",
+      title: "Capstone A",
+      project: "RMIT University Vietnam",
+      date: "May 16 - May 25, 2026",
+      year: 2026,
+      description:
+        "Undertaking Capstone A as part of the Bachelor's program at RMIT University Vietnam, focusing on project planning, research, and initial implementation of the final-year capstone project.",
+      link: "#",
+    },
+    {
       type: "FOUNDER",
       title: "Founder of lab68dev",
       project: "Freelance Start-up",
