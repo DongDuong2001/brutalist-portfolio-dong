@@ -1,34 +1,34 @@
 export function Interests() {
   const interests = [
     {
-      title: "FULL-STACK DEVELOPMENT",
-      description: "Building end-to-end web applications with modern frameworks and best practices",
-      icon: "</>",
+      title: "CHESS",
+      description: "Analyzing positions, thinking several moves ahead, and finding the elegant solution under pressure. The board never lies.",
+      icon: "♟",
     },
     {
-      title: "ALGORITHM DESIGN",
-      description: "Implementing efficient algorithms and data structures for complex problems",
-      icon: "{}",
+      title: "SPECIALTY COFFEE",
+      description: "From single-origin beans to dialing in the perfect extraction. The ritual of making a great cup is its own kind of engineering.",
+      icon: "//",
     },
     {
-      title: "UI/UX IMPLEMENTATION",
-      description: "Creating accessible, responsive interfaces with attention to user experience",
+      title: "FILM PHOTOGRAPHY",
+      description: "Shooting on 35mm forces intentionality — you only get 36 frames. It rewired how I approach composition and patience.",
       icon: "[]",
     },
     {
-      title: "AI INTEGRATION",
-      description: "Exploring AI APIs and machine learning applications in web development",
-      icon: "()",
+      title: "HIKING & OUTDOORS",
+      description: "There's no better way to reset than a long trail with no notifications. Some of my best architectural ideas come mid-climb.",
+      icon: "~>",
     },
     {
-      title: "USABILITY ENGINEERING",
-      description: "Applying usability principles and user-centered design to build intuitive, accessible digital products",
-      icon: "##",
+      title: "OPEN SOURCE",
+      description: "Contributing to and maintaining open source projects — building things in public is the best accountability system I know.",
+      icon: "</>",
     },
     {
-      title: "PROJECT MANAGEMENT",
-      description: "Planning, coordinating, and delivering software projects efficiently through agile methodologies and clear communication",
-      icon: ">>",
+      title: "READING",
+      description: "Currently into systems thinking, behavioral economics, and good fiction. The further from tech, the more it ends up influencing my work.",
+      icon: "{}",
     },
   ]
 
