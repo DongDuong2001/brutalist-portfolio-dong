@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion"
 
 import { Hero } from "@/components/hero"
 import { Education } from "@/components/education"
-import { Skills } from "@/components/skills"
 import { Projects } from "@/components/projects"
 import { Activity } from "@/components/activity"
 import { Interests } from "@/components/interests"
@@ -15,12 +14,11 @@ import { SideNavigation } from "@/components/navigation"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
-  { id: "skills", label: "SKILLS", shortcut: "02" },
-  { id: "projects", label: "PROJECTS", shortcut: "03" },
-  { id: "education", label: "EDUCATION", shortcut: "04" },
-  { id: "activity", label: "ACTIVITY", shortcut: "05" },
-  { id: "interests", label: "INTERESTS", shortcut: "06" },
-  { id: "contact", label: "CONTACT", shortcut: "07" },
+  { id: "projects", label: "PROJECTS", shortcut: "02" },
+  { id: "education", label: "EDUCATION", shortcut: "03" },
+  { id: "activity", label: "ACTIVITY", shortcut: "04" },
+  { id: "interests", label: "INTERESTS", shortcut: "05" },
+  { id: "contact", label: "CONTACT", shortcut: "06" },
 ]
 
 const panelVariants = {
@@ -82,16 +80,14 @@ export default function Home() {
           </>
         )
       case 1:
-        return <Skills />
-      case 2:
         return <Projects />
-      case 3:
+      case 2:
         return <Education />
-      case 4:
+      case 3:
         return <Activity />
-      case 5:
+      case 4:
         return <Interests />
-      case 6:
+      case 5:
         return <Contact />
       default:
         return <Hero onNavigate={navigateTo} />
