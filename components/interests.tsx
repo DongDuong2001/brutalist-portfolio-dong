@@ -30,6 +30,11 @@ export function Interests() {
       description: "Currently into systems thinking, behavioral economics, and good fiction. The further from tech, the more it ends up influencing my work.",
       icon: "{}",
     },
+    {
+      title: "MOTORSPORT",
+      description: "Formula 1, WEC, Rally — the engineering as much as the racing. There's something about a team solving problems at 300km/h under pressure that never gets old.",
+      icon: ">>",
+    },
   ]
 
   return (
