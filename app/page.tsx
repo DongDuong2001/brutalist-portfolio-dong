@@ -9,16 +9,17 @@ import { Projects } from "@/components/projects"
 import { Activity } from "@/components/activity"
 import { Interests } from "@/components/interests"
 import { Contact } from "@/components/contact"
-import { HeroMarquee } from "@/components/hero-marquee"
+import { Skills } from "@/components/skills"
 import { SideNavigation } from "@/components/navigation"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
   { id: "projects", label: "PROJECTS", shortcut: "02" },
-  { id: "education", label: "EDUCATION", shortcut: "03" },
-  { id: "activity", label: "ACTIVITY", shortcut: "04" },
-  { id: "interests", label: "INTERESTS", shortcut: "05" },
-  { id: "contact", label: "CONTACT", shortcut: "06" },
+  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "03" },
+  { id: "education", label: "EDUCATION", shortcut: "04" },
+  { id: "activity", label: "ACTIVITY", shortcut: "05" },
+  { id: "interests", label: "INTERESTS", shortcut: "06" },
+  { id: "contact", label: "CONTACT", shortcut: "07" },
 ]
 
 const panelVariants = {
@@ -74,20 +75,19 @@ export default function Home() {
     switch (activeIndex) {
       case 0:
         return (
-          <>
-            <Hero onNavigate={navigateTo} />
-            <HeroMarquee />
-          </>
+          <Hero onNavigate={navigateTo} />
         )
       case 1:
         return <Projects />
       case 2:
-        return <Education />
+        return <Skills />
       case 3:
-        return <Activity />
+        return <Education />
       case 4:
-        return <Interests />
+        return <Activity />
       case 5:
+        return <Interests />
+      case 6:
         return <Contact />
       default:
         return <Hero onNavigate={navigateTo} />
