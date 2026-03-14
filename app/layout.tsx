@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Duong Phu Dong | Fullstack Developer",
     description: "Building digital experiences with a focus on brutalist aesthetics and robust functionality.",
-    url: "https://duongphudong.com", // Placeholder URL, update if known
+    url: "https://duongphudong2001.vercel.app/", // Placeholder URL, update if known
     siteName: "Duong Phu Dong Portfolio",
     locale: "en_US",
     type: "website",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description: "Building digital experiences with a focus on brutalist aesthetics and robust functionality.",
     creator: "@lab68dev",
   },
-  metadataBase: new URL("https://duongphudong.com"), // Placeholder
+  metadataBase: new URL("https://duongphudong2001.vercel.app/"), // Placeholder
 }
 
 export default function RootLayout({
