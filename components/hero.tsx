@@ -46,7 +46,7 @@ export function Hero({ onNavigate }: HeroProps) {
                   CONTACT ME
                 </button>
                 <a
-                  href="/cv/DuongPhuDong_CV.pdf"
+                  href="/cv/Duong Phu Dong - Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-transparent text-foreground px-8 py-3 font-mono font-bold hover:bg-foreground hover:text-background transition-colors border-2 border-foreground"
