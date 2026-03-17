@@ -25,11 +25,18 @@ export const projects = [
         link: "https://lab68cvbuilder.vercel.app/en",
         github: "https://github.com/lab68dev/lab68cvbuilder",
         highlighted: true,
-        award: {
-            label: "#1 Product of the Week",
-            platform: "Forg",
-            url: "https://forg.to/products/lab68-cv-builder",
-        },
+        awards: [
+            {
+                label: "#1 Product of the Week",
+                platform: "Forg",
+                url: "https://forg.to/products/lab68-cv-builder",
+            },
+            {
+                label: "#1 Product of the Day",
+                platform: "Unikorn",
+                url: "https://unikorn.vn/p/lab68dev-cv-builder",
+            },
+        ],
     },
     {
         title: "ATHERA AI",
