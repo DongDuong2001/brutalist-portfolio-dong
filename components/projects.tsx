@@ -6,6 +6,7 @@ import { Award, ExternalLink, Github } from "lucide-react"
 import { projects } from "@/data/projects"
 
 const CATEGORIES = ["ALL", ...Array.from(new Set(projects.map((p) => p.category)))]
+type AwardInfo = { label: string; platform: string; url: string }
 
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState("ALL")
@@ -17,6 +18,11 @@ export function Projects() {
 
   const isFeatured = (year: string) => year.includes("Current")
   const isHighlighted = (project: (typeof projects)[number]) => "highlighted" in project && project.highlighted
+  const getAwards = (project: (typeof projects)[number]): AwardInfo[] => {
+    if ("awards" in project && Array.isArray(project.awards)) return project.awards as AwardInfo[]
+    if ("award" in project && project.award) return [project.award as AwardInfo]
+    return []
+  }
 
   return (
     <section id="projects">
@@ -56,6 +62,7 @@ export function Projects() {
           {filtered.map((project, index) => {
             const featured = isFeatured(project.year)
             const highlighted = isHighlighted(project)
+            const awards = getAwards(project)
             return (
               <div
                 key={index}
@@ -90,17 +97,22 @@ export function Projects() {
                 <div className="p-4 md:p-5 flex flex-col flex-1 gap-4">
                   <p className="text-sm leading-relaxed line-clamp-3">{project.description}</p>
 
-                  {/* Award badge */}
-                  {"award" in project && project.award && (
-                    <a
-                      href={(project.award as { label: string; platform: string; url: string }).url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 self-start border-2 border-foreground bg-accent/10 px-3 py-1.5 font-mono text-[10px] md:text-xs font-bold hover:bg-accent hover:text-accent-foreground transition-colors"
-                    >
-                      <Award className="h-3.5 w-3.5" />
-                      {(project.award as { label: string; platform: string; url: string }).label} — {(project.award as { label: string; platform: string; url: string }).platform}
-                    </a>
+                  {/* Award badges */}
+                  {awards.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {awards.map((award, awardIndex) => (
+                        <a
+                          key={`${award.platform}-${award.label}-${awardIndex}`}
+                          href={award.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 self-start border-2 border-foreground bg-accent/10 px-3 py-1.5 font-mono text-[10px] md:text-xs font-bold hover:bg-accent hover:text-accent-foreground transition-colors"
+                        >
+                          <Award className="h-3.5 w-3.5" />
+                          {award.label} — {award.platform}
+                        </a>
+                      ))}
+                    </div>
                   )}
 
                   {/* Tech pills */}
