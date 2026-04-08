@@ -4,10 +4,20 @@ export function Activity() {
       type: "EDUCATION",
       title: "Capstone A",
       project: "RMIT University Vietnam",
-      date: "May 16 - May 25, 2026",
+      date: "April 08 - May 25, 2026",
       year: 2026,
       description:
         "Undertaking Capstone A as part of the Bachelor's program at RMIT University Vietnam, focusing on project planning, research, and initial implementation of the final-year capstone project.",
+      link: "#",
+    },
+    {
+      type: "PROJECT LEADER",
+      title: "Project Luvcraft",
+      project: "Project Pluto Company",
+      date: "April 2026 - Present",
+      year: 2026,
+      description:
+        "Serving as Project Leader and Full-stack Developer for Project Luvcraft at Project Pluto Company, leading a team of 4 while driving product planning, implementation, and delivery across the stack.",
       link: "#",
     },
     {
