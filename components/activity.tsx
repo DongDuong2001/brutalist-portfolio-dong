@@ -108,8 +108,13 @@ export function Activity() {
   return (
     <section id="activity">
       <div className="container mx-auto px-4 py-20">
-        <div className="border-2 border-foreground p-2 inline-block mb-12">
-          <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  ACTIVITY ROADMAP</h2>
+        <div className="flex items-center gap-4 mb-12">
+          <svg className="w-8 h-8 text-accent shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 5H5c-1.1 0-2 .9-2 2v3h4V5zm0 5H3v4h6v-4zm0 6H3v3c0 1.1.9 2 2 2h4v-5zm6-11v4h4V7c0-1.1-.9-2-2-2h-2zm0 6v4h6v-4h-6zm0 6v5h2c1.1 0 2-.9 2-2v-3h-4z"/>
+          </svg>
+          <div className="border-2 border-foreground p-2 inline-block">
+            <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  ACTIVITY ROADMAP</h2>
+          </div>
         </div>
 
         <div className="space-y-12">
