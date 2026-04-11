@@ -52,8 +52,13 @@ export function Contact() {
   return (
     <section id="contact">
       <div className="container mx-auto px-4 py-12 md:py-20">
-        <div className="border-2 border-foreground p-2 inline-block mb-8 md:mb-12">
-          <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} CONTACT</h2>
+        <div className="flex items-center gap-4 mb-8 md:mb-12">
+          <svg className="w-8 h-8 text-accent shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2c-1.1 0-2 .9-2 2v5H8v2h2v7c0 1.66-1.34 3-3 3s-3-1.34-3-3v-4H2v2h2v4c0 2.76 2.24 5 5 5s5-2.24 5-5v-7h2V9h-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+          <div className="border-2 border-foreground p-2 inline-block">
+            <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} CONTACT</h2>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
