@@ -28,12 +28,17 @@ export function Projects() {
     <section id="projects">
       <div className="container mx-auto px-4 py-12 md:py-20">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6 md:mb-10">
-          <div>
-            <div className="border-2 border-foreground p-2 inline-block mb-3">
-              <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} PROJECTS</h2>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 md:mb-10">
+          <div className="flex items-center gap-4">
+            <svg className="w-8 h-8 text-accent shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 5v14h2v-2h2v2h2v-2h2v2h2v-2h2v2h2v-2h2v2h2V5l-9-3-9 3zm1 2h16v8H4V7z"/>
+            </svg>
+            <div className="border-2 border-foreground p-2 inline-block">
+              <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  PROJECTS</h2>
             </div>
-            <p className="font-mono text-xs md:text-sm text-muted-foreground">
+          </div>
+          <div className="border-2 md:border-4 border-foreground bg-accent px-4 md:px-6 py-2 md:py-3 inline-block">
+            <p className="font-mono text-sm md:text-base font-bold text-accent-foreground">
               {filtered.length} PROJECT{filtered.length !== 1 && "S"}
               {activeFilter !== "ALL" && ` IN ${activeFilter}`}
             </p>
