@@ -10,16 +10,19 @@ import { Activity } from "@/components/activity"
 import { Interests } from "@/components/interests"
 import { Contact } from "@/components/contact"
 import { Skills } from "@/components/skills"
+import { TechRadar } from "@/components/tech-radar"
 import { SideNavigation } from "@/components/navigation"
+import { CommandPalette } from "@/components/command-palette"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
   { id: "projects", label: "PROJECTS", shortcut: "02" },
   { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "03" },
-  { id: "education", label: "EDUCATION", shortcut: "04" },
-  { id: "activity", label: "ACTIVITY", shortcut: "05" },
-  { id: "interests", label: "INTERESTS", shortcut: "06" },
-  { id: "contact", label: "CONTACT", shortcut: "07" },
+  { id: "tech-radar", label: "TECH RADAR", shortcut: "04" },
+  { id: "education", label: "EDUCATION", shortcut: "05" },
+  { id: "activity", label: "ACTIVITY", shortcut: "06" },
+  { id: "interests", label: "INTERESTS", shortcut: "07" },
+  { id: "contact", label: "CONTACT", shortcut: "08" },
 ]
 
 const panelVariants = {
@@ -44,7 +47,7 @@ export default function Home() {
     setPage(([prev]) => [index, index > prev ? 1 : -1])
   }, [])
 
-  // Keyboard navigation (1-7 keys)
+  // Keyboard navigation (1-8 keys)
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
@@ -82,12 +85,14 @@ export default function Home() {
       case 2:
         return <Skills />
       case 3:
-        return <Education />
+        return <TechRadar />
       case 4:
-        return <Activity />
+        return <Education />
       case 5:
-        return <Interests />
+        return <Activity />
       case 6:
+        return <Interests />
+      case 7:
         return <Contact />
       default:
         return <Hero onNavigate={navigateTo} />
@@ -95,14 +100,14 @@ export default function Home() {
   }
 
   return (
-    <div className="h-screen flex bg-background text-foreground selection:bg-accent selection:text-accent-foreground overflow-hidden">
+    <div className="min-h-dvh md:h-screen flex bg-background text-foreground selection:bg-accent selection:text-accent-foreground overflow-hidden">
       <SideNavigation
         sections={sections}
         activeIndex={activeIndex}
         onNavigate={navigateTo}
       />
 
-      <main className="flex-1 min-w-0 h-screen overflow-hidden md:ml-[200px] pb-14 md:pb-0">
+      <main className="flex-1 min-w-0 h-dvh md:h-screen overflow-hidden md:ml-[200px] pb-14 md:pb-0">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={activeIndex}
@@ -117,6 +122,8 @@ export default function Home() {
             {renderSection()}
           </motion.div>
         </AnimatePresence>
+
+        <CommandPalette sections={sections} onNavigate={navigateTo} />
       </main>
     </div>
   )
