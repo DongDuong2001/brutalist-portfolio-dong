@@ -6,6 +6,9 @@ interface HeroProps {
   onNavigate?: (index: number) => void
 }
 
+const SESSION_ID_KEY = "portfolio-session-id"
+const VIEW_COUNTED_KEY = "portfolio-view-counted"
+
 const profileData = [
   '{',
   '  "location": "HO CHI MINH, VIETNAM",',
@@ -115,6 +118,7 @@ const dashboardPanels = [
 export function Hero({ onNavigate }: HeroProps) {
   const [displayText, setDisplayText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
+  const [profileViews, setProfileViews] = useState<number | null>(null)
 
   const fullText = useMemo(() => profileData.join("\n"), [])
 
@@ -133,6 +137,58 @@ export function Hero({ onNavigate }: HeroProps) {
 
     return () => clearTimeout(timer)
   }, [displayText, fullText, isTyping])
+
+  useEffect(() => {
+    let isActive = true
+
+    const getOrCreateSessionId = () => {
+      const existing = window.sessionStorage.getItem(SESSION_ID_KEY)
+      if (existing) return existing
+
+      const generated = typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
+
+      window.sessionStorage.setItem(SESSION_ID_KEY, generated)
+      return generated
+    }
+
+    const updateViews = async () => {
+      const sessionId = getOrCreateSessionId()
+      const alreadyCounted = window.sessionStorage.getItem(VIEW_COUNTED_KEY) === "1"
+
+      if (!alreadyCounted) {
+        const countResponse = await fetch("/api/profile-views", {
+          method: "POST",
+          headers: { "x-session-id": sessionId },
+          cache: "no-store",
+        })
+
+        if (countResponse.ok) {
+          const countData = (await countResponse.json()) as { total?: number }
+          if (isActive && typeof countData.total === "number") {
+            setProfileViews(countData.total)
+          }
+          window.sessionStorage.setItem(VIEW_COUNTED_KEY, "1")
+          return
+        }
+      }
+
+      const readResponse = await fetch("/api/profile-views", { cache: "no-store" })
+      if (!readResponse.ok) return
+
+      const readData = (await readResponse.json()) as { total?: number }
+      if (isActive && typeof readData.total === "number") {
+        setProfileViews(readData.total)
+      }
+    }
+
+    void updateViews()
+
+    return () => {
+      isActive = false
+    }
+  }, [])
 
   const handleReplayTyping = () => {
     setDisplayText("")
@@ -188,10 +244,17 @@ export function Hero({ onNavigate }: HeroProps) {
       <div className="container mx-auto px-4 py-6 md:py-10 relative z-10">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start lg:items-center">
           <div className="space-y-5 md:space-y-6">
-            <div className="border-2 border-foreground p-2 inline-block">
-              <span className="font-mono text-xs md:text-sm bg-accent text-accent-foreground px-2 py-1">
-                AVAILABLE FOR WORK
-              </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="border-2 border-foreground p-2 inline-block">
+                <span className="font-mono text-xs md:text-sm bg-accent text-accent-foreground px-2 py-1">
+                  AVAILABLE FOR WORK
+                </span>
+              </div>
+              <div className="border-2 border-foreground p-2 bg-secondary">
+                <span className="font-mono text-[10px] md:text-xs font-bold">
+                  PROFILE VIEWS: {profileViews === null ? "..." : profileViews.toLocaleString()}
+                </span>
+              </div>
             </div>
 
             <div>
