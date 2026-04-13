@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 
 interface HeroProps {
   onNavigate?: (index: number) => void
@@ -10,17 +10,113 @@ const profileData = [
   '{',
   '  "location": "HO CHI MINH, VIETNAM",',
   '  "education": "RMIT VIETNAM",',
-  '  "projects": "9+ COMPLETED",',
+  '  "projects": "11+ COMPLETED / BUILDING",',
   '  "founder": "@lab68dev",',
-  '  "status": "🟢 ONLINE"',
+  '  "status": "ONLINE"',
   '}',
+]
+
+const verticalLinePositions = [
+  "left-[10%]",
+  "left-[20%]",
+  "left-[30%]",
+  "left-[40%]",
+  "left-[50%]",
+  "left-[60%]",
+  "left-[70%]",
+  "left-[80%]",
+  "left-[90%]",
+]
+
+const horizontalLinePositions = [
+  "top-[12%]",
+  "top-[24%]",
+  "top-[36%]",
+  "top-[48%]",
+  "top-[60%]",
+  "top-[72%]",
+  "top-[84%]",
+]
+
+const matrixColumns = [
+  {
+    leftClass: "left-[4%]",
+    phaseClass: "matrix-phase-1",
+    content: ["01010110", "$ go run ./cmd/graft", "STATUS: ONLINE", "BUILD OK", "COMMIT feat(hero)"].join("\n"),
+  },
+  {
+    leftClass: "left-[14%]",
+    phaseClass: "matrix-phase-2",
+    content: ["type App struct {}", "go test ./...", "PASS", "latency < 40ms", "DEPLOY READY"].join("\n"),
+  },
+  {
+    leftClass: "left-[26%]",
+    phaseClass: "matrix-phase-3",
+    content: ["const version = '2026'", "pnpm build", "chunk graph optimized", "A11Y CHECKED"].join("\n"),
+  },
+  {
+    leftClass: "left-[38%]",
+    phaseClass: "matrix-phase-4",
+    content: ["SELECT * FROM projects", "WHERE highlighted=true", "ORDER BY year DESC", "rows: 11"].join("\n"),
+  },
+  {
+    leftClass: "left-[52%]",
+    phaseClass: "matrix-phase-5",
+    content: ["interface Product {}", "ship() => Promise<void>", "quality_gate: pass", "coverage: 93%"].join("\n"),
+  },
+  {
+    leftClass: "left-[64%]",
+    phaseClass: "matrix-phase-6",
+    content: ["docker compose up", "api healthy", "db connected", "worker running"].join("\n"),
+  },
+  {
+    leftClass: "left-[76%]",
+    phaseClass: "matrix-phase-7",
+    content: ["git push origin main", "CI: PASS", "LINT: PASS", "TYPECHECK: PASS"].join("\n"),
+  },
+  {
+    leftClass: "left-[88%]",
+    phaseClass: "matrix-phase-8",
+    content: ["SlideGlint.exe", "Rendering pipeline ready", "fps stable", "UI thread smooth"].join("\n"),
+  },
+]
+
+const dashboardPanels = [
+  {
+    panelClass: "top-[8%] left-[8%] w-44",
+    phaseClass: "dashboard-phase-1",
+    title: "terminal.log",
+    lineA: "$ go run ./cmd/graft",
+    lineB: "service status: online",
+  },
+  {
+    panelClass: "top-[17%] right-[9%] w-48",
+    phaseClass: "dashboard-phase-2",
+    title: "build.pipeline",
+    lineA: "lint: pass | typecheck: pass",
+    lineB: "deploy target: production",
+  },
+  {
+    panelClass: "bottom-[22%] left-[12%] w-52",
+    phaseClass: "dashboard-phase-3",
+    title: "editor.tsx",
+    lineA: "const theme = 'light-mixed'",
+    lineB: "responsive: desktop + mobile",
+  },
+  {
+    panelClass: "bottom-[12%] right-[8%] w-48",
+    phaseClass: "dashboard-phase-4",
+    title: "database.sql",
+    lineA: "SELECT award FROM projects",
+    lineB: "graft => #3 POD unikorn",
+  },
 ]
 
 export function Hero({ onNavigate }: HeroProps) {
   const [displayText, setDisplayText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
 
-  const fullText = profileData.join("\n")
+  const fullText = useMemo(() => profileData.join("\n"), [])
 
   useEffect(() => {
     if (!isTyping || displayText.length >= fullText.length) {
@@ -28,65 +124,103 @@ export function Hero({ onNavigate }: HeroProps) {
       return
     }
 
+    const nextChar = fullText[displayText.length]
+    const delay = nextChar === "\n" ? 180 : [",", ":"].includes(nextChar) ? 110 : 75
+
     const timer = setTimeout(() => {
-      setDisplayText((prev) => prev + fullText[prev.length])
-    }, 60)
+      setDisplayText((prev) => prev + nextChar)
+    }, delay)
 
     return () => clearTimeout(timer)
   }, [displayText, fullText, isTyping])
+
+  const handleReplayTyping = () => {
+    setDisplayText("")
+    setIsTyping(true)
+  }
+
   return (
-    <section id="home" className="h-screen flex items-center">
-      <div className="container mx-auto px-4 py-8 md:py-12">
-        <div className="grid md:grid-cols-2 gap-8 h-full items-center">
-            <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <svg className="w-6 h-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2v20M2 12h20M8 8l8 8M16 8l-8 8" />
-              </svg>
-              <div className="border-2 border-foreground p-2 inline-block">
-                <span className="font-mono text-xs md:text-sm bg-accent text-accent-foreground px-2 py-1">
-                  AVAILABLE FOR WORK
-                </span>
-              </div>
+    <section id="home" className="relative min-h-[calc(100dvh-3.5rem)] md:h-screen flex items-center overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 select-none">
+        <div className="absolute inset-0 opacity-35">
+          {verticalLinePositions.map((positionClass, index) => (
+            <span
+              key={`v-${index}`}
+              className={`absolute top-0 bottom-0 border-l border-accent/20 ${positionClass}`}
+            />
+          ))}
+          {horizontalLinePositions.map((positionClass, index) => (
+            <span
+              key={`h-${index}`}
+              className={`absolute left-0 right-0 border-t border-accent/15 ${positionClass}`}
+            />
+          ))}
+        </div>
+
+        <div className="absolute inset-0 overflow-hidden">
+          {matrixColumns.map((column, index) => (
+            <pre
+              key={`${column.leftClass}-${index}`}
+              className={`matrix-column ${column.leftClass} ${column.phaseClass} ${index > 4 ? "hidden md:block" : ""}`}
+            >
+              {column.content}
+            </pre>
+          ))}
+        </div>
+
+        <div className="absolute inset-0 hidden md:block">
+          {dashboardPanels.map((panel) => (
+            <div
+              key={panel.title}
+              className={`home-dashboard-panel ${panel.panelClass} ${panel.phaseClass}`}
+            >
+              <div className="home-dashboard-title">{panel.title}</div>
+              <div className="home-dashboard-line">{panel.lineA}</div>
+              <div className="home-dashboard-line">{panel.lineB}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="home-scan-x absolute top-0 bottom-0 w-px bg-accent/35" />
+        <div className="home-scan-y absolute left-0 right-0 h-px bg-accent/25" />
+      </div>
+
+      <div className="container mx-auto px-4 py-6 md:py-10 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start lg:items-center">
+          <div className="space-y-5 md:space-y-6">
+            <div className="border-2 border-foreground p-2 inline-block">
+              <span className="font-mono text-xs md:text-sm bg-accent text-accent-foreground px-2 py-1">
+                AVAILABLE FOR WORK
+              </span>
             </div>
 
             <div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-3 gothic-header">
                 FULLSTACK <br />
                 <span className="bg-accent text-accent-foreground px-2 italic transform -skew-x-12 inline-block">DEVELOPER</span> <br />
-                & PROJECT MANAGER
+                & TECHNICAL LEADER
               </h1>
             </div>
 
-            <div>
-              <div className="flex items-start gap-3 mb-1">
-                <svg className="w-4 h-4 text-accent mt-0.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5-9h10v2H7z"/>
-                </svg>
-                <p className="text-sm md:text-base text-muted-foreground max-w-2xl font-mono leading-tight">
-                  Full-stack Developer and RMIT Software Engineering student with a track record of shipping production-grade applications to real users. Launched Lab68 CV Builder to #1 Product of the Day on Unikorn and #1 Product of the Week on Forg within a month.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <svg className="w-4 h-4 text-accent mt-0.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                <p className="text-sm md:text-base text-muted-foreground max-w-2xl font-mono leading-tight">
-                  Experienced in leading backend teams and building secure, scalable systems with React/Next.js, Java (Spring Boot), and PostgreSQL.
-                </p>
-              </div>
+            <div className="space-y-3">
+              <p className="text-sm md:text-base text-muted-foreground max-w-2xl font-mono leading-relaxed">
+                Full-stack Developer and RMIT Software Engineering student with a track record of shipping production-grade applications to real users. Launched Lab68 CV Builder to #1 Product of the Day on Unikorn and #1 Product of the Week on Forg within a month.
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground max-w-2xl font-mono leading-relaxed">
+                Experienced in leading backend teams and building secure, scalable systems with React/Next.js, Java (Spring Boot), PostgreSQL, and Go.
+              </p>
             </div>
 
             <div>
               <div className="flex flex-wrap gap-2">
                 <button
-                  onClick={() => onNavigate?.(2)}
+                  onClick={() => onNavigate?.(1)}
                   className="bg-foreground text-background px-6 py-2 font-mono text-sm font-bold hover:bg-accent hover:text-accent-foreground transition-colors border-2 border-foreground cursor-pointer"
                 >
                   VIEW WORK
                 </button>
                 <button
-                  onClick={() => onNavigate?.(6)}
+                  onClick={() => onNavigate?.(7)}
                   className="bg-transparent text-foreground px-6 py-2 font-mono text-sm font-bold hover:bg-foreground hover:text-background transition-colors border-2 border-foreground cursor-pointer"
                 >
                   CONTACT ME
@@ -98,6 +232,14 @@ export function Hero({ onNavigate }: HeroProps) {
                   className="bg-transparent text-foreground px-6 py-2 font-mono text-sm font-bold hover:bg-foreground hover:text-background transition-colors border-2 border-foreground"
                 >
                   DOWNLOAD CV
+                </a>
+                <a
+                  href="/api/project-index?style=harvard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-transparent text-foreground px-6 py-2 font-mono text-sm font-bold hover:bg-foreground hover:text-background transition-colors border-2 border-foreground"
+                >
+                  DOWNLOAD PORTFOLIO
                 </a>
               </div>
             </div>
@@ -111,34 +253,24 @@ export function Hero({ onNavigate }: HeroProps) {
                   href="https://github.com/sponsors/lab68dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 bg-transparent text-foreground px-3 py-1 font-mono text-xs font-bold border-2 border-foreground hover:bg-foreground hover:text-background transition-colors"
+                  className="inline-flex items-center bg-transparent text-foreground px-3 py-1 font-mono text-xs font-bold border-2 border-foreground hover:bg-foreground hover:text-background transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 21.593c-.425-.394-8.279-7.163-8.279-12.026 0-3.809 2.9-6.567 6.279-6.567 1.941 0 3.7.927 4.871 2.384.012.016.024.03.036.044C15.951 3.914 17.74 3 19.721 3c3.379 0 6.279 2.758 6.279 6.567 0 4.863-7.854 11.632-8.279 12.026L12 21.593z"/>
-                  </svg>
                   SPONSORS
                 </a>
                 <a
                   href="https://ko-fi.com/dongphuduong"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 bg-transparent text-foreground px-3 py-1 font-mono text-xs font-bold border-2 border-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors"
+                  className="inline-flex items-center bg-transparent text-foreground px-3 py-1 font-mono text-xs font-bold border-2 border-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.317-.448-.405-1.105-.285-1.97.265-1.905 2.42-2.194 3.265-.457 1.503-1.518 3.498-.769 3.503.733.005 1.25-.428 1.64-1.03 1.741l.01-.002zm11.062.007c-.619.716-1.827 1.269-3.332 1.324.168-1.637-.418-3.27-1.988-3.77.083-.268.136-.546.136-.831 0-1.473-1.27-2.667-2.835-2.667-1.13 0-2.095.645-2.566 1.585C13.2 7.28 15.175 7.014 16.625 8.195c-.332.48-.496 1.062-.496 1.62 0 1.64 1.324 2.973 2.958 2.973.13 0 .26-.01.388-.028.061.353.064.71.007 1.053-.085.511-.313.979-.655 1.361z"/>
-                  </svg>
                   KO-FI
                 </a>
                 <a
                   href="https://buymeacoffee.com/lab68dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 bg-transparent text-foreground px-3 py-1 font-mono text-xs font-bold border-2 border-foreground hover:bg-foreground hover:text-background transition-colors"
+                  className="inline-flex items-center bg-transparent text-foreground px-3 py-1 font-mono text-xs font-bold border-2 border-foreground hover:bg-foreground hover:text-background transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.163.04 2.286-.028 3.44-.162.609-.069 1.217-.148 1.812-.296.201-.05.402-.100.601-.152.2-.05.4-.1.601-.149.3-.074.3-.525 0-.6-.2-.05-.402-.1-.601-.149-.2-.05-.4-.1-.601-.152-.595-.147-1.203-.226-1.812-.295-1.154-.134-2.277-.202-3.44-.163-1.098.04-2.212.133-3.287.37-.386.083-.763.205-1.123.367-.277.124-.538.313-.692.58-.216.376-.12.844.177 1.146.242.245.57.385.888.5.87.317 1.835.418 2.75.501a25.834 25.834 0 003.7.063c1.027-.056 2.077-.153 3.077-.417.205-.054.418-.12.626-.193.399-.155.8-.389.996-.789.148-.297.193-.662.25-.987.067-.377.127-.755.192-1.133.035-.206.079-.429.231-.572.15-.143.373-.172.57-.241.613-.216.882-.781 1.001-1.38l.132-.665c.067-.339.132-.678.197-1.017l-.467-.235c-.065.339-.13.678-.197 1.017z"/>
-                    <path d="M6.723 21.034H3.948c-.428 0-.649-.513-.37-.83l1.124-1.27H3.553c-.467 0-.7-.571-.357-.894L4.67 16.72H3.37c-.447 0-.685-.544-.37-.857L7.7 11.26c.334-.323.867-.063.867.4V15h1.283c.459 0 .695.565.361.89l-1.498 1.41h1.174c.463 0 .698.57.354.894l-2.52 2.376c-.005.005-.011.009-.016.014V21c0 .02-.003.034-.015.034z"/>
-                  </svg>
                   COFFEE
                 </a>
               </div>
@@ -146,26 +278,35 @@ export function Hero({ onNavigate }: HeroProps) {
           </div>
 
           {/* Code Editor Window */}
-          <div className="border-2 border-foreground bg-card overflow-hidden">
+          <div className="border-2 border-foreground bg-card overflow-hidden w-full">
             {/* Window Header */}
-            <div className="bg-foreground text-background px-4 py-2 flex items-center justify-between border-b-2 border-foreground">
-              <div className="flex items-center gap-2">
-                <span className="flex gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-accent"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-accent opacity-75"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-accent opacity-50"></span>
-                </span>
-              </div>
+            <div className="bg-foreground text-background px-4 py-2 border-b-2 border-foreground">
               <span className="font-mono text-xs font-bold">profile.json</span>
-              <div className="w-8"></div>
             </div>
 
             {/* Code Content */}
-            <div className="p-4 font-mono text-xs space-y-1.5 min-h-[140px]">
-              <pre className="text-green-400 whitespace-pre-wrap leading-relaxed">
+            <div className="p-4 font-mono text-xs min-h-[170px]">
+              <pre className="text-accent whitespace-pre-wrap leading-relaxed overflow-x-auto">
                 <span className="text-accent">{displayText}</span>
                 {isTyping && <span className="type-cursor">|</span>}
               </pre>
+            </div>
+
+            <div className="border-t-2 border-foreground p-3 flex flex-wrap gap-2">
+              <button
+                onClick={handleReplayTyping}
+                className="border-2 border-foreground px-3 py-1 font-mono text-xs font-bold hover:bg-foreground hover:text-background transition-colors"
+              >
+                REPLAY TYPING
+              </button>
+              <a
+                href="https://github.com/lab68dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-foreground px-3 py-1 font-mono text-xs font-bold hover:bg-foreground hover:text-background transition-colors"
+              >
+                OPEN FOUNDER PROFILE
+              </a>
             </div>
           </div>
         </div>
