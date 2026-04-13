@@ -27,10 +27,7 @@ export function Education() {
   return (
     <section id="education">
       <div className="container mx-auto px-4 py-12 md:py-20">
-        <div className="flex items-center gap-4 mb-8 md:mb-12">
-          <svg className="w-8 h-8 text-accent shrink-0" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 16H5V4h14v14zm-4-7H9v2h6v-2z"/>
-          </svg>
+        <div className="mb-8 md:mb-12">
           <div className="border-2 border-foreground p-2 inline-block">
             <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  EDUCATION</h2>
           </div>
