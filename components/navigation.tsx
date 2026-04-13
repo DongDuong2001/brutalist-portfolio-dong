@@ -2,18 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
-import { Moon, Sun, Home, Code2, FolderKanban, GraduationCap, Activity, Heart, Mail } from "lucide-react"
 import { motion } from "framer-motion"
-
-const SECTION_ICONS: Record<string, React.ElementType> = {
-  home: Home,
-  skills: Code2,
-  projects: FolderKanban,
-  education: GraduationCap,
-  activity: Activity,
-  interests: Heart,
-  contact: Mail,
-}
 
 interface Section {
   id: string
@@ -27,7 +16,11 @@ interface SideNavigationProps {
   onNavigate: (index: number) => void
 }
 
-export function SideNavigation({ sections, activeIndex, onNavigate }: SideNavigationProps) {
+export function SideNavigation({
+  sections,
+  activeIndex,
+  onNavigate,
+}: SideNavigationProps) {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -81,29 +74,27 @@ export function SideNavigation({ sections, activeIndex, onNavigate }: SideNaviga
         <div className="border-t-2 border-foreground p-4 space-y-3">
           <motion.button
             onClick={toggleTheme}
-            className="w-full flex items-center gap-2 p-2 font-mono text-xs font-bold border-2 border-foreground hover:bg-accent transition-colors"
+            className="w-full p-2 font-mono text-xs font-bold border-2 border-foreground hover:bg-accent transition-colors"
             whileTap={{ scale: 0.95 }}
           >
-            {theme === "dark" ? <Moon className="h-3 w-3" /> : <Sun className="h-3 w-3" />}
-            {theme === "dark" ? "DARK" : "LIGHT"}
+            THEME: {theme === "dark" ? "DARK" : "LIGHT"}
           </motion.button>
           <div className="font-mono text-[10px] text-muted-foreground text-center">
-            [1-7] NAVIGATE
+            [1-8] NAVIGATE · [CTRL/CMD + K] COMMAND
           </div>
         </div>
       </nav>
 
       {/* Mobile Bottom Tab Bar */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t-2 border-foreground bg-background">
-        <div className="flex items-stretch">
+        <div className="flex items-stretch overflow-x-auto scrollbar-hide">
           {sections.map((section, index) => {
-            const Icon = SECTION_ICONS[section.id] || Home
             const isActive = activeIndex === index
             return (
               <button
                 key={section.id}
                 onClick={() => onNavigate(index)}
-                className={`relative flex-1 flex flex-col items-center justify-center gap-0.5 py-2 transition-colors ${
+                className={`relative min-w-24 px-2 py-2 flex flex-col items-center justify-center gap-0.5 transition-colors ${
                   isActive
                     ? "bg-accent text-accent-foreground"
                     : "text-muted-foreground hover:bg-secondary"
@@ -116,20 +107,18 @@ export function SideNavigation({ sections, activeIndex, onNavigate }: SideNaviga
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
-                <Icon className="h-4 w-4" />
-                <span className="font-mono text-[8px] font-bold leading-none">{section.label}</span>
+                <span className="font-mono text-[9px] font-bold leading-none">{section.shortcut}</span>
+                <span className="font-mono text-[8px] font-bold leading-none text-center truncate w-full">{section.label}</span>
               </button>
             )
           })}
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="flex flex-col items-center justify-center gap-0.5 py-2 px-3 border-l border-foreground/20 text-muted-foreground hover:bg-secondary transition-colors"
+            className="min-w-20 flex flex-col items-center justify-center gap-0.5 py-2 px-3 border-l border-foreground/20 text-muted-foreground hover:bg-secondary transition-colors"
           >
-            {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-            <span className="font-mono text-[8px] font-bold leading-none">
-              {theme === "dark" ? "DARK" : "LIGHT"}
-            </span>
+            <span className="font-mono text-[8px] font-bold leading-none">THEME</span>
+            <span className="font-mono text-[8px] font-bold leading-none">{theme === "dark" ? "DARK" : "LIGHT"}</span>
           </button>
         </div>
       </div>
