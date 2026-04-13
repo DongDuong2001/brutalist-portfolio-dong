@@ -50,82 +50,154 @@ export function Contact() {
   }
 
   return (
-    <section id="contact">
-      <div className="container mx-auto px-4 py-12 md:py-20">
-        <div className="flex items-center gap-4 mb-8 md:mb-12">
-          <svg className="w-8 h-8 text-accent shrink-0" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2c-1.1 0-2 .9-2 2v5H8v2h2v7c0 1.66-1.34 3-3 3s-3-1.34-3-3v-4H2v2h2v4c0 2.76 2.24 5 5 5s5-2.24 5-5v-7h2V9h-2V4c0-1.1-.9-2-2-2z"/>
-          </svg>
+    <section id="contact" className="h-[calc(100dvh-3.5rem)] md:h-full">
+      <div className="container mx-auto px-4 py-4 md:py-8 h-full flex flex-col">
+        <div className="mb-4 md:mb-6 shrink-0">
           <div className="border-2 border-foreground p-2 inline-block">
-            <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} CONTACT</h2>
+            <h2 className="font-mono text-2xl md:text-5xl lg:text-6xl font-bold">{">"} CONTACT</h2>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-6 md:space-y-8">
-            <div className="border-2 md:border-4 border-foreground p-6 md:p-8 bg-card">
-              <h3 className="font-mono text-xl md:text-2xl font-bold mb-4 md:mb-6 border-b-2 md:border-b-4 border-foreground pb-4">GET IN TOUCH</h3>
-              <p className="leading-relaxed mb-6">
-                I'm always interested in hearing about new projects and opportunities. Whether you have a question or
-                just want to connect, feel free to reach out through the form or social links below.
-              </p>
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 flex-1 min-h-0">
+          <div className="hidden md:flex flex-col border-2 md:border-4 border-foreground p-5 md:p-6 bg-card min-h-0">
+            <h3 className="font-mono text-lg md:text-xl font-bold mb-4 border-b-2 border-foreground pb-3">GET IN TOUCH</h3>
+            <p className="leading-relaxed text-sm mb-4">
+              I'm always interested in hearing about new projects and opportunities. Reach out through the form or social links.
+            </p>
 
-              <div className="space-y-4 font-mono text-sm">
-                <div className="flex items-center gap-3 border-2 border-foreground p-3">
-                  <span className="font-bold">LOCATION:</span>
-                  <span>Ho Chi Minh, Vietnam</span>
-                </div>
-                <div className="flex items-center gap-3 border-2 border-foreground p-3">
-                  <span className="font-bold">EDUCATION:</span>
-                  <span>RMIT University - SGS Campus</span>
-                </div>
-                <div className="flex items-center gap-3 border-2 border-foreground p-3">
-                  <span className="font-bold">STATUS:</span>
-                  <span className="text-accent">Available for opportunities</span>
-                </div>
+            <div className="space-y-3 font-mono text-xs md:text-sm">
+              <div className="flex items-center justify-between gap-3 border-2 border-foreground p-2.5">
+                <span className="font-bold">LOCATION</span>
+                <span>Ho Chi Minh, Vietnam</span>
+              </div>
+              <div className="flex items-center justify-between gap-3 border-2 border-foreground p-2.5">
+                <span className="font-bold">EDUCATION</span>
+                <span>RMIT University</span>
+              </div>
+              <div className="flex items-center justify-between gap-3 border-2 border-foreground p-2.5">
+                <span className="font-bold">STATUS</span>
+                <span className="text-accent">Available</span>
               </div>
             </div>
 
-            <div className="border-2 md:border-4 border-foreground p-6 md:p-8 bg-secondary">
-              <h3 className="font-mono text-xl font-bold mb-6">SOCIAL LINKS</h3>
-              <div className="grid grid-cols-2 gap-4">
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <a
+                href="https://github.com/DongDuong2001"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-foreground p-2.5 font-mono text-xs font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+              >
+                GITHUB
+              </a>
+              <a
+                href="https://www.linkedin.com/in/duong-phu-dong/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-foreground p-2.5 font-mono text-xs font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+              >
+                LINKEDIN
+              </a>
+              <a
+                href="https://x.com/F4P1E404"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-foreground p-2.5 font-mono text-xs font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+              >
+                X (TWITTER)
+              </a>
+              <a
+                href="https://unikorn.vn/u/duong-phu-dong"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-foreground p-2.5 font-mono text-xs font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+              >
+                UNIKORN
+              </a>
+              <a
+                href="https://forg.to/@duongphudong"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-foreground p-2.5 font-mono text-xs font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+              >
+                FORG
+              </a>
+              <a
+                href="https://www.producthunt.com/@duong_phu_dong"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-foreground p-2.5 font-mono text-xs font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+              >
+                PRODUCT HUNT
+              </a>
+            </div>
+          </div>
+
+          <div className="border-2 md:border-4 border-foreground p-4 md:p-6 bg-card flex flex-col min-h-0">
+            <h3 className="font-mono text-lg md:text-xl font-bold mb-3 md:mb-4 border-b-2 border-foreground pb-3">SEND MESSAGE</h3>
+
+            <div className="md:hidden mb-3 space-y-2">
+              <div className="grid grid-cols-3 gap-2 font-mono text-[10px]">
+                <div className="border-2 border-foreground p-2 text-center">HCMC</div>
+                <div className="border-2 border-foreground p-2 text-center">RMIT</div>
+                <div className="border-2 border-foreground p-2 text-center text-accent">OPEN</div>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
                 <a
                   href="https://github.com/DongDuong2001"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-2 border-foreground p-4 font-mono text-sm font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+                  className="border-2 border-foreground p-2 font-mono text-[10px] font-bold text-center hover:bg-foreground hover:text-background transition-colors"
                 >
-                  GITHUB
+                  GH
                 </a>
                 <a
                   href="https://www.linkedin.com/in/duong-phu-dong/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-2 border-foreground p-4 font-mono text-sm font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+                  className="border-2 border-foreground p-2 font-mono text-[10px] font-bold text-center hover:bg-foreground hover:text-background transition-colors"
                 >
-                  LINKEDIN
+                  IN
                 </a>
                 <a
                   href="https://x.com/F4P1E404"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-2 border-foreground p-4 font-mono text-sm font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+                  className="border-2 border-foreground p-2 font-mono text-[10px] font-bold text-center hover:bg-foreground hover:text-background transition-colors"
                 >
-                  X (TWITTER)
+                  X
                 </a>
-                <div className="border-2 border-foreground p-4 font-mono text-sm font-bold text-center bg-muted text-muted-foreground">
-                  PORTFOLIO
-                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <a
+                  href="https://unikorn.vn/u/duong-phu-dong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-2 border-foreground p-2 font-mono text-[10px] font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+                >
+                  UK
+                </a>
+                <a
+                  href="https://forg.to/@duongphudong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-2 border-foreground p-2 font-mono text-[10px] font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+                >
+                  FG
+                </a>
+                <a
+                  href="https://www.producthunt.com/@duong_phu_dong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-2 border-foreground p-2 font-mono text-[10px] font-bold text-center hover:bg-foreground hover:text-background transition-colors"
+                >
+                  PH
+                </a>
               </div>
             </div>
-          </div>
 
-          <div className="border-2 md:border-4 border-foreground p-6 md:p-8 bg-card">
-            <h3 className="font-mono text-xl md:text-2xl font-bold mb-6 border-b-2 md:border-b-4 border-foreground pb-4">SEND MESSAGE</h3>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
               <div>
-                <label htmlFor="name" className="block font-mono text-sm font-bold mb-2">
+                <label htmlFor="name" className="block font-mono text-xs md:text-sm font-bold mb-1.5">
                   NAME:
                 </label>
                 <input
@@ -135,12 +207,12 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full border-2 md:border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent text-base"
+                  className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block font-mono text-sm font-bold mb-2">
+                <label htmlFor="email" className="block font-mono text-xs md:text-sm font-bold mb-1.5">
                   EMAIL:
                 </label>
                 <input
@@ -150,12 +222,12 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full border-2 md:border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent text-base"
+                  className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm"
                 />
               </div>
 
               <div>
-                <label htmlFor="subject" className="block font-mono text-sm font-bold mb-2">
+                <label htmlFor="subject" className="block font-mono text-xs md:text-sm font-bold mb-1.5">
                   SUBJECT:
                 </label>
                 <input
@@ -165,12 +237,12 @@ export function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full border-2 md:border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent text-base"
+                  className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block font-mono text-sm font-bold mb-2">
+                <label htmlFor="message" className="block font-mono text-xs md:text-sm font-bold mb-1.5">
                   MESSAGE:
                 </label>
                 <textarea
@@ -179,26 +251,20 @@ export function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={6}
-                  className="w-full border-2 md:border-4 border-foreground p-3 bg-background focus:outline-none focus:ring-4 focus:ring-accent resize-none text-base"
+                  rows={3}
+                  className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent resize-none text-sm"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full border-2 md:border-4 border-foreground p-4 font-mono font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full border-2 border-foreground p-2.5 font-mono text-sm font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status === "loading" ? "SENDING..." : "SEND MESSAGE ->"}
+                {status === "loading" ? "SENDING..." : "SEND MESSAGE"}
               </button>
             </form>
           </div>
-        </div>
-
-        <div className="mt-8 md:mt-12 border-2 md:border-4 border-foreground p-6 bg-secondary text-center">
-          <p className="font-mono text-sm">
-            © 2026 DƯƠNG PHÚ ĐÔNG. ALL RIGHTS RESERVED. | BUILT WITH NEXT.JS & TAILWIND CSS
-          </p>
         </div>
       </div>
     </section>
