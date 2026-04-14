@@ -361,6 +361,232 @@
     animation: home-scan-y 9s linear infinite;
   }
 
+  .chronicle-spine {
+    background: linear-gradient(
+      to bottom,
+      rgba(31, 38, 51, 0.08) 0%,
+      rgba(31, 38, 51, 0.45) 18%,
+      rgba(196, 139, 27, 0.65) 50%,
+      rgba(31, 38, 51, 0.45) 82%,
+      rgba(31, 38, 51, 0.08) 100%
+    );
+    animation: chronicle-line-flow 6s ease-in-out infinite;
+  }
+
+  .dark .chronicle-spine {
+    background: linear-gradient(
+      to bottom,
+      rgba(212, 175, 55, 0.08) 0%,
+      rgba(212, 175, 55, 0.45) 18%,
+      rgba(212, 175, 55, 0.85) 50%,
+      rgba(212, 175, 55, 0.45) 82%,
+      rgba(212, 175, 55, 0.08) 100%
+    );
+  }
+
+  .chronicle-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .chronicle-lane-label {
+    letter-spacing: 0.08em;
+  }
+
+  .chronicle-lane-label-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.36rem;
+  }
+
+  .chronicle-lane-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    border: 1.5px solid currentColor;
+    background: color-mix(in srgb, currentColor 10%, transparent);
+  }
+
+  .chronicle-lane-label-university {
+    background-color: rgba(78, 115, 168, 0.22);
+    color: #243c60;
+  }
+
+  .chronicle-lane-label-company {
+    background-color: rgba(196, 139, 27, 0.24);
+    color: #5f3f06;
+  }
+
+  .chronicle-lane-label-university .chronicle-lane-icon {
+    box-shadow: 1px 1px 0 rgba(36, 60, 96, 0.38);
+  }
+
+  .chronicle-lane-label-company .chronicle-lane-icon {
+    box-shadow: 1px 1px 0 rgba(95, 63, 6, 0.38);
+  }
+
+  .chronicle-card-university {
+    background-image: linear-gradient(
+      90deg,
+      rgba(78, 115, 168, 0.16) 0,
+      rgba(78, 115, 168, 0.16) 6px,
+      transparent 6px,
+      transparent 100%
+    );
+  }
+
+  .chronicle-card-company {
+    background-image: linear-gradient(
+      90deg,
+      rgba(196, 139, 27, 0.2) 0,
+      rgba(196, 139, 27, 0.2) 6px,
+      transparent 6px,
+      transparent 100%
+    );
+  }
+
+  .chronicle-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 0 var(--foreground);
+  }
+
+  .dark .chronicle-lane-label-university {
+    background-color: rgba(78, 115, 168, 0.32);
+    color: #bdd2f0;
+  }
+
+  .dark .chronicle-lane-label-company {
+    background-color: rgba(212, 175, 55, 0.3);
+    color: #ffe6a6;
+  }
+
+  .dark .chronicle-card-university {
+    background-image: linear-gradient(
+      90deg,
+      rgba(78, 115, 168, 0.32) 0,
+      rgba(78, 115, 168, 0.32) 6px,
+      transparent 6px,
+      transparent 100%
+    );
+  }
+
+  .dark .chronicle-card-company {
+    background-image: linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0.34) 0,
+      rgba(212, 175, 55, 0.34) 6px,
+      transparent 6px,
+      transparent 100%
+    );
+  }
+
+  .competition-pulse {
+    animation: competition-chip-pulse 2.6s ease-in-out infinite;
+  }
+
+  .interest-control-board {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .interest-control-board::after {
+    content: "";
+    position: absolute;
+    right: 0.6rem;
+    top: 0.6rem;
+    width: 3.5rem;
+    height: 0.35rem;
+    border: 1.5px solid rgba(31, 38, 51, 0.32);
+    background: rgba(196, 139, 27, 0.18);
+  }
+
+  .interest-signal-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .interest-signal-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    background-image: repeating-linear-gradient(
+      -32deg,
+      rgba(31, 38, 51, 0.08) 0,
+      rgba(31, 38, 51, 0.08) 8px,
+      transparent 8px,
+      transparent 18px
+    );
+  }
+
+  .interest-signal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 0 var(--foreground);
+    background-color: rgba(196, 139, 27, 0.1);
+  }
+
+  .interest-icon-frame {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.95rem;
+    height: 0.95rem;
+    border: 1.5px solid currentColor;
+    background: rgba(196, 139, 27, 0.2);
+  }
+
+  .dark .interest-control-board::after {
+    border-color: rgba(212, 175, 55, 0.45);
+    background: rgba(212, 175, 55, 0.28);
+  }
+
+  .dark .interest-signal-card::before {
+    opacity: 0.42;
+    background-image: repeating-linear-gradient(
+      -32deg,
+      rgba(212, 175, 55, 0.14) 0,
+      rgba(212, 175, 55, 0.14) 8px,
+      transparent 8px,
+      transparent 18px
+    );
+  }
+
+  .dark .interest-signal-card:hover {
+    background-color: rgba(212, 175, 55, 0.14);
+  }
+
+  @media (max-width: 390px) {
+    .interest-control-board::after {
+      right: 0.45rem;
+      top: 0.45rem;
+      width: 2.6rem;
+      height: 0.28rem;
+    }
+
+    .interest-icon-frame {
+      width: 0.82rem;
+      height: 0.82rem;
+      border-width: 1.25px;
+    }
+
+    .interest-signal-card::before {
+      opacity: 0.22;
+    }
+
+    .interest-filter-chip {
+      padding: 0.38rem 0.5rem;
+    }
+
+    .interest-filter-chip-label {
+      font-size: 0.61rem;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+  }
+
   @keyframes home-scan-x {
     0% {
       transform: translateX(-5%);
@@ -392,6 +618,28 @@
     100% {
       transform: translateY(105%);
       opacity: 0;
+    }
+  }
+
+  @keyframes chronicle-line-flow {
+    0%,
+    100% {
+      opacity: 0.7;
+      filter: saturate(100%);
+    }
+    50% {
+      opacity: 1;
+      filter: saturate(130%);
+    }
+  }
+
+  @keyframes competition-chip-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(196, 139, 27, 0.25);
+    }
+    50% {
+      box-shadow: 0 0 0 4px rgba(196, 139, 27, 0);
     }
   }
 }
