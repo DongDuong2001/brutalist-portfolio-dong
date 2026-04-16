@@ -263,6 +263,15 @@ export function Hero({ onNavigate }: HeroProps) {
                 <span className="bg-accent text-accent-foreground px-2 italic transform -skew-x-12 inline-block">DEVELOPER</span> <br />
                 & TECHNICAL LEADER
               </h1>
+
+              <div className="hero-signature-shell" aria-label="Duong Phu Dong signature">
+                <div className="hero-signature-meta">
+                  <span>PERSONAL SIGNATURE</span>
+                  <span>EST. 2001</span>
+                </div>
+                <p className="hero-signature-ink">Duong Phu Dong</p>
+                <div className="hero-signature-underline" aria-hidden="true" />
+              </div>
             </div>
 
             <div className="space-y-3">
