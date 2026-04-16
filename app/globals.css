@@ -361,6 +361,102 @@
     animation: home-scan-y 9s linear infinite;
   }
 
+  .hero-signature-shell {
+    position: relative;
+    display: inline-block;
+    width: min(100%, 26rem);
+    margin-top: 0.25rem;
+    border: 2px solid var(--foreground);
+    background-color: rgba(255, 253, 246, 0.84);
+    padding: 0.5rem 0.75rem 0.7rem;
+    box-shadow: 3px 3px 0 rgba(31, 38, 51, 0.22);
+    overflow: hidden;
+  }
+
+  .hero-signature-shell::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: -30px;
+    width: 96px;
+    height: 32px;
+    border: 2px solid rgba(196, 139, 27, 0.46);
+    transform: rotate(-12deg);
+    pointer-events: none;
+  }
+
+  .hero-signature-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.25rem;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(31, 38, 51, 0.72);
+  }
+
+  .hero-signature-ink {
+    margin: 0;
+    font-family: "Segoe Script", "Brush Script MT", "Snell Roundhand", "Apple Chancery", cursive;
+    font-size: clamp(1.45rem, 4.4vw, 2.15rem);
+    line-height: 1;
+    letter-spacing: 0.015em;
+    color: var(--foreground);
+    transform: rotate(-2.2deg);
+    transform-origin: left center;
+    text-shadow: 1px 1px 0 rgba(196, 139, 27, 0.26);
+    animation: signature-drift 5.2s ease-in-out infinite;
+  }
+
+  .hero-signature-underline {
+    width: min(100%, 15.5rem);
+    height: 0.38rem;
+    border-top: 2px solid var(--accent);
+    border-bottom: 1px solid rgba(31, 38, 51, 0.35);
+    transform: skewX(-26deg);
+    margin-top: 0.16rem;
+  }
+
+  .dark .hero-signature-shell {
+    background-color: rgba(10, 10, 10, 0.82);
+    box-shadow: 3px 3px 0 rgba(212, 175, 55, 0.24);
+  }
+
+  .dark .hero-signature-meta {
+    color: rgba(229, 229, 229, 0.74);
+  }
+
+  .dark .hero-signature-ink {
+    color: rgba(245, 236, 214, 0.98);
+    text-shadow: 1px 1px 0 rgba(212, 175, 55, 0.34);
+  }
+
+  .dark .hero-signature-underline {
+    border-bottom-color: rgba(229, 229, 229, 0.4);
+  }
+
+  @media (max-width: 390px) {
+    .hero-signature-shell {
+      padding: 0.42rem 0.55rem 0.6rem;
+    }
+
+    .hero-signature-meta {
+      font-size: 0.5rem;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-signature-underline {
+      height: 0.32rem;
+      width: min(100%, 11.5rem);
+      margin-top: 0.12rem;
+    }
+  }
+
   .chronicle-spine {
     background: linear-gradient(
       to bottom,
@@ -640,6 +736,18 @@
     }
     50% {
       box-shadow: 0 0 0 4px rgba(196, 139, 27, 0);
+    }
+  }
+
+  @keyframes signature-drift {
+    0%,
+    100% {
+      transform: rotate(-2.2deg) translateY(0px);
+      opacity: 0.94;
+    }
+    50% {
+      transform: rotate(-1.4deg) translateY(-1px);
+      opacity: 1;
     }
   }
 }
