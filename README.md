@@ -3,129 +3,218 @@
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/lab68dev)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/DDuong884)
 
-[Live Demo](https://brutalist-portfolio-dong.vercel.app)
+Modern, brutalist portfolio built with Next.js App Router and TypeScript.
 
-A minimal, brutalist-style developer portfolio built with modern web tooling. Designed to be fast, accessible, and easy to customize. The live demo is deployed on Vercel.
+- Live site: [duongphudong2001.vercel.app](https://duongphudong2001.vercel.app/)
+- Repository: [DongDuong2001/brutalist-portfolio-dong](https://github.com/DongDuong2001/brutalist-portfolio-dong)
 
-## Table of Contents
+## Overview
 
-* [About](#about)
-* [Demo](#demo)
-* [Features](#features)
-* [Technology Stack](#technology-stack)
-* [Getting Started](#getting-started)
-* [Development](#development)
-* [Deployment](#deployment)
-* [Customization](#customization)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
+This project is a personal portfolio for Duong Phu Dong with a strong visual identity,
+section-based storytelling, and recruiter-focused project discovery.
 
-## About
+Main portfolio sections:
 
-This repository is a personal portfolio site for **Duong Phu Dong**, featuring a clear, brutalist aesthetic and focused content sections (Home, Education, Skills, Projects, Activity, Interests, Contact). The project structure uses the modern Next.js App Router architecture and TypeScript.
+- Home
+- Projects
+- Technical Skills
+- Tech Radar
+- Education
+- Activity
+- Interests
+- Contact
 
-## Demo
+## Highlights
 
-**Live Site:** [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app)
+### User Experience
 
-Explore the layout, interactions, and content directly on the deployed site.
+- Section navigation with keyboard shortcuts (1-8)
+- Command palette (Ctrl/Cmd + K) for section and project search
+- Theme toggle support (light/dark)
+- Highly customized responsive layout across all sections
 
-## Features
+### Project Discovery and SEO
 
-* Brutalist, minimal visual design with clear typographic hierarchy.
-* Dedicated Project and Skills sections for quick scanning.
-* Fully mobile-responsive and accessible layout.
-* Single-page navigation with section anchors.
-* Fast, modern stack with TypeScript and Next.js App Router.
+- Dynamic project detail routes at /projects/:slug
+- Dynamic Open Graph images for project detail pages
+- Auto-generated sitemap entries for project pages
 
-## Technology Stack
+### API and Backend Utilities
 
-This project is built using the following technologies:
+- Contact form email endpoint using Nodemailer
+- Profile view counting with session de-duplication
+- Neon/Postgres persistence for profile views when DATABASE_URL is configured
+- In-memory profile view fallback when DATABASE_URL is not set
+- PDF endpoint with:
+  - project index mode
+  - Harvard-style full portfolio mode
 
-* **Framework:** Next.js 16 (App Router)
-* **Language:** TypeScript 5
-* **Styling:** Tailwind CSS 4, PostCSS
-* **UI Components:** Radix UI, Lucide React
-* **Animations:** Framer Motion 12
-* **Forms:** React Hook Form, Zod
-* **Package Manager:** pnpm
+## Tech Stack
+
+- Framework: Next.js 16 (App Router)
+- Language: TypeScript 5
+- UI: React 19, Radix UI, Lucide React
+- Styling: Tailwind CSS 4, PostCSS
+- Motion: Framer Motion
+- Forms and validation: React Hook Form, Zod
+- Email: Nodemailer
+- PDF: pdf-lib
+- Analytics storage: @neondatabase/serverless (Neon/Postgres)
+- Package manager: pnpm
+
+## Project Structure
+
+```text
+app/
+  api/
+    contact/route.ts
+    profile-views/route.ts
+    project-index/route.ts
+  projects/[slug]/
+    page.tsx
+    opengraph-image.tsx
+  sitemap.ts
+  robots.ts
+  page.tsx
+components/
+  hero.tsx
+  projects.tsx
+  skills.tsx
+  tech-radar.tsx
+  education.tsx
+  activity.tsx
+  interests.tsx
+  contact.tsx
+  command-palette.tsx
+data/
+  projects.ts
+  skills.ts
+app/globals.css
+```
 
 ## Getting Started
 
-Follow these steps to run the project locally.
-
 ### Prerequisites
 
-Ensure you have Node.js installed. This project uses `pnpm` as the package manager.
+- Node.js 20+ recommended
+- pnpm 10+
 
-### Installation
-
-1. Clone the repository:
+### Install
 
 ```bash
 git clone https://github.com/DongDuong2001/brutalist-portfolio-dong.git
 cd brutalist-portfolio-dong
-```
-
-1. Install dependencies:
-
-```bash
 pnpm install
 ```
 
-### Running Development Server
-
-Start the local development server:
+### Run Locally
 
 ```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+Open [localhost:3000](http://localhost:3000).
 
-## Development
+## Environment Variables
 
-Standard commands sourced from `package.json`:
+Create .env.local and set the following values as needed:
 
-* `pnpm dev` - Start the development server.
-* `pnpm build` - Build the application for production.
-* `pnpm start` - Start the production server.
-* `pnpm lint` - Run ESLint to check for code quality issues.
+- DATABASE_URL
+  - Optional
+  - Enables persistent profile view tracking in Neon/Postgres
+- GMAIL_USER
+  - Required for contact email sending
+  - Sender Gmail account used by the contact endpoint
+- GMAIL_APP_PASSWORD
+  - Required for contact email sending
+  - App password used by Nodemailer auth
+
+Notes:
+
+- If DATABASE_URL is missing, profile views use in-memory fallback storage.
+- Contact form delivery requires both Gmail variables.
+
+## Scripts
+
+- pnpm dev: start development server
+- pnpm build: build production bundle
+- pnpm start: run production server
+- pnpm lint: run lint checks
+- pnpm exec tsc --noEmit: run TypeScript checks
+
+## API Routes
+
+- POST /api/contact
+  - Sends portfolio contact message via Nodemailer
+- GET /api/profile-views
+  - Returns total profile view count
+- POST /api/profile-views
+  - Registers unique session view
+  - Requires x-session-id request header
+- GET /api/project-index
+  - Returns PDF response
+
+PDF query parameters:
+
+- style=harvard
+  - Returns full Harvard-style portfolio PDF
+- download=1
+  - Forces attachment download instead of inline preview
+
+Example routes:
+
+- /api/project-index
+- /api/project-index?style=harvard
+- /api/project-index?style=harvard&download=1
+
+## Customization Map
+
+Use these files as the primary content and design control points:
+
+- Project content: data/projects.ts
+- Skills content: data/skills.ts
+- Home section: components/hero.tsx
+- Section layouts:
+  - components/projects.tsx
+  - components/skills.tsx
+  - components/tech-radar.tsx
+  - components/education.tsx
+  - components/activity.tsx
+  - components/interests.tsx
+  - components/contact.tsx
+- Global style language: app/globals.css
 
 ## Deployment
 
-The site is optimized for deployment on Vercel.
+This project is optimized for Vercel.
 
-1. Push your changes to a GitHub repository.
-2. Import the repository in Vercel.
-3. Vercel will automatically detect the Next.js configuration.
+1. Push repository changes to GitHub.
+2. Import the project in Vercel.
+3. Configure environment variables.
 4. Deploy.
 
-## Customization
+Recommended pre-deploy checks:
 
-To tailor the portfolio to your needs:
-
-* **Content:** Update text in `app` or `components` directories.
-* **Assets:** Replace images and static files in the `public` directory.
-* **Styling:** Modify `globals.css` or Tailwind configuration for design changes.
-* **Structure:** Add or remove sections by modifying the navigation components.
+- pnpm lint
+- pnpm exec tsc --noEmit
+- Verify /api/contact, /api/profile-views, and /api/project-index
 
 ## Contributing
 
-This repository is primarily a personal portfolio. However, suggestions and improvements are welcome.
+This is a personal portfolio project, but suggestions are welcome.
 
-1. Open an issue describing the proposed change.
-2. Create a focused branch and submit a pull request.
-3. Adhere to the existing code style and linting rules.
+1. Open an issue with clear context.
+2. Create a focused branch.
+3. Submit a concise pull request.
 
 ## License
 
-This project is licensed under the terms of the [MIT License](https://github.com/DongDuong2001/brutalist-portfolio-dong/blob/main/LICENSE).
+MIT. See [LICENSE](LICENSE).
 
 ## Contact
 
-**Duong Phu Dong**
+Duong Phu Dong
 
-* **Portfolio:** [https://brutalist-portfolio-dong.vercel.app](https://brutalist-portfolio-dong.vercel.app)
-* **Repository:** [https://github.com/DongDuong2001/brutalist-portfolio-dong](https://github.com/DongDuong2001/brutalist-portfolio-dong)
+- Portfolio: [duongphudong2001.vercel.app](https://duongphudong2001.vercel.app/)
+- GitHub: [github.com/DongDuong2001](https://github.com/DongDuong2001)
+- LinkedIn: [linkedin.com/in/duong-phu-dong](https://www.linkedin.com/in/duong-phu-dong/)
