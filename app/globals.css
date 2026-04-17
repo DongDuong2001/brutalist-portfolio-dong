@@ -457,6 +457,207 @@
     }
   }
 
+  .skills-deck-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .skills-deck-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    border-right: 1px solid rgba(31, 38, 51, 0.35);
+  }
+
+  .skills-deck-card::after {
+    content: "";
+    position: absolute;
+    right: 0.55rem;
+    top: 0.55rem;
+    width: 2.8rem;
+    height: 0.32rem;
+    border: 1px solid rgba(31, 38, 51, 0.28);
+    background-color: rgba(31, 38, 51, 0.08);
+    pointer-events: none;
+  }
+
+  .skills-deck-card-accent::before {
+    background-color: rgba(196, 139, 27, 0.45);
+  }
+
+  .skills-deck-card-muted::before {
+    background-color: rgba(31, 38, 51, 0.32);
+  }
+
+  .skills-deck-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 0 var(--foreground);
+    background-color: rgba(196, 139, 27, 0.06);
+  }
+
+  .skills-signal-row {
+    position: relative;
+    background-color: rgba(255, 253, 246, 0.72);
+    transition: transform 0.18s ease, background-color 0.18s ease;
+  }
+
+  .skills-signal-row::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    width: 5px;
+    height: 16px;
+    transform: translateY(-50%);
+    background-color: rgba(196, 139, 27, 0.32);
+  }
+
+  .skills-signal-row:hover {
+    transform: translateX(2px);
+    background-color: rgba(216, 226, 239, 0.55);
+  }
+
+  .dark .skills-deck-card::before {
+    border-right-color: rgba(229, 229, 229, 0.24);
+  }
+
+  .dark .skills-deck-card::after {
+    border-color: rgba(212, 175, 55, 0.42);
+    background-color: rgba(212, 175, 55, 0.16);
+  }
+
+  .dark .skills-deck-card-muted::before {
+    background-color: rgba(229, 229, 229, 0.32);
+  }
+
+  .dark .skills-deck-card:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+  }
+
+  .dark .skills-signal-row {
+    background-color: rgba(20, 33, 61, 0.34);
+  }
+
+  .dark .skills-signal-row:hover {
+    background-color: rgba(20, 33, 61, 0.5);
+  }
+
+  @media (max-width: 390px) {
+    .skills-deck-card::before {
+      width: 5px;
+    }
+
+    .skills-deck-card::after {
+      right: 0.4rem;
+      top: 0.45rem;
+      width: 2.1rem;
+      height: 0.24rem;
+    }
+
+    .skills-signal-row::before {
+      height: 13px;
+    }
+  }
+
+  .education-control-board {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .education-control-board::after {
+    content: "";
+    position: absolute;
+    right: 0.6rem;
+    top: 0.6rem;
+    width: 3rem;
+    height: 0.32rem;
+    border: 1px solid rgba(31, 38, 51, 0.28);
+    background-color: rgba(196, 139, 27, 0.2);
+    pointer-events: none;
+  }
+
+  .education-dossier-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .education-dossier-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    border-right: 1px solid rgba(31, 38, 51, 0.35);
+  }
+
+  .education-dossier-card-accent::before {
+    background-color: rgba(196, 139, 27, 0.44);
+  }
+
+  .education-dossier-card-muted::before {
+    background-color: rgba(31, 38, 51, 0.3);
+  }
+
+  .education-dossier-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 0 var(--foreground);
+    background-color: rgba(196, 139, 27, 0.06);
+  }
+
+  .education-highlight-row {
+    transition: transform 0.18s ease, background-color 0.18s ease;
+    background-color: rgba(255, 253, 246, 0.66);
+  }
+
+  .education-highlight-row:hover {
+    transform: translateX(2px);
+    background-color: rgba(216, 226, 239, 0.52);
+  }
+
+  .dark .education-control-board::after {
+    border-color: rgba(212, 175, 55, 0.42);
+    background-color: rgba(212, 175, 55, 0.24);
+  }
+
+  .dark .education-dossier-card::before {
+    border-right-color: rgba(229, 229, 229, 0.22);
+  }
+
+  .dark .education-dossier-card-muted::before {
+    background-color: rgba(229, 229, 229, 0.28);
+  }
+
+  .dark .education-dossier-card:hover {
+    background-color: rgba(212, 175, 55, 0.09);
+  }
+
+  .dark .education-highlight-row {
+    background-color: rgba(20, 33, 61, 0.34);
+  }
+
+  .dark .education-highlight-row:hover {
+    background-color: rgba(20, 33, 61, 0.48);
+  }
+
+  @media (max-width: 390px) {
+    .education-control-board::after {
+      right: 0.45rem;
+      top: 0.45rem;
+      width: 2.2rem;
+      height: 0.24rem;
+    }
+
+    .education-dossier-card::before {
+      width: 5px;
+    }
+  }
+
   .chronicle-spine {
     background: linear-gradient(
       to bottom,
