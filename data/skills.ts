@@ -18,6 +18,7 @@ export const skills = [
             { name: "React", level: 90 },
             { name: "Node.js", level: 85 },
             { name: "Express", level: 80 },
+            { name: "FastAPI", level: 80 },
             { name: "Tailwind CSS", level: 90 },
             { name: "Spring Boot", level: 75 },
         ],
