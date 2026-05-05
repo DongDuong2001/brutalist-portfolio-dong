@@ -100,6 +100,29 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "PUDO CODE SYSTEM",
+    category: "METHODOLOGY / AI",
+    year: "2026 - Current",
+    description:
+      "A structured 4-phase methodology (Plan → Understand → Develop → Optimize) for coding with AI assistants. Designed to eliminate 'Chaos Coding' and turn AI from a slot machine into a precision tool.",
+    tech: ["AI Prompting", "Workflow", "Documentation", "System Design"],
+    link: "https://github.com/DongDuong2001/pudo-code-system",
+    github: "https://github.com/DongDuong2001/pudo-code-system",
+    highlighted: true,
+    stage: "shipped",
+    kpis: {
+      users: "Public Access",
+      launchTime: "May 2026",
+      coreImpact: "Precision AI workflows",
+      performance: "16+ optimized prompts",
+    },
+    caseStudy: {
+      problem: "AI-assisted development often becomes 'Chaos Coding' without a clear structure, leading to fragile code and wasted time.",
+      build: "Codified a repeatable 4-phase cycle and a library of domain-specific skills for agents and humans.",
+      result: "Established a standardized operating system for AI development, now integrated as the default workflow for multiple projects.",
+    },
+  },
+  {
     title: "ATHERA AI",
     category: "FULL-STACK",
     year: "2025",
