@@ -34,6 +34,9 @@ export type Project = {
   link: string
   github?: string
   highlighted?: boolean
+  role?: string
+  proof?: string
+  recruiterTakeaway?: string
   award?: ProjectAward
   awards?: ProjectAward[]
   kpis?: ProjectKpis
@@ -47,11 +50,14 @@ export const projects: Project[] = [
     category: "STARTUP CREATOR PROJECT",
     year: "2025 - Current",
     description:
-      "Lab68 Dev Platform is a monorepo that powers a collaborative product development workspace. It provides dashboards for planning, documentation, meetings, AI-assisted workflows, and role-aware access controls—built on top of Next.js App Router, TypeScript, and a modular component system.",
+      "Lab68 Dev Platform is a monorepo that powers a collaborative product development workspace. It provides dashboards for planning, documentation, meetings, AI-assisted workflows, and role-aware access controls built on top of Next.js App Router, TypeScript, and a modular component system.",
     tech: ["Next.js", "JavaScript", "TypeScript", "API Integration"],
     link: "https://lab68devplatform.vercel.app/",
     github: "https://github.com/lab68dev/lab68dev-platform",
     highlighted: true,
+    role: "Founder / Full-stack Developer",
+    proof: "#1 Product of the Day on Unikorn",
+    recruiterTakeaway: "Can turn a broad startup workflow into a usable production platform.",
     stage: "shipped",
     award: {
       label: "#1 Product of the Day",
@@ -81,11 +87,14 @@ export const projects: Project[] = [
     category: "STARTUP CREATOR PROJECT",
     year: "2026 - Current",
     description:
-      "A modern, multilingual CV/resume builder that lets users create professional resumes with real-time preview, customizable templates, and export functionality — built for speed and simplicity.",
+      "A modern, multilingual CV/resume builder that lets users create professional resumes with real-time preview, customizable templates, and export functionality built for speed and simplicity.",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     link: "https://lab68cvbuilder.vercel.app/en",
     github: "https://github.com/lab68dev/lab68cvbuilder",
     highlighted: true,
+    role: "Founder / Product Engineer",
+    proof: "#1 Product of the Week on Forg, #1 Product of the Day on Unikorn",
+    recruiterTakeaway: "Strongest proof of user-focused product execution and launch quality.",
     stage: "shipped",
     awards: [
       {
@@ -128,11 +137,14 @@ export const projects: Project[] = [
     category: "METHODOLOGY / AI",
     year: "2026 - Current",
     description:
-      "A structured 4-phase methodology (Plan → Understand → Develop → Optimize) for coding with AI assistants. Designed to eliminate 'Chaos Coding' and turn AI from a slot machine into a precision tool.",
+      "A structured 4-phase methodology (Plan -> Understand -> Develop -> Optimize) for coding with AI assistants. Designed to eliminate 'Chaos Coding' and turn AI from a slot machine into a precision tool.",
     tech: ["AI Prompting", "Workflow", "Documentation", "System Design"],
     link: "https://github.com/DongDuong2001/pudo-code-system",
     github: "https://github.com/DongDuong2001/pudo-code-system",
     highlighted: true,
+    role: "Methodology Author / AI Workflow Designer",
+    proof: "#2 Product of the Day and #3 Product of the Week on Unikorn",
+    recruiterTakeaway: "Shows structured thinking, documentation quality, and AI-assisted engineering maturity.",
     stage: "shipped",
     awards: [
       {
@@ -179,6 +191,9 @@ export const projects: Project[] = [
     tech: ["Next.js", "React", "TypeScript", "AI/ML", "Tailwind CSS"],
     link: "https://atherawellness.vercel.app/",
     github: "https://github.com/DongDuong2001/Athera-AI",
+    role: "Full-stack Developer",
+    proof: "AI wellness MVP shipped to web",
+    recruiterTakeaway: "Can combine product UX with AI-assisted recommendation flows.",
     stage: "shipped",
     caseStudy: {
       problem: "Wellness guidance is often generic and hard to personalize.",
@@ -195,6 +210,9 @@ export const projects: Project[] = [
     tech: ["Go", "Backend", "CLI", "Systems Design"],
     link: "",
     github: "https://github.com/DongDuong2001/graft",
+    role: "Backend / Systems Developer",
+    proof: "#3 Product of the Day on Unikorn",
+    recruiterTakeaway: "Shows backend systems interest beyond web UI work.",
     stage: "now-building",
     award: {
       label: "#3 Product of the Day",
@@ -228,6 +246,9 @@ export const projects: Project[] = [
     tech: ["Desktop App", "Productivity", "UI/UX", "Cross-Platform"],
     link: "",
     github: "https://github.com/DongDuong2001/SlideGlint",
+    role: "Desktop Product Builder",
+    proof: "Featured on Unikorn during active build",
+    recruiterTakeaway: "Expands product craft into polished desktop workflows.",
     stage: "now-building",
     award: {
       label: "Featured",
@@ -260,6 +281,9 @@ export const projects: Project[] = [
       "Contributed reusable UI components and features to the GOLDEN FLAMES COMPETITION CLUB website, enhancing the user interface and component library.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     link: "https://gfcc-website-project.vercel.app/",
+    role: "Frontend Contributor",
+    proof: "Reusable UI contribution",
+    recruiterTakeaway: "Comfortable contributing inside existing frontend projects.",
     stage: "shipped",
   },
   {
@@ -267,10 +291,13 @@ export const projects: Project[] = [
     category: "WEB APP",
     year: "2025",
     description:
-      "A movie discovery and browsing web app — cinema-focused UI to explore titles, view details, and track favorites.",
+      "A movie discovery and browsing web app with cinema-focused UI to explore titles, view details, and track favorites.",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     link: "https://syntaxcinema.vercel.app/",
     github: "https://github.com/F4P1E/syntax-cinema-app",
+    role: "Frontend / Product Developer",
+    proof: "Movie discovery product shipped",
+    recruiterTakeaway: "Demonstrates UI polish and consumer-app structure.",
     stage: "shipped",
   },
   {
@@ -281,6 +308,9 @@ export const projects: Project[] = [
       "A personal finance management application for tracking expenses, budgeting, and financial goal setting with data visualization.",
     tech: ["Python", "Local Storage"],
     link: "https://github.com/DongDuong2001/Personal-Finance-Track",
+    role: "Python App Developer",
+    proof: "Finance tracking workflow shipped",
+    recruiterTakeaway: "Shows practical data and workflow modeling.",
     stage: "shipped",
   },
   {
@@ -291,6 +321,9 @@ export const projects: Project[] = [
       "Implementation and simulation of the A* pathfinding algorithm to optimize delivery routes for autonomous drones, including a visualizer and route simulation.",
     tech: ["Python", "A*", "Simulation", "Matplotlib"],
     link: "https://github.com/F4P1E/A-Star-Algorithm-for-Delivery-Drone",
+    role: "Algorithm Developer",
+    proof: "A* route simulation",
+    recruiterTakeaway: "Demonstrates algorithmic problem solving and visualization.",
     stage: "shipped",
   },
   {
@@ -300,6 +333,9 @@ export const projects: Project[] = [
     description: "Contributing to RMIT NCT's Rust library project for educational and research purposes.",
     tech: ["Rust", "Library Development", "Documentation"],
     link: "https://github.com/rmit-nct/neo-rust-library",
+    role: "Open Source Contributor",
+    proof: "Rust library contribution",
+    recruiterTakeaway: "Shows willingness to work in typed systems and shared codebases.",
     stage: "shipped",
   },
   {
@@ -311,6 +347,9 @@ export const projects: Project[] = [
     tech: ["React", "JavaScript", "HTML/CSS", "API Integration"],
     link: "https://meta-frontend-developer-project.vercel.app/",
     github: "https://github.com/F4P1E/meta-frontend-developer-project",
+    role: "Frontend Developer",
+    proof: "Meta certificate capstone",
+    recruiterTakeaway: "Validates frontend fundamentals and API-driven UI work.",
     stage: "shipped",
   },
 ]
