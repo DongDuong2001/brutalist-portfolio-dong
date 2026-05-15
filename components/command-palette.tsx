@@ -129,7 +129,7 @@ export function CommandPalette({ sections, onNavigate }: CommandPaletteProps) {
             className="w-full bg-transparent font-mono text-sm md:text-base outline-none"
           />
           <p className="font-mono text-[10px] md:text-xs text-muted-foreground mt-2">
-            CTRL/CMD + K · ENTER to open · ESC to close
+            CTRL/CMD + K / ENTER to open / ESC to close
           </p>
         </div>
 
