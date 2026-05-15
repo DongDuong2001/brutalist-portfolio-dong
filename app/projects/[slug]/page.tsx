@@ -192,7 +192,18 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   rel="noopener noreferrer"
                   className="font-mono text-xs font-bold border-2 border-foreground px-3 py-2 hover:bg-foreground hover:text-background transition-colors"
                 >
-                  {award.label} - {award.platform}
+                  {award.badge ? (
+                    <img
+                      src={award.badge.src}
+                      alt={award.badge.alt}
+                      width={award.badge.width}
+                      height={award.badge.height}
+                      className="h-10 w-auto max-w-full"
+                      loading="lazy"
+                    />
+                  ) : (
+                    `${award.label} - ${award.platform}`
+                  )}
                 </a>
               ))}
             </div>
