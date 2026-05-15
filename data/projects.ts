@@ -2,6 +2,12 @@ export type ProjectAward = {
   label: string
   platform: string
   url: string
+  badge?: {
+    src: string
+    alt: string
+    width: number
+    height: number
+  }
 }
 
 export type ProjectKpis = {
@@ -50,7 +56,13 @@ export const projects: Project[] = [
     award: {
       label: "#1 Product of the Day",
       platform: "Unikorn",
-      url: "https://unikorn.vn/p/lab68dev-platform",
+      url: "https://unikorn.vn/p/lab68dev-platform?ref=embed-lab68dev-platform",
+      badge: {
+        src: "https://unikorn.vn/api/widgets/badge/lab68dev-platform/rank?theme=light&type=daily",
+        alt: "lab68dev Platform - Hang ngay",
+        width: 250,
+        height: 64,
+      },
     },
     kpis: {
       users: "30+ users",
@@ -80,11 +92,23 @@ export const projects: Project[] = [
         label: "#1 Product of the Week",
         platform: "Forg",
         url: "https://forg.to/products/lab68-cv-builder",
+        badge: {
+          src: "https://forg.to/api/badges/launch-winner/lab68-cv-builder",
+          alt: "lab68 CV Builder - 1st Place on Forg",
+          width: 200,
+          height: 64,
+        },
       },
       {
         label: "#1 Product of the Day",
         platform: "Unikorn",
-        url: "https://unikorn.vn/p/lab68dev-cv-builder",
+        url: "https://unikorn.vn/p/lab68dev-cv-builder?ref=embed-lab68dev-cv-builder",
+        badge: {
+          src: "https://unikorn.vn/api/widgets/badge/lab68dev-cv-builder/rank?theme=light&type=daily",
+          alt: "lab68CV Builder - Hang ngay",
+          width: 250,
+          height: 64,
+        },
       },
     ],
     kpis: {
@@ -110,6 +134,30 @@ export const projects: Project[] = [
     github: "https://github.com/DongDuong2001/pudo-code-system",
     highlighted: true,
     stage: "shipped",
+    awards: [
+      {
+        label: "#2 Product of the Day",
+        platform: "Unikorn",
+        url: "https://unikorn.vn/p/pudo?ref=embed-pudo",
+        badge: {
+          src: "https://unikorn.vn/api/widgets/badge/pudo/rank?theme=light&type=daily",
+          alt: "Pudo - Daily",
+          width: 250,
+          height: 64,
+        },
+      },
+      {
+        label: "#3 Product of the Week",
+        platform: "Unikorn",
+        url: "https://unikorn.vn/p/pudo?ref=embed-pudo",
+        badge: {
+          src: "https://unikorn.vn/api/widgets/badge/pudo/rank?theme=light&type=weekly",
+          alt: "Pudo - Weekly",
+          width: 250,
+          height: 64,
+        },
+      },
+    ],
     kpis: {
       users: "Public Access",
       launchTime: "May 2026",
@@ -147,12 +195,17 @@ export const projects: Project[] = [
     tech: ["Go", "Backend", "CLI", "Systems Design"],
     link: "",
     github: "https://github.com/DongDuong2001/graft",
-    highlighted: true,
     stage: "now-building",
     award: {
       label: "#3 Product of the Day",
       platform: "Unikorn",
-      url: "https://unikorn.vn/p/graft",
+      url: "https://unikorn.vn/p/graft?ref=embed-graft",
+      badge: {
+        src: "https://unikorn.vn/api/widgets/badge/graft/rank?theme=light&type=daily",
+        alt: "Graft - Hang ngay",
+        width: 250,
+        height: 64,
+      },
     },
     kpis: {
       users: "Early access",
@@ -175,8 +228,18 @@ export const projects: Project[] = [
     tech: ["Desktop App", "Productivity", "UI/UX", "Cross-Platform"],
     link: "",
     github: "https://github.com/DongDuong2001/SlideGlint",
-    highlighted: true,
     stage: "now-building",
+    award: {
+      label: "Featured",
+      platform: "Unikorn",
+      url: "https://unikorn.vn/p/slideglint?ref=embed-slideglint",
+      badge: {
+        src: "https://unikorn.vn/api/widgets/badge/slideglint?theme=light",
+        alt: "SlideGlint on Unikorn.vn",
+        width: 256,
+        height: 64,
+      },
+    },
     kpis: {
       users: "Private testing",
       launchTime: "In progress",
