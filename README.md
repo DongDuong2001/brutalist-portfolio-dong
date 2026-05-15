@@ -1,7 +1,16 @@
 # Brutalist Portfolio - Duong Phu Dong
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/lab68dev)
+<div align="center">
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/DongDuong2001)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/DDuong884)
+<br />
+[![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+
+</div>
 
 Modern, brutalist portfolio built with Next.js App Router and TypeScript.
 
@@ -28,39 +37,39 @@ Main portfolio sections:
 
 ### User Experience
 
-- Section navigation with keyboard shortcuts (1-8)
-- Command palette (Ctrl/Cmd + K) for section and project search
-- Theme toggle support (light/dark)
-- Highly customized responsive layout across all sections
+- **Keyboard Shortcuts**: Section navigation utilizing keyboard hotkeys (1-8).
+- **Command Palette**: Quick actions with (Ctrl/Cmd + K) for section and project search.
+- **Theme Toggle**: Full dark and light mode support.
+- **Responsive Design**: Highly customized responsive layout adapting across all devices.
 
 ### Project Discovery and SEO
 
-- Dynamic project detail routes at /projects/:slug
-- Dynamic Open Graph images for project detail pages
-- Auto-generated sitemap entries for project pages
+- **Dynamic Routes**: Project detail pages at `/projects/:slug`.
+- **Dynamic OG Images**: Auto-generated Open Graph images for detailed project sharing.
+- **Auto Sitemap**: Automatically generated sitemap entries for project pages ensuring great SEO visibility.
 
 ### API and Backend Utilities
 
-- Contact form email endpoint using Nodemailer
-- Profile view counting with session de-duplication
-- Neon/Postgres persistence for profile views when DATABASE_URL is configured
-- In-memory profile view fallback when DATABASE_URL is not set
-- PDF endpoint with:
-  - project index mode
-  - Harvard-style full portfolio mode
+- **Contact Email**: Form endpoint sending emails using Nodemailer.
+- **View Counting**: Profile view analytics with robust session de-duplication.
+- **Neon/Postgres Integration**: Persistent profile view tracking if `DATABASE_URL` is configured.
+- **In-Memory Fallback**: Seamless fallback for view storage when running locally without a DB.
+- **PDF Generation**: Live PDF generation endpoint supporting:
+  - Project index mode
+  - Complete Harvard-style portfolio mode
 
 ## Tech Stack
 
-- Framework: Next.js 16 (App Router)
-- Language: TypeScript 5
-- UI: React 19, Radix UI, Lucide React
-- Styling: Tailwind CSS 4, PostCSS
-- Motion: Framer Motion
-- Forms and validation: React Hook Form, Zod
-- Email: Nodemailer
-- PDF: pdf-lib
-- Analytics storage: @neondatabase/serverless (Neon/Postgres)
-- Package manager: pnpm
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript 5
+- **UI**: React 19, Radix UI, Lucide React
+- **Styling**: Tailwind CSS 4, PostCSS
+- **Motion**: Framer Motion
+- **Forms and validation**: React Hook Form, Zod
+- **Email**: Nodemailer
+- **PDF**: pdf-lib
+- **Analytics storage**: @neondatabase/serverless (Neon/Postgres)
+- **Package manager**: pnpm
 
 ## Project Structure
 
@@ -211,9 +220,16 @@ This is a personal portfolio project, but suggestions are welcome.
 
 MIT. See [LICENSE](LICENSE).
 
+## Support & Funding
+
+If you find this project helpful or just want to support my work, consider buying me a coffee or donating via PayPal. Your support is greatly appreciated and helps me keep building and sharing open-source projects!
+
+- [Buy Me a Coffee](https://buymeacoffee.com/DongDuong2001)
+- [PayPal](https://paypal.me/DDuong884)
+
 ## Contact
 
-Duong Phu Dong
+**Duong Phu Dong**
 
 - Portfolio: [duongphudong2001.vercel.app](https://duongphudong2001.vercel.app/)
 - GitHub: [github.com/DongDuong2001](https://github.com/DongDuong2001)
