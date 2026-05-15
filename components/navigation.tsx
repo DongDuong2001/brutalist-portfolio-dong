@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import { Menu, Moon, Sun, X } from "lucide-react"
 
 interface Section {
   id: string
@@ -22,6 +23,7 @@ export function SideNavigation({
   onNavigate,
 }: SideNavigationProps) {
   const [mounted, setMounted] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
@@ -31,6 +33,22 @@ export function SideNavigation({
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
+
+  const handleMobileNavigate = (index: number) => {
+    onNavigate(index)
+    setMobileMenuOpen(false)
+  }
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false)
+    }
+
+    window.addEventListener("keydown", closeOnEscape)
+    return () => window.removeEventListener("keydown", closeOnEscape)
+  }, [mobileMenuOpen])
 
   if (!mounted) return null
 
@@ -85,42 +103,104 @@ export function SideNavigation({
         </div>
       </nav>
 
-      {/* Mobile Bottom Tab Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t-2 border-foreground bg-background">
-        <div className="flex items-stretch overflow-x-auto scrollbar-hide">
-          {sections.map((section, index) => {
-            const isActive = activeIndex === index
-            return (
-              <button
-                key={section.id}
-                onClick={() => onNavigate(index)}
-                className={`relative min-w-24 px-2 py-2 flex flex-col items-center justify-center gap-0.5 transition-colors ${
-                  isActive
-                    ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground hover:bg-secondary"
-                }`}
+      {/* Mobile Floating Menu */}
+      <div className="md:hidden">
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <>
+              <motion.button
+                type="button"
+                aria-label="Close navigation backdrop"
+                className="fixed inset-0 z-40 bg-background/70"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.16 }}
+                onClick={() => setMobileMenuOpen(false)}
+              />
+
+              <motion.nav
+                aria-label="Mobile navigation"
+                className="fixed bottom-20 left-3 right-3 z-50 border-2 border-foreground bg-card shadow-[5px_5px_0_0_var(--foreground)]"
+                initial={{ opacity: 0, y: 18, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 12, scale: 0.98 }}
+                transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                {isActive && (
-                  <motion.div
-                    layoutId="mobileActiveTab"
-                    className="absolute top-0 left-0 right-0 h-0.5 bg-foreground"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-                <span className="font-mono text-[9px] font-bold leading-none">{section.shortcut}</span>
-                <span className="font-mono text-[8px] font-bold leading-none text-center truncate w-full">{section.label}</span>
-              </button>
-            )
-          })}
-          {/* Theme toggle */}
-          <button
-            onClick={toggleTheme}
-            className="min-w-20 flex flex-col items-center justify-center gap-0.5 py-2 px-3 border-l border-foreground/20 text-muted-foreground hover:bg-secondary transition-colors"
-          >
-            <span className="font-mono text-[8px] font-bold leading-none">THEME</span>
-            <span className="font-mono text-[8px] font-bold leading-none">{theme === "dark" ? "DARK" : "LIGHT"}</span>
-          </button>
-        </div>
+                <div className="flex items-center justify-between border-b-2 border-foreground bg-foreground px-3 py-2 text-background">
+                  <div>
+                    <p className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] opacity-80">Navigation</p>
+                    <p className="font-mono text-xs font-black">{sections[activeIndex]?.label ?? "HOME"}</p>
+                  </div>
+                  <button
+                    type="button"
+                    aria-label="Close navigation"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="inline-flex h-9 w-9 items-center justify-center border-2 border-background transition-colors hover:bg-background hover:text-foreground"
+                  >
+                    <X className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 p-3">
+                  {sections.map((section, index) => {
+                    const isActive = activeIndex === index
+                    return (
+                      <button
+                        key={section.id}
+                        onClick={() => handleMobileNavigate(index)}
+                        className={`relative min-h-12 border-2 border-foreground px-3 py-2 text-left transition-colors ${
+                          isActive
+                            ? "bg-accent text-accent-foreground"
+                            : "bg-background hover:bg-secondary"
+                        }`}
+                      >
+                        <span className="block font-mono text-[9px] font-bold opacity-70">{section.shortcut}</span>
+                        <span className="block font-mono text-[10px] font-black uppercase leading-tight">{section.label}</span>
+                        {isActive && (
+                          <motion.span
+                            layoutId="mobileMenuActive"
+                            className="absolute bottom-0 left-0 right-0 h-1 bg-foreground"
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                          />
+                        )}
+                      </button>
+                    )
+                  })}
+                </div>
+
+                <div className="grid grid-cols-[1fr_auto] gap-2 border-t-2 border-foreground p-3">
+                  <button
+                    onClick={toggleTheme}
+                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-background px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background"
+                  >
+                    {theme === "dark" ? (
+                      <Moon className="h-4 w-4" aria-hidden="true" />
+                    ) : (
+                      <Sun className="h-4 w-4" aria-hidden="true" />
+                    )}
+                    THEME: {theme === "dark" ? "DARK" : "LIGHT"}
+                  </button>
+                  <span className="inline-flex items-center border-2 border-foreground bg-secondary px-3 py-2 font-mono text-[10px] font-bold">
+                    1-8
+                  </span>
+                </div>
+              </motion.nav>
+            </>
+          )}
+        </AnimatePresence>
+
+        <motion.button
+          type="button"
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          className="fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 border-2 border-foreground bg-accent px-4 py-3 font-mono text-xs font-black uppercase text-accent-foreground shadow-[4px_4px_0_0_var(--foreground)]"
+          whileTap={{ scale: 0.95 }}
+        >
+          {mobileMenuOpen ? <X className="h-4 w-4" aria-hidden="true" /> : <Menu className="h-4 w-4" aria-hidden="true" />}
+          Menu
+        </motion.button>
       </div>
     </>
   )
