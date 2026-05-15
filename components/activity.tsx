@@ -83,7 +83,7 @@ const activities: ActivityItem[] = [
   {
     type: "LEADERSHIP",
     title: "Project Leader - Backend",
-    project: "NCT SatEvent — Neo Culture Tech Club",
+    project: "NCT SatEvent - Neo Culture Tech Club",
     date: "2025",
     year: 2025,
     track: "Backend",
@@ -107,7 +107,7 @@ const activities: ActivityItem[] = [
   {
     type: "ROLE",
     title: "Project Contributor",
-    project: "Neo Culture Tech Club — RMIT University Vietnam",
+    project: "Neo Culture Tech Club - RMIT University Vietnam",
     date: "2025",
     year: 2025,
     track: "Open Source",
@@ -131,7 +131,7 @@ const activities: ActivityItem[] = [
   {
     type: "ROLE",
     title: "Project Researcher",
-    project: "Neo Culture Tech Club — RMIT University Vietnam",
+    project: "Neo Culture Tech Club - RMIT University Vietnam",
     date: "2024",
     year: 2024,
     track: "Open Source",
@@ -149,7 +149,7 @@ const activities: ActivityItem[] = [
     track: "Competition",
     context: "University",
     description:
-      "Competed in 'Sinh viên với An toàn thông tin ASEAN' (Students with ASEAN Information Security) as Team RMIT 01, achieved Top 55.",
+      "Competed in the ASEAN Information Security student competition as Team RMIT 01, achieved Top 55.",
     link: "#",
   },
 ]
@@ -425,7 +425,7 @@ export function Activity() {
                                       className="overflow-hidden"
                                     >
                                       <div className="border-t-2 border-foreground mt-3 pt-3 font-mono text-[11px] text-muted-foreground">
-                                        Timeline tag: {activity.type} · {activity.context} · {activity.track}
+                                        Timeline tag: {activity.type} / {activity.context} / {activity.track}
                                       </div>
                                     </motion.div>
                                   )}
@@ -519,7 +519,7 @@ export function Activity() {
                                       className="overflow-hidden"
                                     >
                                       <div className="border-t-2 border-foreground mt-3 pt-3 font-mono text-[11px] text-muted-foreground">
-                                        Timeline tag: {activity.type} · {activity.context} · {activity.track}
+                                        Timeline tag: {activity.type} / {activity.context} / {activity.track}
                                       </div>
                                     </motion.div>
                                   )}
