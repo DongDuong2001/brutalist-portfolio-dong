@@ -1,22 +1,36 @@
+import { Brain, Code2, Crosshair, Database, Gauge, Layers3, Rocket, Wrench } from "lucide-react"
+
 const activeStack = [
-  { name: "Java", level: "ADOPT", focus: "Spring Boot backend services" },
-  { name: "Python (FastAPI)", level: "ADOPT", focus: "High-performance API delivery" },
-  { name: "TypeScript", level: "ADOPT", focus: "Type-safe frontend systems" },
-  { name: "Next.js", level: "ADOPT", focus: "App Router product delivery" },
-  { name: "PostgreSQL", level: "ADOPT", focus: "Data modeling + performance" },
+  { name: "Java", level: "ADOPT", focus: "Spring Boot backend services", x: "62%", y: "26%" },
+  { name: "Python", level: "ADOPT", focus: "FastAPI and product automation", x: "34%", y: "31%" },
+  { name: "TypeScript", level: "ADOPT", focus: "Type-safe frontend systems", x: "48%", y: "18%" },
+  { name: "Next.js", level: "ADOPT", focus: "App Router product delivery", x: "69%", y: "52%" },
+  { name: "PostgreSQL", level: "ADOPT", focus: "Data modeling and performance", x: "39%", y: "66%" },
 ]
 
 const learningNext = [
-  { name: "AI/ML", target: "Applied models for product features" },
-  { name: "Design Patterns", target: "Scalable architecture and code quality" },
-  { name: "Advanced System Architecture", target: "Distributed system design at scale" },
+  { name: "AI/ML", target: "Applied models for product features", Icon: Brain },
+  { name: "Design Patterns", target: "Scalable architecture and code quality", Icon: Layers3 },
+  { name: "Advanced Architecture", target: "Distributed system design at scale", Icon: Crosshair },
 ]
 
 const familiarTooling = ["CI/CD Pipeline", "Docker", "Kafka", "Redis"]
 
-export function TechRadar() {
-  const adoptedCount = activeStack.filter((item) => item.level === "ADOPT").length
+const radarStats = [
+  { label: "Adopted", value: activeStack.length, Icon: Rocket },
+  { label: "Tooling", value: familiarTooling.length, Icon: Wrench },
+  { label: "Learning", value: learningNext.length, Icon: Brain },
+  { label: "Signal", value: "Product", Icon: Gauge },
+]
 
+const quadrants = [
+  { label: "Frontend", Icon: Code2 },
+  { label: "Backend", Icon: Layers3 },
+  { label: "Data", Icon: Database },
+  { label: "Systems", Icon: Crosshair },
+]
+
+export function TechRadar() {
   return (
     <section id="tech-radar" className="min-h-full">
       <div className="container mx-auto px-4 max-[390px]:px-3.5 py-10 max-[390px]:py-8 md:py-14 lg:py-16">
@@ -25,68 +39,108 @@ export function TechRadar() {
             <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} TECH RADAR</h2>
           </div>
           <p className="mt-3 font-mono text-xs md:text-sm text-muted-foreground max-w-3xl leading-relaxed">
-            Current engineering posture, familiar tooling, and the next capability targets. Tuned to stay dense on small screens and spacious on larger displays.
+            Stack radar console for the tools I actively adopt, the infrastructure I understand, and the capabilities I am pushing next.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3 mb-4 md:mb-6">
-          <div className="border-2 border-foreground bg-card px-2.5 py-2 md:px-3 md:py-2.5">
-            <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-wider text-muted-foreground">Active Stack</p>
-            <p className="font-mono text-base md:text-lg font-bold">{activeStack.length}</p>
-          </div>
-          <div className="border-2 border-foreground bg-card px-2.5 py-2 md:px-3 md:py-2.5">
-            <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-wider text-muted-foreground">Adopt</p>
-            <p className="font-mono text-base md:text-lg font-bold">{adoptedCount}</p>
-          </div>
-          <div className="border-2 border-foreground bg-card px-2.5 py-2 md:px-3 md:py-2.5">
-            <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-wider text-muted-foreground">Familiar</p>
-            <p className="font-mono text-base md:text-lg font-bold">{familiarTooling.length}</p>
-          </div>
-          <div className="border-2 border-foreground bg-card px-2.5 py-2 md:px-3 md:py-2.5">
-            <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-wider text-muted-foreground">Learning Next</p>
-            <p className="font-mono text-base md:text-lg font-bold">{learningNext.length}</p>
-          </div>
-        </div>
-
-        <div className="grid gap-4 md:gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(0,0.95fr)]">
-          <article className="border-2 md:border-4 border-foreground bg-card p-4 max-[390px]:p-3.5 md:p-5 lg:p-6">
-            <div className="flex items-end justify-between gap-3 border-b-2 border-foreground pb-2.5 mb-3 md:mb-4">
-              <h3 className="font-mono text-lg md:text-xl lg:text-2xl font-bold">ACTIVE STACK</h3>
-              <span className="font-mono text-[10px] md:text-xs font-bold text-muted-foreground">
-                {adoptedCount}/{activeStack.length} ADOPT
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(300px,0.42fr)]">
+          <article className="border-2 md:border-4 border-foreground bg-card">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-foreground bg-foreground px-4 py-3 text-background">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-75">Radar Mode</p>
+                <h3 className="font-mono text-lg md:text-xl font-black uppercase">Current Engineering Posture</h3>
+              </div>
+              <span className="border-2 border-background px-3 py-1.5 font-mono text-[10px] font-bold">
+                {activeStack.length}/{activeStack.length} ADOPT
               </span>
             </div>
 
-            <div className="grid gap-2.5 max-[390px]:gap-2 min-[470px]:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
-              {activeStack.map((item) => (
-                <div key={item.name} className="border-2 border-foreground bg-background/70 p-3 max-[390px]:p-2.5 md:p-3.5">
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <p className="font-mono font-bold text-xs md:text-sm leading-tight">{item.name}</p>
-                    <span
-                      className={`font-mono text-[10px] font-bold px-2 py-0.5 border-2 border-foreground ${
-                        item.level === "ADOPT" ? "bg-accent text-accent-foreground" : "bg-card"
+            <div className="grid lg:grid-cols-[minmax(0,1fr)_220px]">
+              <div className="p-4 md:p-6">
+                <div className="relative mx-auto aspect-square max-w-[620px] border-2 border-foreground bg-background overflow-hidden">
+                  <div className="absolute inset-[8%] border-2 border-dashed border-foreground/30" />
+                  <div className="absolute inset-[23%] border-2 border-dashed border-foreground/30" />
+                  <div className="absolute inset-[38%] border-2 border-dashed border-accent/60" />
+                  <div className="absolute left-1/2 top-0 bottom-0 border-l border-foreground/25" />
+                  <div className="absolute top-1/2 left-0 right-0 border-t border-foreground/25" />
+                  <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 border-2 border-foreground bg-accent" />
+
+                  {quadrants.map(({ label, Icon }, index) => (
+                    <div
+                      key={label}
+                      className={`absolute flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase text-muted-foreground ${
+                        index === 0
+                          ? "left-3 top-3"
+                          : index === 1
+                            ? "right-3 top-3"
+                            : index === 2
+                              ? "left-3 bottom-3"
+                              : "right-3 bottom-3"
                       }`}
                     >
-                      {item.level}
-                    </span>
-                  </div>
-                  <p className="font-mono text-[10px] md:text-xs text-muted-foreground leading-relaxed">{item.focus}</p>
-                  <div className="mt-2.5 h-1.5 border border-foreground/40 bg-muted/70">
-                    <div className="h-full w-full bg-accent" aria-hidden="true" />
-                  </div>
+                      <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                      {label}
+                    </div>
+                  ))}
+
+                  {activeStack.map((item, index) => (
+                    <div
+                      key={item.name}
+                      className="absolute -translate-x-1/2 -translate-y-1/2"
+                      style={{ left: item.x, top: item.y }}
+                    >
+                      <div className="group relative">
+                        <span className="block h-5 w-5 border-2 border-foreground bg-accent shadow-[2px_2px_0_0_var(--foreground)]" />
+                        <span className="absolute left-6 top-1/2 -translate-y-1/2 whitespace-nowrap border-2 border-foreground bg-card px-2 py-1 font-mono text-[10px] font-black">
+                          {String(index + 1).padStart(2, "0")} {item.name}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="border-t-2 lg:border-t-0 lg:border-l-2 border-foreground p-3 md:p-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground mb-2">Active Signals</p>
+                <div className="grid gap-2">
+                  {activeStack.map((item) => (
+                    <div key={item.name} className="border-2 border-foreground bg-background/70 p-2.5">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <p className="font-mono text-xs font-black">{item.name}</p>
+                        <span className="bg-accent text-accent-foreground border-2 border-foreground px-2 py-0.5 font-mono text-[9px] font-bold">
+                          {item.level}
+                        </span>
+                      </div>
+                      <p className="font-mono text-[10px] leading-relaxed text-muted-foreground">{item.focus}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </article>
 
-          <div className="grid gap-4 md:gap-6 content-start">
-            <article className="border-2 md:border-4 border-foreground bg-secondary p-4 max-[390px]:p-3.5 md:p-5 lg:p-6">
-              <h3 className="font-mono text-base md:text-lg font-bold border-b-2 border-foreground pb-2 mb-3">FAMILIAR WITH</h3>
-              <div className="grid grid-cols-2 min-[420px]:grid-cols-3 lg:grid-cols-2 gap-2">
+          <aside className="grid gap-4 content-start">
+            <div className="grid grid-cols-2 gap-2">
+              {radarStats.map(({ label, value, Icon }) => (
+                <div key={label} className="border-2 border-foreground bg-card p-3">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <Icon className="h-4 w-4 text-accent" aria-hidden="true" />
+                    <p className="font-mono text-[9px] uppercase tracking-wide text-muted-foreground">{label}</p>
+                  </div>
+                  <p className="font-mono text-lg font-black">{value}</p>
+                </div>
+              ))}
+            </div>
+
+            <article className="border-2 md:border-4 border-foreground bg-secondary p-4">
+              <h3 className="font-mono text-base md:text-lg font-black border-b-2 border-foreground pb-2 mb-3">
+                Familiar Tooling
+              </h3>
+              <div className="grid grid-cols-2 gap-2">
                 {familiarTooling.map((tool) => (
                   <span
                     key={tool}
-                    className="border-2 border-foreground bg-card px-2 py-1.5 text-center font-mono text-[10px] md:text-xs font-bold leading-tight"
+                    className="border-2 border-foreground bg-card px-2 py-2 text-center font-mono text-[10px] md:text-xs font-bold leading-tight"
                   >
                     {tool}
                   </span>
@@ -94,21 +148,28 @@ export function TechRadar() {
               </div>
             </article>
 
-            <article className="border-2 md:border-4 border-foreground bg-card p-4 max-[390px]:p-3.5 md:p-5 lg:p-6">
-              <h3 className="font-mono text-base md:text-lg font-bold border-b-2 border-foreground pb-2 mb-3">LEARNING NEXT</h3>
-              <div className="grid gap-2.5 max-[390px]:gap-2">
-                {learningNext.map((item, index) => (
-                  <div key={item.name} className="border-2 border-foreground p-2.5 md:p-3 bg-background/60">
-                    <div className="flex items-center justify-between gap-2 mb-1.5">
-                      <p className="font-mono font-bold text-xs md:text-sm leading-tight">{item.name}</p>
-                      <span className="font-mono text-[10px] font-bold opacity-70">{String(index + 1).padStart(2, "0")}</span>
+            <article className="border-2 md:border-4 border-foreground bg-card p-4">
+              <h3 className="font-mono text-base md:text-lg font-black border-b-2 border-foreground pb-2 mb-3">
+                Learning Next
+              </h3>
+              <div className="grid gap-2.5">
+                {learningNext.map(({ name, target, Icon }, index) => (
+                  <div key={name} className="grid grid-cols-[auto_1fr] gap-2.5 border-2 border-foreground p-2.5 bg-background/60">
+                    <span className="inline-flex h-8 w-8 items-center justify-center border-2 border-foreground bg-secondary">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="font-mono font-black text-xs md:text-sm leading-tight">{name}</p>
+                        <span className="font-mono text-[10px] font-bold opacity-70">{String(index + 1).padStart(2, "0")}</span>
+                      </div>
+                      <p className="font-mono text-[10px] md:text-xs text-muted-foreground leading-relaxed">{target}</p>
                     </div>
-                    <p className="font-mono text-[10px] md:text-xs text-muted-foreground leading-relaxed">{item.target}</p>
                   </div>
                 ))}
               </div>
             </article>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
