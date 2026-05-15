@@ -196,7 +196,18 @@ export function Projects() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center self-start border-2 border-foreground bg-accent/10 px-3 py-1.5 font-mono text-[10px] md:text-xs font-bold hover:bg-accent hover:text-accent-foreground transition-colors"
                         >
-                          {award.label} - {award.platform}
+                          {award.badge ? (
+                            <img
+                              src={award.badge.src}
+                              alt={award.badge.alt}
+                              width={award.badge.width}
+                              height={award.badge.height}
+                              className="h-8 w-auto max-w-full"
+                              loading="lazy"
+                            />
+                          ) : (
+                            `${award.label} - ${award.platform}`
+                          )}
                         </a>
                       ))}
                     </div>
