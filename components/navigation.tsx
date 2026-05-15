@@ -80,7 +80,7 @@ export function SideNavigation({
             THEME: {theme === "dark" ? "DARK" : "LIGHT"}
           </motion.button>
           <div className="font-mono text-[10px] text-muted-foreground text-center">
-            [1-8] NAVIGATE · [CTRL/CMD + K] COMMAND
+            [1-8] NAVIGATE / [CTRL/CMD + K] COMMAND
           </div>
         </div>
       </nav>
