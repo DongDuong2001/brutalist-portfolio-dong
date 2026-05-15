@@ -57,6 +57,14 @@ const fitSignals = [
 
 const stackHighlights = ["Next.js", "React", "TypeScript", "Spring Boot", "PostgreSQL", "Go"]
 
+const routeStops = ["RMIT", "LAB68DEV", "YOUR TEAM"]
+
+const ticketMeta = [
+  { label: "Seat", value: "FULL-STACK" },
+  { label: "Class", value: "PRODUCT" },
+  { label: "Gate", value: "OPEN" },
+]
+
 const socialLinks = [
   {
     label: "LinkedIn",
@@ -146,103 +154,138 @@ export function Hero({ onNavigate }: HeroProps) {
       </div>
 
       <div className="container relative z-10 mx-auto flex h-full min-h-0 px-4 py-4 md:py-5 lg:py-6">
-        <div className="grid min-h-0 w-full items-center gap-4 lg:grid-cols-[minmax(0,1.08fr)_minmax(330px,0.92fr)] lg:gap-6">
-          <div className="min-h-0 space-y-3 md:space-y-4">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 border-2 border-foreground bg-accent px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wide text-accent-foreground">
-                <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
-                Available for work
-              </span>
-              <span className="inline-flex items-center gap-1.5 border-2 border-foreground bg-card px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wide">
-                <Users className="h-3.5 w-3.5" aria-hidden="true" />
-                Views: {profileViews === null ? "..." : profileViews.toLocaleString()}
-              </span>
+        <div className="grid min-h-0 w-full items-center gap-4 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)] lg:gap-6">
+          <article className="relative overflow-hidden border-2 border-foreground bg-card shadow-[6px_6px_0_0_var(--foreground)] lg:border-4">
+            <div className="grid grid-cols-[1fr_auto] border-b-2 border-foreground">
+              <div className="px-3 py-2 md:px-4">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                  Candidate Boarding Pass
+                </p>
+                <p className="font-mono text-xs font-black uppercase md:text-sm">Duong Phu Dong / lab68dev</p>
+              </div>
+              <div className="border-l-2 border-foreground bg-accent px-3 py-2 text-accent-foreground md:px-4">
+                <p className="font-mono text-[9px] font-bold uppercase tracking-wider">Status</p>
+                <p className="font-mono text-xs font-black">OPEN</p>
+              </div>
             </div>
 
-            <div className="max-w-4xl">
-              <p className="mb-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground md:text-xs">
-                Duong Phu Dong / lab68dev
-              </p>
-              <h1 className="font-mono text-[2.55rem] font-black uppercase leading-[0.9] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.4rem] xl:text-7xl">
-                Full-stack
-                <span className="block text-accent">Product</span>
-                Developer
-              </h1>
-            </div>
-
-            <div className="max-w-3xl border-l-4 border-accent pl-3 md:pl-4">
-              <p className="text-sm leading-relaxed text-muted-foreground md:text-[15px]">
-                I build production-ready web products with clear UX, reliable backend systems, and launch-focused execution while studying Software Engineering at RMIT.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-2">
-              {heroStats.map((stat) => (
-                <div key={stat.label} className="border-2 border-foreground bg-card p-2 md:p-3">
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">{stat.label}</p>
-                  <p className="font-mono text-lg font-black leading-tight md:text-2xl">{stat.value}</p>
-                  <p className="hidden font-mono text-[10px] leading-snug text-muted-foreground sm:block">{stat.detail}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
-              <button
-                onClick={() => onNavigate?.(1)}
-                className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-foreground px-3 py-2 font-mono text-xs font-bold text-background transition-colors hover:bg-accent hover:text-accent-foreground md:px-4 md:text-sm"
-              >
-                <Rocket className="h-4 w-4" aria-hidden="true" />
-                View Work
-              </button>
-              <button
-                onClick={() => onNavigate?.(7)}
-                className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
-              >
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                Contact
-              </button>
-              <a
-                href="/cv/Duong Phu Dong - Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
-              >
-                <Download className="h-4 w-4" aria-hidden="true" />
-                CV
-              </a>
-              <a
-                href="/api/project-index?style=harvard"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
-              >
-                <FileText className="h-4 w-4" aria-hidden="true" />
-                Portfolio PDF
-              </a>
-            </div>
-          </div>
-
-          <aside className="hidden max-h-[calc(100dvh-3rem)] overflow-hidden border-2 border-foreground bg-card lg:block xl:border-4">
-            <div className="flex items-center justify-between gap-3 border-b-2 border-foreground bg-foreground px-3 py-2.5 text-background xl:px-4">
-              <span className="font-mono text-xs font-bold uppercase tracking-wider">Candidate Dossier</span>
-              <span className="font-mono text-[10px] font-bold">2026</span>
-            </div>
-
-            <div className="p-3 xl:p-4">
-              <div className="mb-3 flex items-start justify-between gap-4">
+            <div className="relative grid gap-3 p-3 md:gap-4 md:p-4 lg:grid-cols-[minmax(0,1fr)_130px] xl:grid-cols-[minmax(0,1fr)_150px]">
+              <div className="space-y-3 md:space-y-4">
                 <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Name</p>
-                  <h2 className="font-mono text-2xl font-black uppercase leading-tight">
-                    Duong
-                    <span className="block">Phu Dong</span>
-                  </h2>
+                  <h1 className="font-mono text-[2.45rem] font-black uppercase leading-[0.88] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
+                    Full-stack
+                    <span className="block text-accent">Product</span>
+                    Developer
+                  </h1>
                 </div>
-                <div className="border-2 border-foreground bg-accent px-2.5 py-1.5 text-right text-accent-foreground">
-                  <p className="font-mono text-[9px] font-bold uppercase tracking-wider">Signal</p>
-                  <p className="font-mono text-lg font-black">#1</p>
+
+                <div className="grid grid-cols-3 border-2 border-foreground bg-background/70">
+                  {ticketMeta.map((item) => (
+                    <div key={item.label} className="border-r-2 border-foreground px-2 py-2 last:border-r-0">
+                      <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">{item.label}</p>
+                      <p className="font-mono text-[10px] font-black uppercase leading-tight md:text-xs">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2">
+                  {routeStops.map((stop, index) => (
+                    <div key={stop} className="contents">
+                      <div className="border-2 border-foreground bg-secondary px-2 py-1.5 text-center">
+                        <p className="font-mono text-[10px] font-black uppercase">{stop}</p>
+                      </div>
+                      {index < routeStops.length - 1 && (
+                        <div className="h-0.5 w-5 bg-foreground md:w-8" aria-hidden="true" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                <p className="max-w-3xl border-l-4 border-accent pl-3 text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+                  I build production-ready web products with clear UX, reliable backend systems, and launch-focused execution while studying Software Engineering at RMIT.
+                </p>
+
+                <div className="grid grid-cols-3 gap-2">
+                  {heroStats.map((stat) => (
+                    <div key={stat.label} className="border-2 border-foreground bg-background/70 p-2 md:p-3">
+                      <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">{stat.label}</p>
+                      <p className="font-mono text-lg font-black leading-tight md:text-2xl">{stat.value}</p>
+                      <p className="hidden font-mono text-[10px] leading-snug text-muted-foreground sm:block">{stat.detail}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+                  <button
+                    onClick={() => onNavigate?.(1)}
+                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-foreground px-3 py-2 font-mono text-xs font-bold text-background transition-colors hover:bg-accent hover:text-accent-foreground md:px-4 md:text-sm"
+                  >
+                    <Rocket className="h-4 w-4" aria-hidden="true" />
+                    View Work
+                  </button>
+                  <button
+                    onClick={() => onNavigate?.(7)}
+                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
+                  >
+                    <Mail className="h-4 w-4" aria-hidden="true" />
+                    Contact
+                  </button>
+                  <a
+                    href="/cv/Duong Phu Dong - Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
+                  >
+                    <Download className="h-4 w-4" aria-hidden="true" />
+                    CV
+                  </a>
+                  <a
+                    href="/api/project-index?style=harvard"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
+                  >
+                    <FileText className="h-4 w-4" aria-hidden="true" />
+                    PDF
+                  </a>
                 </div>
               </div>
 
+              <div className="hidden border-l-2 border-dashed border-foreground pl-3 lg:flex lg:flex-col lg:justify-between">
+                <div className="-rotate-2 border-2 border-foreground bg-accent p-2 text-accent-foreground shadow-[3px_3px_0_0_var(--foreground)]">
+                  <Trophy className="mb-1 h-5 w-5" aria-hidden="true" />
+                  <p className="font-mono text-[9px] font-bold uppercase tracking-wider">Launch Stamp</p>
+                  <p className="font-mono text-xl font-black leading-none">#1</p>
+                  <p className="font-mono text-[10px] font-bold uppercase leading-tight">Product Week</p>
+                </div>
+
+                <div className="space-y-1.5">
+                  <p className="font-mono text-[9px] font-bold uppercase tracking-wider text-muted-foreground">Boarding Code</p>
+                  <div className="grid grid-cols-6 gap-1">
+                    {Array.from({ length: 24 }).map((_, index) => (
+                      <span
+                        key={index}
+                        className={`h-6 border border-foreground ${
+                          index % 3 === 0 || index % 7 === 0 ? "bg-foreground" : "bg-background"
+                        }`}
+                        aria-hidden="true"
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <aside className="hidden max-h-[calc(100dvh-3rem)] overflow-hidden border-2 border-foreground bg-card lg:block">
+            <div className="flex items-center justify-between gap-3 border-b-2 border-foreground bg-foreground px-3 py-2.5 text-background">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider">Signal Manifest</span>
+              <span className="font-mono text-[10px] font-bold">
+                Views {profileViews === null ? "..." : profileViews.toLocaleString()}
+              </span>
+            </div>
+
+            <div className="p-3 xl:p-4">
               <div className="mb-3 grid gap-1.5">
                 {dossierRows.map(({ label, value, Icon }) => (
                   <div key={label} className="grid grid-cols-[auto_1fr] gap-2.5 border-2 border-foreground bg-background/70 p-2">
