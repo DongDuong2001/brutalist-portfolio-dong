@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
+import { ArrowUpRight, Code2, ExternalLink, Github, LockKeyhole, Rocket, Target, Trophy } from "lucide-react"
 
 import {
   projects,
@@ -12,6 +13,19 @@ import {
 } from "@/data/projects"
 
 const CATEGORIES = ["ALL", ...Array.from(new Set(projects.map((project) => project.category)))]
+
+const totalAwards = projects.reduce((sum, project) => {
+  if (project.awards) return sum + project.awards.length
+  if (project.award) return sum + 1
+  return sum
+}, 0)
+
+const projectSummary = [
+  { label: "Shipped", value: String(projects.filter((project) => project.stage !== "now-building").length) },
+  { label: "Live demos", value: String(projects.filter((project) => Boolean(project.link)).length) },
+  { label: "Launch wins", value: String(totalAwards) },
+  { label: "Now building", value: String(projects.filter((project) => project.stage === "now-building").length) },
+]
 
 const DEFAULT_KPIS: ProjectKpis = {
   users: "Early users",
@@ -68,8 +82,13 @@ export function Projects() {
     <section id="projects">
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6 md:mb-10">
-          <div className="border-2 border-foreground p-2 inline-block self-start">
-            <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  PROJECTS</h2>
+          <div className="self-start">
+            <div className="border-2 border-foreground p-2 inline-block">
+              <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  PROJECTS</h2>
+            </div>
+            <p className="mt-3 font-mono text-xs md:text-sm text-muted-foreground max-w-3xl leading-relaxed">
+              Proof-first case studies for fast recruiter scanning: role, problem, build, result, stack, and links.
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 self-start lg:self-auto">
@@ -90,6 +109,17 @@ export function Projects() {
           </div>
         </div>
 
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 mb-6 md:mb-8">
+          {projectSummary.map((item) => (
+            <div key={item.label} className="border-2 border-foreground bg-card px-3 py-2.5">
+              <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-wide text-muted-foreground">
+                {item.label}
+              </p>
+              <p className="font-mono text-base md:text-lg font-bold">{item.value}</p>
+            </div>
+          ))}
+        </div>
+
         <div className="flex gap-2 mb-8 md:mb-10 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap md:overflow-visible md:pb-0 scrollbar-hide">
           {CATEGORIES.map((category) => (
             <button
@@ -105,7 +135,7 @@ export function Projects() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-          {filteredProjects.map((project) => {
+          {filteredProjects.map((project, projectIndex) => {
             const featured = project.year.includes("Current")
             const highlighted = Boolean(project.highlighted)
             const awards = getAwards(project)
@@ -113,6 +143,7 @@ export function Projects() {
             const caseStudy = getCaseStudy(project)
             const slug = slugifyProjectTitle(project.title)
             const isExpanded = expandedProject === project.title
+            const leadProject = activeFilter === "ALL" && highlighted && projectIndex < 3
 
             return (
               <article
@@ -120,7 +151,9 @@ export function Projects() {
                 id={`project-${slug}`}
                 className={`group border-2 border-foreground bg-card flex flex-col transition-colors hover:bg-secondary ${
                   featured ? "ring-2 ring-accent ring-offset-2 ring-offset-background" : ""
-                } ${highlighted ? "border-l-4 border-l-accent" : ""}`}
+                } ${highlighted ? "border-l-4 border-l-accent" : ""} ${
+                  leadProject ? "xl:min-h-[620px]" : ""
+                }`}
               >
                 <div className="border-b-2 border-foreground p-4 md:p-5 bg-secondary">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -129,12 +162,14 @@ export function Projects() {
                     </span>
                     <div className="flex flex-wrap items-center gap-2 justify-end">
                       {highlighted && (
-                        <span className="font-mono text-[10px] font-bold bg-foreground text-background px-2 py-0.5">
+                        <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold bg-foreground text-background px-2 py-0.5">
+                          <Trophy className="h-3 w-3" aria-hidden="true" />
                           BEST PROJECT
                         </span>
                       )}
                       {featured && (
-                        <span className="font-mono text-[10px] font-bold bg-accent text-accent-foreground px-2 py-0.5">
+                        <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold bg-accent text-accent-foreground px-2 py-0.5">
+                          <Rocket className="h-3 w-3" aria-hidden="true" />
                           ACTIVE
                         </span>
                       )}
@@ -142,10 +177,21 @@ export function Projects() {
                     </div>
                   </div>
                   <h3 className="font-mono text-lg md:text-xl font-bold leading-tight">{project.title}</h3>
+                  <p className="mt-2 font-mono text-[10px] md:text-xs text-muted-foreground">
+                    ROLE: {project.role ?? project.category}
+                  </p>
                 </div>
 
                 <div className="p-4 md:p-5 flex flex-col flex-1 gap-4">
                   <p className={`text-sm leading-relaxed ${isExpanded ? "" : "line-clamp-3"}`}>{project.description}</p>
+
+                  <div className="border-2 border-foreground bg-background/70 p-3">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <Target className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                      <p className="font-mono text-[10px] font-bold uppercase tracking-wider">Recruiter Signal</p>
+                    </div>
+                    <p className="text-xs leading-relaxed">{project.recruiterTakeaway ?? caseStudy.result}</p>
+                  </div>
 
                   <div className="grid grid-cols-2 gap-2">
                     <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
@@ -160,6 +206,11 @@ export function Projects() {
                     <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
                       <span className="opacity-70">PERF:</span> {kpis.performance}
                     </div>
+                  </div>
+
+                  <div className="border border-foreground/40 px-2.5 py-2 bg-accent/10">
+                    <p className="font-mono text-[10px] font-bold text-accent mb-1">PROOF</p>
+                    <p className="text-xs leading-relaxed font-medium">{project.proof ?? kpis.coreImpact}</p>
                   </div>
 
                   <button
@@ -214,6 +265,10 @@ export function Projects() {
                   )}
 
                   <div className="flex flex-wrap gap-1.5">
+                    <span className="inline-flex items-center gap-1 border border-foreground/60 px-2 py-0.5 font-mono text-[10px] md:text-xs text-muted-foreground">
+                      <Code2 className="h-3 w-3" aria-hidden="true" />
+                      STACK
+                    </span>
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
@@ -227,8 +282,9 @@ export function Projects() {
                   <div className="grid grid-cols-1 gap-2 mt-auto pt-2">
                     <a
                       href={`/projects/${slug}`}
-                      className="w-full inline-flex items-center justify-center font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 hover:bg-foreground hover:text-background transition-colors"
+                      className="w-full inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 hover:bg-foreground hover:text-background transition-colors"
                     >
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                       DETAILS
                     </a>
                     <div className={`grid gap-2 ${project.link ? "grid-cols-2" : "grid-cols-1"}`}>
@@ -237,8 +293,9 @@ export function Projects() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
+                          className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
                         >
+                          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                           LIVE SITE
                         </a>
                       )}
@@ -247,12 +304,14 @@ export function Projects() {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 hover:bg-foreground hover:text-background transition-colors"
+                          className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 hover:bg-foreground hover:text-background transition-colors"
                         >
+                          <Github className="h-3.5 w-3.5" aria-hidden="true" />
                           SOURCE CODE
                         </a>
                       ) : (
-                        <span className="inline-flex items-center justify-center font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 text-muted-foreground bg-muted">
+                        <span className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 text-muted-foreground bg-muted">
+                          <LockKeyhole className="h-3.5 w-3.5" aria-hidden="true" />
                           PRIVATE
                         </span>
                       )}
