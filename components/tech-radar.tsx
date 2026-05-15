@@ -57,18 +57,21 @@ export function TechRadar() {
 
             <div className="grid lg:grid-cols-[minmax(0,1fr)_220px]">
               <div className="p-4 md:p-6">
-                <div className="relative mx-auto aspect-square max-w-[620px] border-2 border-foreground bg-background overflow-hidden">
-                  <div className="absolute inset-[8%] border-2 border-dashed border-foreground/30" />
-                  <div className="absolute inset-[23%] border-2 border-dashed border-foreground/30" />
-                  <div className="absolute inset-[38%] border-2 border-dashed border-accent/60" />
+                <div className="tech-radar-screen relative mx-auto aspect-square max-w-[620px] border-2 border-foreground bg-background overflow-hidden">
+                  <div className="absolute inset-[8%] rounded-full border-2 border-dashed border-foreground/30" />
+                  <div className="absolute inset-[23%] rounded-full border-2 border-dashed border-foreground/30" />
+                  <div className="absolute inset-[38%] rounded-full border-2 border-dashed border-accent/60" />
                   <div className="absolute left-1/2 top-0 bottom-0 border-l border-foreground/25" />
                   <div className="absolute top-1/2 left-0 right-0 border-t border-foreground/25" />
-                  <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 border-2 border-foreground bg-accent" />
+                  <div className="absolute left-1/2 top-1/2 z-10 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-foreground bg-accent" />
+                  <span className="radar-pulse radar-pulse-1" aria-hidden="true" />
+                  <span className="radar-pulse radar-pulse-2" aria-hidden="true" />
+                  <span className="radar-sweep" aria-hidden="true" />
 
                   {quadrants.map(({ label, Icon }, index) => (
                     <div
                       key={label}
-                      className={`absolute flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase text-muted-foreground ${
+                      className={`absolute z-20 flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase text-muted-foreground ${
                         index === 0
                           ? "left-3 top-3"
                           : index === 1
@@ -86,11 +89,11 @@ export function TechRadar() {
                   {activeStack.map((item, index) => (
                     <div
                       key={item.name}
-                      className="absolute -translate-x-1/2 -translate-y-1/2"
+                      className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
                       style={{ left: item.x, top: item.y }}
                     >
                       <div className="group relative">
-                        <span className="block h-5 w-5 border-2 border-foreground bg-accent shadow-[2px_2px_0_0_var(--foreground)]" />
+                        <span className="radar-blip block h-5 w-5 border-2 border-foreground bg-accent shadow-[2px_2px_0_0_var(--foreground)]" />
                         <span className="absolute left-6 top-1/2 -translate-y-1/2 whitespace-nowrap border-2 border-foreground bg-card px-2 py-1 font-mono text-[10px] font-black">
                           {String(index + 1).padStart(2, "0")} {item.name}
                         </span>
