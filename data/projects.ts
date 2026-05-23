@@ -59,17 +59,30 @@ export const projects: Project[] = [
     proof: "#1 Product of the Day on Unikorn",
     recruiterTakeaway: "Can turn a broad startup workflow into a usable production platform.",
     stage: "shipped",
-    award: {
-      label: "#1 Product of the Day",
-      platform: "Unikorn",
-      url: "https://unikorn.vn/p/lab68dev-platform?ref=embed-lab68dev-platform",
-      badge: {
-        src: "https://unikorn.vn/api/widgets/badge/lab68dev-platform/rank?theme=light&type=daily",
-        alt: "lab68dev Platform - Hang ngay",
-        width: 250,
-        height: 64,
+    awards: [
+      {
+        label: "#1 Product of the Day",
+        platform: "Unikorn",
+        url: "https://unikorn.vn/p/lab68studio?ref=embed-lab68studio",
+        badge: {
+          src: "https://unikorn.vn/api/widgets/badge/lab68studio/rank?theme=light&type=daily",
+          alt: "lab68studio - Hang ngay",
+          width: 250,
+          height: 64,
+        },
       },
-    },
+      {
+        label: "Featured on Unikorn",
+        platform: "Unikorn",
+        url: "https://unikorn.vn/p/lab68studio?ref=embed-lab68studio",
+        badge: {
+          src: "https://unikorn.vn/api/widgets/badge/lab68studio?theme=light",
+          alt: "lab68studio tren Unikorn.vn",
+          width: 256,
+          height: 64,
+        },
+      },
+    ],
     kpis: {
       users: "30+ users",
       launchTime: "Nov 2025",
@@ -143,10 +156,21 @@ export const projects: Project[] = [
     github: "https://github.com/DongDuong2001/pudo-code-system",
     highlighted: true,
     role: "Methodology Author / AI Workflow Designer",
-    proof: "#2 Product of the Day and #3 Product of the Week on Unikorn",
+    proof: "#1 on Forg, #2 Product of the Day and #3 Product of the Week on Unikorn",
     recruiterTakeaway: "Shows structured thinking, documentation quality, and AI-assisted engineering maturity.",
     stage: "shipped",
     awards: [
+      {
+        label: "1st Place on Forg",
+        platform: "Forg",
+        url: "https://forg.to/products/pudo",
+        badge: {
+          src: "https://forg.to/api/badges/launch-winner/pudo",
+          alt: "Pudo - 1st Place on Forg",
+          width: 200,
+          height: 64,
+        },
+      },
       {
         label: "#2 Product of the Day",
         platform: "Unikorn",
