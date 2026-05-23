@@ -231,7 +231,7 @@ export function Hero({ onNavigate }: HeroProps) {
                     Contact
                   </button>
                   <a
-                    href="/cv/Duong Phu Dong - Resume.pdf"
+                    href="/cv/DuongPhuDong_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
