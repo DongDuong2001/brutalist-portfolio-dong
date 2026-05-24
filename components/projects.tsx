@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import { ArrowUpRight, Code2, ExternalLink, Github, LockKeyhole, Rocket, Target, Trophy } from "lucide-react"
+import { ArrowUpRight, ChevronDown, Code2, ExternalLink, Github, LockKeyhole, Rocket, Trophy } from "lucide-react"
 
 import {
   projects,
@@ -135,7 +135,7 @@ export function Projects() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-          {filteredProjects.map((project, projectIndex) => {
+          {filteredProjects.map((project) => {
             const featured = project.year.includes("Current")
             const highlighted = Boolean(project.highlighted)
             const awards = getAwards(project)
@@ -143,124 +143,147 @@ export function Projects() {
             const caseStudy = getCaseStudy(project)
             const slug = slugifyProjectTitle(project.title)
             const isExpanded = expandedProject === project.title
-            const leadProject = activeFilter === "ALL" && highlighted && projectIndex < 3
+            const visibleTech = project.tech.slice(0, 4)
+            const hiddenTechCount = Math.max(project.tech.length - visibleTech.length, 0)
+            const activeProject = project.stage === "now-building" || featured
+            const statusLabel = project.stage === "now-building" ? "BUILDING" : featured ? "ACTIVE" : "SHIPPED"
 
             return (
               <article
                 key={project.title}
                 id={`project-${slug}`}
-                className={`group border-2 border-foreground bg-card flex flex-col transition-colors hover:bg-secondary ${
+                className={`group relative flex flex-col overflow-hidden border-2 border-foreground bg-card transition-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-secondary/55 hover:shadow-[4px_4px_0_0_var(--foreground)] ${
                   featured ? "ring-2 ring-accent ring-offset-2 ring-offset-background" : ""
-                } ${highlighted ? "border-l-4 border-l-accent" : ""} ${
-                  leadProject ? "xl:min-h-[620px]" : ""
-                }`}
+                } ${highlighted ? "border-l-4 border-l-accent" : ""}`}
               >
-                <div className="border-b-2 border-foreground p-4 md:p-5 bg-secondary">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="font-mono text-[10px] md:text-xs font-bold border-2 border-foreground px-2 py-0.5 bg-background shrink-0">
-                      {project.category}
-                    </span>
-                    <div className="flex flex-wrap items-center gap-2 justify-end">
-                      {highlighted && (
-                        <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold bg-foreground text-background px-2 py-0.5">
-                          <Trophy className="h-3 w-3" aria-hidden="true" />
-                          BEST PROJECT
-                        </span>
-                      )}
-                      {featured && (
-                        <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold bg-accent text-accent-foreground px-2 py-0.5">
-                          <Rocket className="h-3 w-3" aria-hidden="true" />
-                          ACTIVE
-                        </span>
-                      )}
-                      <span className="font-mono text-[10px] md:text-xs text-muted-foreground">{project.year}</span>
+                <div className="border-b-2 border-foreground bg-secondary/70 p-4 md:p-5">
+                  <div className="mb-3 flex items-start justify-between gap-3">
+                    <div className="flex min-w-0 flex-wrap items-center gap-2">
+                      <span className="border border-foreground/70 bg-background px-2 py-1 font-mono text-[10px] font-bold uppercase leading-none text-foreground">
+                        {project.category}
+                      </span>
+                      <span
+                        className={`inline-flex items-center gap-1 border px-2 py-1 font-mono text-[10px] font-bold uppercase leading-none ${
+                          activeProject
+                            ? "border-accent bg-accent text-accent-foreground"
+                            : "border-foreground/30 bg-card text-muted-foreground"
+                        }`}
+                      >
+                        {activeProject && <Rocket className="h-3 w-3" aria-hidden="true" />}
+                        {statusLabel}
+                      </span>
                     </div>
+                    <span className="shrink-0 pt-0.5 font-mono text-[10px] text-muted-foreground md:text-xs">
+                      {project.year}
+                    </span>
                   </div>
-                  <h3 className="font-mono text-lg md:text-xl font-bold leading-tight">{project.title}</h3>
-                  <p className="mt-2 font-mono text-[10px] md:text-xs text-muted-foreground">
-                    ROLE: {project.role ?? project.category}
-                  </p>
+
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <h3 className="font-mono text-lg font-bold leading-tight md:text-xl">{project.title}</h3>
+                      <p className="mt-2 font-mono text-[10px] uppercase text-muted-foreground md:text-xs">
+                        {project.role ?? project.category}
+                      </p>
+                    </div>
+                    {highlighted && (
+                      <span
+                        title="Highlighted project"
+                        aria-label="Highlighted project"
+                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center border-2 border-foreground bg-foreground text-background"
+                      >
+                        <Trophy className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="p-4 md:p-5 flex flex-col flex-1 gap-4">
-                  <p className={`text-sm leading-relaxed ${isExpanded ? "" : "line-clamp-3"}`}>{project.description}</p>
+                  <p className={`text-sm leading-relaxed text-foreground/90 ${isExpanded ? "" : "line-clamp-3"}`}>
+                    {project.description}
+                  </p>
 
-                  <div className="border-2 border-foreground bg-background/70 p-3">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <Target className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-                      <p className="font-mono text-[10px] font-bold uppercase tracking-wider">Recruiter Signal</p>
-                    </div>
-                    <p className="text-xs leading-relaxed">{project.recruiterTakeaway ?? caseStudy.result}</p>
+                  <div className="border-l-4 border-accent bg-secondary/35 px-3 py-2.5">
+                    <p className="font-mono text-[10px] font-bold uppercase text-muted-foreground">Impact</p>
+                    <p className="mt-1 text-sm font-medium leading-relaxed">
+                      {project.recruiterTakeaway ?? caseStudy.result}
+                    </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
-                      <span className="opacity-70">USERS:</span> {kpis.users}
+                  <div className="grid grid-cols-1 gap-3 border-y border-foreground/20 py-3 sm:grid-cols-2">
+                    <div>
+                      <p className="font-mono text-[10px] font-bold uppercase text-muted-foreground">Proof</p>
+                      <p className="mt-1 text-xs font-medium leading-relaxed">{project.proof ?? kpis.coreImpact}</p>
                     </div>
-                    <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
-                      <span className="opacity-70">LAUNCH:</span> {kpis.launchTime}
+                    <div>
+                      <p className="font-mono text-[10px] font-bold uppercase text-muted-foreground">Launch</p>
+                      <p className="mt-1 font-mono text-xs font-bold leading-relaxed">{kpis.launchTime}</p>
                     </div>
-                    <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
-                      <span className="opacity-70">IMPACT:</span> {kpis.coreImpact}
-                    </div>
-                    <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
-                      <span className="opacity-70">PERF:</span> {kpis.performance}
-                    </div>
-                  </div>
-
-                  <div className="border border-foreground/40 px-2.5 py-2 bg-accent/10">
-                    <p className="font-mono text-[10px] font-bold text-accent mb-1">PROOF</p>
-                    <p className="text-xs leading-relaxed font-medium">{project.proof ?? kpis.coreImpact}</p>
                   </div>
 
                   <button
+                    type="button"
                     onClick={() => setExpandedProject((prev) => (prev === project.title ? null : project.title))}
-                    className="tab-animated-btn self-start"
+                    aria-expanded={isExpanded}
+                    aria-controls={`project-case-study-${slug}`}
+                    className="flex min-h-10 w-full items-center justify-between gap-3 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold uppercase transition-colors hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
-                    <span>{isExpanded ? "HIDE CASE STUDY" : "OPEN CASE STUDY"}</span>
+                    <span>{isExpanded ? "Hide case study" : "Case study"}</span>
+                    <ChevronDown
+                      className={`h-4 w-4 shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                      aria-hidden="true"
+                    />
                   </button>
 
                   {isExpanded && (
-                    <div className="space-y-2 border-2 border-foreground p-3">
+                    <div id={`project-case-study-${slug}`} className="space-y-4 border-2 border-foreground p-3">
                       <div>
-                        <p className="font-mono text-[10px] font-bold text-accent mb-1">PROBLEM</p>
+                        <p className="font-mono text-[10px] font-bold text-accent mb-1">Problem</p>
                         <p className="text-xs leading-relaxed">{caseStudy.problem}</p>
                       </div>
                       <div>
-                        <p className="font-mono text-[10px] font-bold text-accent mb-1">BUILD</p>
+                        <p className="font-mono text-[10px] font-bold text-accent mb-1">Build</p>
                         <p className="text-xs leading-relaxed">{caseStudy.build}</p>
                       </div>
                       <div>
-                        <p className="font-mono text-[10px] font-bold text-accent mb-1">RESULT</p>
+                        <p className="font-mono text-[10px] font-bold text-accent mb-1">Result</p>
                         <p className="text-xs leading-relaxed">{caseStudy.result}</p>
                       </div>
-                    </div>
-                  )}
 
-                  {awards.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {awards.map((award, awardIndex) => (
-                        <a
-                          key={`${award.platform}-${award.label}-${awardIndex}`}
-                          href={award.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center self-start border-2 border-foreground bg-accent/10 px-3 py-1.5 font-mono text-[10px] md:text-xs font-bold hover:bg-accent hover:text-accent-foreground transition-colors"
-                        >
-                          {award.badge ? (
-                            <img
-                              src={award.badge.src}
-                              alt={award.badge.alt}
-                              width={award.badge.width}
-                              height={award.badge.height}
-                              className="h-8 w-auto max-w-full"
-                              loading="lazy"
-                            />
-                          ) : (
-                            `${award.label} - ${award.platform}`
-                          )}
-                        </a>
-                      ))}
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
+                          <span className="text-muted-foreground">Users:</span> {kpis.users}
+                        </div>
+                        <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
+                          <span className="text-muted-foreground">Performance:</span> {kpis.performance}
+                        </div>
+                      </div>
+
+                      {awards.length > 0 && (
+                        <div className="flex flex-wrap gap-2 border-t border-foreground/20 pt-3">
+                          {awards.map((award, awardIndex) => (
+                            <a
+                              key={`${award.platform}-${award.label}-${awardIndex}`}
+                              href={award.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center self-start border-2 border-foreground bg-accent/10 px-3 py-1.5 font-mono text-[10px] font-bold transition-colors hover:bg-accent hover:text-accent-foreground md:text-xs"
+                            >
+                              {award.badge ? (
+                                <img
+                                  src={award.badge.src}
+                                  alt={award.badge.alt}
+                                  width={award.badge.width}
+                                  height={award.badge.height}
+                                  className="h-8 w-auto max-w-full"
+                                  loading="lazy"
+                                />
+                              ) : (
+                                `${award.label} - ${award.platform}`
+                              )}
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -269,7 +292,7 @@ export function Projects() {
                       <Code2 className="h-3 w-3" aria-hidden="true" />
                       STACK
                     </span>
-                    {project.tech.map((tech) => (
+                    {visibleTech.map((tech) => (
                       <span
                         key={tech}
                         className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] md:text-xs text-muted-foreground"
@@ -277,45 +300,53 @@ export function Projects() {
                         {tech}
                       </span>
                     ))}
+                    {hiddenTechCount > 0 && (
+                      <span className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground md:text-xs">
+                        +{hiddenTechCount}
+                      </span>
+                    )}
                   </div>
 
-                  <div className="grid grid-cols-1 gap-2 mt-auto pt-2">
+                  <div className="mt-auto flex items-center gap-2 pt-2">
                     <a
                       href={`/projects/${slug}`}
-                      className="w-full inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 hover:bg-foreground hover:text-background transition-colors"
+                      className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 border-2 border-foreground px-3 py-2.5 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background"
                     >
                       <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                       DETAILS
                     </a>
-                    <div className={`grid gap-2 ${project.link ? "grid-cols-2" : "grid-cols-1"}`}>
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
-                        >
-                          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-                          LIVE SITE
-                        </a>
-                      )}
-                      {project.github ? (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 hover:bg-foreground hover:text-background transition-colors"
-                        >
-                          <Github className="h-3.5 w-3.5" aria-hidden="true" />
-                          SOURCE CODE
-                        </a>
-                      ) : (
-                        <span className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold border-2 border-foreground px-3 py-2.5 text-muted-foreground bg-muted">
-                          <LockKeyhole className="h-3.5 w-3.5" aria-hidden="true" />
-                          PRIVATE
-                        </span>
-                      )}
-                    </div>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Live site"
+                        aria-label={`${project.title} live site`}
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-accent text-accent-foreground transition-colors hover:bg-foreground hover:text-background"
+                      >
+                        <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    )}
+                    {project.github ? (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Source code"
+                        aria-label={`${project.title} source code`}
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground transition-colors hover:bg-foreground hover:text-background"
+                      >
+                        <Github className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <span
+                        title="Private repository"
+                        aria-label={`${project.title} private repository`}
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-muted text-muted-foreground"
+                      >
+                        <LockKeyhole className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                    )}
                   </div>
                 </div>
               </article>
