@@ -55,7 +55,7 @@ export function SideNavigation({
   return (
     <>
       {/* Desktop Sidebar */}
-      <nav className="hidden md:flex fixed left-0 top-0 bottom-0 w-[200px] border-r-2 border-foreground bg-background z-50 flex-col">
+      <nav className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[200px] border-r-2 border-foreground bg-background z-50 flex-col">
         {/* Logo */}
         <div className="border-b-2 border-foreground p-4 h-16 flex items-center">
           <span className="font-mono text-sm font-bold tracking-tight truncate">
@@ -104,7 +104,7 @@ export function SideNavigation({
       </nav>
 
       {/* Mobile Floating Menu */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <AnimatePresence>
           {mobileMenuOpen && (
             <>
@@ -121,7 +121,7 @@ export function SideNavigation({
 
               <motion.nav
                 aria-label="Mobile navigation"
-                className="fixed bottom-20 left-3 right-3 z-50 border-2 border-foreground bg-card shadow-[5px_5px_0_0_var(--foreground)]"
+                className="fixed bottom-20 left-3 right-3 z-50 max-h-[calc(100dvh-6.5rem)] overflow-y-auto border-2 border-foreground bg-card shadow-[5px_5px_0_0_var(--foreground)] sm:left-auto sm:right-5 sm:w-[26rem]"
                 initial={{ opacity: 0, y: 18, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 12, scale: 0.98 }}
@@ -142,21 +142,21 @@ export function SideNavigation({
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 p-3">
+                <div className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-4">
                   {sections.map((section, index) => {
                     const isActive = activeIndex === index
                     return (
                       <button
                         key={section.id}
                         onClick={() => handleMobileNavigate(index)}
-                        className={`relative min-h-12 border-2 border-foreground px-3 py-2 text-left transition-colors ${
+                        className={`relative min-h-12 border-2 border-foreground px-2 py-2 text-left transition-colors sm:min-h-14 ${
                           isActive
                             ? "bg-accent text-accent-foreground"
                             : "bg-background hover:bg-secondary"
                         }`}
                       >
                         <span className="block font-mono text-[9px] font-bold opacity-70">{section.shortcut}</span>
-                        <span className="block font-mono text-[10px] font-black uppercase leading-tight">{section.label}</span>
+                        <span className="block break-words font-mono text-[10px] font-black uppercase leading-tight">{section.label}</span>
                         {isActive && (
                           <motion.span
                             layoutId="mobileMenuActive"
