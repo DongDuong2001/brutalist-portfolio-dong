@@ -140,7 +140,7 @@ export function Hero({ onNavigate }: HeroProps) {
   }, [])
 
   return (
-    <section id="home" className="relative h-[calc(100dvh-3.5rem)] md:h-screen overflow-hidden">
+    <section id="home" className="relative min-h-[calc(100dvh-3.5rem)] overflow-hidden lg:h-screen">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 select-none">
         <div className="absolute inset-0 opacity-35">
           <span className="absolute left-[12%] top-0 bottom-0 border-l border-accent/20" />
@@ -153,7 +153,7 @@ export function Hero({ onNavigate }: HeroProps) {
         </div>
       </div>
 
-      <div className="container relative z-10 mx-auto flex h-full min-h-0 px-4 py-4 md:py-5 lg:py-6">
+      <div className="container relative z-10 mx-auto flex min-h-[calc(100dvh-3.5rem)] px-4 py-4 sm:py-5 lg:h-full lg:min-h-0 lg:py-6">
         <div className="grid min-h-0 w-full items-center gap-4 lg:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)] lg:gap-6">
           <article className="relative overflow-hidden border-2 border-foreground bg-card shadow-[6px_6px_0_0_var(--foreground)] lg:border-4">
             <div className="grid grid-cols-[1fr_auto] border-b-2 border-foreground">
@@ -169,10 +169,10 @@ export function Hero({ onNavigate }: HeroProps) {
               </div>
             </div>
 
-            <div className="relative grid gap-3 p-3 md:gap-4 md:p-4 lg:grid-cols-[minmax(0,1fr)_130px] xl:grid-cols-[minmax(0,1fr)_150px]">
+            <div className="relative grid gap-3 p-3 sm:p-4 lg:grid-cols-[minmax(0,1fr)_130px] xl:grid-cols-[minmax(0,1fr)_150px]">
               <div className="space-y-3 md:space-y-4">
                 <div>
-                  <h1 className="font-mono text-[2.45rem] font-black uppercase leading-[0.88] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl">
+                  <h1 className="font-mono text-[clamp(2.25rem,12vw,4.25rem)] font-black uppercase leading-[0.9] tracking-tight lg:text-[clamp(3.4rem,5.2vw,4.5rem)] xl:text-7xl">
                     Full-stack
                     <span className="block text-accent">Product</span>
                     Developer
@@ -188,14 +188,14 @@ export function Hero({ onNavigate }: HeroProps) {
                   ))}
                 </div>
 
-                <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2">
+                <div className="grid grid-cols-1 gap-2 min-[430px]:grid-cols-[1fr_auto_1fr_auto_1fr] min-[430px]:items-center">
                   {routeStops.map((stop, index) => (
                     <div key={stop} className="contents">
                       <div className="border-2 border-foreground bg-secondary px-2 py-1.5 text-center">
                         <p className="font-mono text-[10px] font-black uppercase">{stop}</p>
                       </div>
                       {index < routeStops.length - 1 && (
-                        <div className="h-0.5 w-5 bg-foreground md:w-8" aria-hidden="true" />
+                        <div className="hidden h-0.5 w-5 bg-foreground min-[430px]:block md:w-8" aria-hidden="true" />
                       )}
                     </div>
                   ))}
@@ -205,7 +205,7 @@ export function Hero({ onNavigate }: HeroProps) {
                   I build production-ready web products with clear UX, reliable backend systems, and launch-focused execution while studying Software Engineering at RMIT.
                 </p>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 gap-2 min-[430px]:grid-cols-3">
                   {heroStats.map((stat) => (
                     <div key={stat.label} className="border-2 border-foreground bg-background/70 p-2 md:p-3">
                       <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">{stat.label}</p>
@@ -218,14 +218,14 @@ export function Hero({ onNavigate }: HeroProps) {
                 <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
                   <button
                     onClick={() => onNavigate?.(1)}
-                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-foreground px-3 py-2 font-mono text-xs font-bold text-background transition-colors hover:bg-accent hover:text-accent-foreground md:px-4 md:text-sm"
+                    className="inline-flex min-h-10 items-center justify-center gap-2 border-2 border-foreground bg-foreground px-3 py-2 font-mono text-xs font-bold text-background transition-colors hover:bg-accent hover:text-accent-foreground md:px-4 md:text-sm"
                   >
                     <Rocket className="h-4 w-4" aria-hidden="true" />
                     View Work
                   </button>
                   <button
                     onClick={() => onNavigate?.(7)}
-                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
+                    className="inline-flex min-h-10 items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
                   >
                     <Mail className="h-4 w-4" aria-hidden="true" />
                     Contact
@@ -234,7 +234,7 @@ export function Hero({ onNavigate }: HeroProps) {
                     href="/cv/DuongPhuDong_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
+                    className="inline-flex min-h-10 items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
                   >
                     <Download className="h-4 w-4" aria-hidden="true" />
                     CV
@@ -243,7 +243,7 @@ export function Hero({ onNavigate }: HeroProps) {
                     href="/api/project-index?style=harvard"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
+                    className="inline-flex min-h-10 items-center justify-center gap-2 border-2 border-foreground bg-card px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background md:px-4 md:text-sm"
                   >
                     <FileText className="h-4 w-4" aria-hidden="true" />
                     PDF
@@ -277,7 +277,7 @@ export function Hero({ onNavigate }: HeroProps) {
             </div>
           </article>
 
-          <aside className="hidden max-h-[calc(100dvh-3rem)] overflow-hidden border-2 border-foreground bg-card lg:block">
+          <aside className="border-2 border-foreground bg-card lg:max-h-[calc(100dvh-3rem)] lg:overflow-hidden">
             <div className="flex items-center justify-between gap-3 border-b-2 border-foreground bg-foreground px-3 py-2.5 text-background">
               <span className="font-mono text-xs font-bold uppercase tracking-wider">Signal Manifest</span>
               <span className="font-mono text-[10px] font-bold">
@@ -286,7 +286,7 @@ export function Hero({ onNavigate }: HeroProps) {
             </div>
 
             <div className="p-3 xl:p-4">
-              <div className="mb-3 grid gap-1.5">
+              <div className="mb-3 grid gap-1.5 sm:grid-cols-2 lg:grid-cols-1">
                 {dossierRows.map(({ label, value, Icon }) => (
                   <div key={label} className="grid grid-cols-[auto_1fr] gap-2.5 border-2 border-foreground bg-background/70 p-2">
                     <span className="inline-flex h-7 w-7 items-center justify-center border-2 border-foreground bg-secondary">
@@ -336,7 +336,7 @@ export function Hero({ onNavigate }: HeroProps) {
                 ))}
               </div>
 
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 gap-2 min-[430px]:grid-cols-3">
                 {socialLinks.map(({ label, href, Icon }) => (
                   <a
                     key={label}
