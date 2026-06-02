@@ -100,14 +100,14 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-dvh md:h-screen flex bg-background text-foreground selection:bg-accent selection:text-accent-foreground overflow-hidden">
+    <div className="min-h-dvh lg:h-screen flex bg-background text-foreground selection:bg-accent selection:text-accent-foreground overflow-hidden">
       <SideNavigation
         sections={sections}
         activeIndex={activeIndex}
         onNavigate={navigateTo}
       />
 
-      <main className="flex-1 min-w-0 h-dvh md:h-screen overflow-hidden md:ml-[200px] pb-14 md:pb-0">
+      <main className="flex-1 min-w-0 h-dvh lg:h-screen overflow-hidden lg:ml-[200px] pb-14 lg:pb-0">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={activeIndex}
