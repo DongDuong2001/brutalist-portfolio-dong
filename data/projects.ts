@@ -25,6 +25,11 @@ export type ProjectCaseStudy = {
 
 export type ProjectStage = "now-building" | "shipped"
 
+export type Contributor = {
+  name: string
+  github: string
+}
+
 export type Project = {
   title: string
   category: string
@@ -42,6 +47,7 @@ export type Project = {
   kpis?: ProjectKpis
   caseStudy?: ProjectCaseStudy
   stage?: ProjectStage
+  contributors?: Contributor[]
 }
 
 export const projects: Project[] = [
@@ -375,6 +381,33 @@ export const projects: Project[] = [
     proof: "Meta certificate capstone",
     recruiterTakeaway: "Validates frontend fundamentals and API-driven UI work.",
     stage: "shipped",
+  },
+  {
+    title: "SUKAJAN STORE",
+    category: "E-COMMERCE",
+    year: "2026",
+    description:
+      "A high-performance e-commerce storefront for premium Sukajan (Japanese souvenir jackets), featuring interactive catalog browsing, product filtering, responsive shopping cart workflows, and secure checkout integration.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "E-commerce"],
+    link: "https://sukajanrandomphitruong.com/",
+    role: "Full-stack Developer / Project Lead",
+    proof: "Production storefront shipped for client launch",
+    stage: "shipped",
+    contributors: [
+      { name: "Huynh Quang Dong", github: "https://github.com/quangdong26" },
+      { name: "Ho Quang Huy", github: "https://github.com/HoHuy2402" },
+    ],
+    kpis: {
+      users: "Production ready",
+      launchTime: "Jun 2026",
+      coreImpact: "Live e-commerce platform",
+      performance: "SEO-optimized storefront",
+    },
+    caseStudy: {
+      problem: "The client needed a specialized e-commerce storefront for selling premium Sukajan souvenir jackets with rich visual showcase and intuitive buying flow.",
+      build: "Designed and implemented a responsive catalog, fast filtering, localized shopping experience, and order placement workflow.",
+      result: "Shipped the production platform on a custom domain, optimizing loading times and user retention during catalog browsing.",
+    },
   },
 ]
 
