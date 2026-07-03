@@ -44,6 +44,7 @@ const heroStats = [
 
 const dossierRows = [
   { label: "Role", value: "Full-stack Product Developer", Icon: BriefcaseBusiness },
+  { label: "Target", value: "Engineering Management", Icon: Users },
   { label: "Location", value: "Ho Chi Minh City, Vietnam", Icon: MapPin },
   { label: "Education", value: "RMIT Software Engineering", Icon: GraduationCap },
   { label: "Status", value: "Available for work", Icon: CheckCircle2 },
