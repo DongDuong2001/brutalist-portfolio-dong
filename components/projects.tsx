@@ -258,6 +258,25 @@ export function Projects() {
                         </div>
                       </div>
 
+                      {project.contributors && project.contributors.length > 0 && (
+                        <div className="border-t border-foreground/20 pt-3">
+                          <p className="font-mono text-[10px] font-bold text-accent mb-1">Contributors</p>
+                          <div className="flex flex-wrap gap-2">
+                            {project.contributors.map((c) => (
+                              <a
+                                key={c.github}
+                                href={c.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-mono text-[10px] border border-foreground/30 px-2 py-0.5 hover:bg-foreground hover:text-background transition-colors"
+                              >
+                                {c.name}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       {awards.length > 0 && (
                         <div className="flex flex-wrap gap-2 border-t border-foreground/20 pt-3">
                           {awards.map((award, awardIndex) => (
