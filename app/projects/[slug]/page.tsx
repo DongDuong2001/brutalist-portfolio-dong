@@ -220,6 +220,25 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        {project.contributors && project.contributors.length > 0 && (
+          <section className="border-2 border-foreground p-4 md:p-6 bg-card space-y-3">
+            <h2 className="font-mono text-xl md:text-2xl font-bold">Contributors</h2>
+            <div className="flex flex-wrap gap-2">
+              {project.contributors.map((c) => (
+                <a
+                  key={c.github}
+                  href={c.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs font-bold border-2 border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-colors bg-background"
+                >
+                  {c.name}
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </main>
   )
