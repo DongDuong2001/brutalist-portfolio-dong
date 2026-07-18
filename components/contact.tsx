@@ -29,7 +29,7 @@ type ContactLink = {
 
 const hiringSignals = [
   { label: "Location", value: "Ho Chi Minh City", Icon: MapPin },
-  { label: "Education", value: "RMIT Software Engineering", Icon: GraduationCap },
+  { label: "Education", value: "RMIT Vietnam (Graduating 2027)", Icon: GraduationCap },
   { label: "Status", value: "Available for work", Icon: BadgeCheck },
   { label: "Strongest proof", value: "#1 launch on Forg + Unikorn", Icon: Trophy },
 ]
@@ -51,7 +51,7 @@ const primaryLinks: ContactLink[] = [
   },
   {
     label: "Resume",
-    href: "/cv/Duong Phu Dong - Resume.pdf",
+    href: "/cv/DuongPhuDong_Resume.pdf",
     detail: "PDF profile",
     Icon: FileText,
   },
@@ -153,11 +153,11 @@ export function Contact() {
   )
 
   return (
-    <section id="contact" className="min-h-[calc(100dvh-3.5rem)] md:min-h-full">
-      <div className="container mx-auto px-4 py-10 md:py-16">
+    <section id="contact" className="scroll-mt-20">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="mb-6 md:mb-8">
           <div className="border-2 border-foreground p-2 inline-block">
-            <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"} CONTACT</h2>
+            <h2 className="font-mono text-2xl md:text-4xl font-bold">{">"} CONTACT</h2>
           </div>
           <p className="mt-3 font-mono text-xs md:text-sm text-muted-foreground max-w-3xl leading-relaxed">
             Fast paths for recruiters and collaborators. LinkedIn and email are the cleanest ways to start a conversation.
