@@ -1,130 +1,95 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-
+import { useState, useEffect } from "react"
 import { Hero } from "@/components/hero"
-import { Education } from "@/components/education"
+import { Studio } from "@/components/studio"
 import { Projects } from "@/components/projects"
-import { Activity } from "@/components/activity"
-import { Interests } from "@/components/interests"
+import { Education } from "@/components/education"
 import { Contact } from "@/components/contact"
 import { Skills } from "@/components/skills"
-import { TechRadar } from "@/components/tech-radar"
 import { SideNavigation } from "@/components/navigation"
 import { CommandPalette } from "@/components/command-palette"
+import { Footer } from "@/components/footer"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
-  { id: "projects", label: "PROJECTS", shortcut: "02" },
-  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "03" },
-  { id: "tech-radar", label: "TECH RADAR", shortcut: "04" },
+  { id: "studio", label: "STUDIO", shortcut: "02" },
+  { id: "projects", label: "PROJECTS", shortcut: "03" },
+  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "04" },
   { id: "education", label: "EDUCATION", shortcut: "05" },
-  { id: "activity", label: "ACTIVITY", shortcut: "06" },
-  { id: "interests", label: "INTERESTS", shortcut: "07" },
-  { id: "contact", label: "CONTACT", shortcut: "08" },
+  { id: "contact", label: "CONTACT", shortcut: "06" },
 ]
 
-const panelVariants = {
-  enter: (direction: number) => ({
-    opacity: 0,
-    y: direction >= 0 ? 30 : -30,
-  }),
-  center: {
-    opacity: 1,
-    y: 0,
-  },
-  exit: (direction: number) => ({
-    opacity: 0,
-    y: direction >= 0 ? -30 : 30,
-  }),
-}
-
 export default function Home() {
-  const [[activeIndex, direction], setPage] = useState([0, 0])
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  const navigateTo = useCallback((index: number) => {
-    setPage(([prev]) => [index, index > prev ? 1 : -1])
-  }, [])
-
-  // Keyboard navigation (1-8 keys)
+  // Track scroll position to update active index
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
-      const num = parseInt(e.key)
-      if (num >= 1 && num <= sections.length) {
-        navigateTo(num - 1)
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 120
+      for (let i = 0; i < sections.length; i++) {
+        const el = document.getElementById(sections[i].id)
+        if (el) {
+          const top = el.offsetTop
+          const height = el.offsetHeight
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveIndex(i)
+            break
+          }
+        }
       }
     }
-    window.addEventListener("keydown", handleKey)
-    return () => window.removeEventListener("keydown", handleKey)
-  }, [navigateTo])
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-  // Sync URL hash
+  // Sync URL hash (optional, only when activeIndex changes and window is not scrolling manually)
   useEffect(() => {
     window.history.replaceState(null, "", `#${sections[activeIndex].id}`)
   }, [activeIndex])
 
-  // Handle initial hash on mount
-  useEffect(() => {
-    const hash = window.location.hash.replace("#", "")
-    if (hash) {
-      const index = sections.findIndex((s) => s.id === hash)
-      if (index >= 0) setPage([index, 0])
-    }
-  }, [])
+  const navigateTo = (index: number) => {
+    setActiveIndex(index)
+    const element = document.getElementById(sections[index].id)
+    if (element) {
+      const offset = 80
+      const bodyRect = document.body.getBoundingClientRect().top
+      const elementRect = element.getBoundingClientRect().top
+      const elementPosition = elementRect - bodyRect
+      const offsetPosition = elementPosition - offset
 
-  const renderSection = () => {
-    switch (activeIndex) {
-      case 0:
-        return (
-          <Hero onNavigate={navigateTo} />
-        )
-      case 1:
-        return <Projects />
-      case 2:
-        return <Skills />
-      case 3:
-        return <TechRadar />
-      case 4:
-        return <Education />
-      case 5:
-        return <Activity />
-      case 6:
-        return <Interests />
-      case 7:
-        return <Contact />
-      default:
-        return <Hero onNavigate={navigateTo} />
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      })
     }
   }
 
   return (
-    <div className="min-h-dvh lg:h-screen flex bg-background text-foreground selection:bg-accent selection:text-accent-foreground overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
       <SideNavigation
         sections={sections}
         activeIndex={activeIndex}
         onNavigate={navigateTo}
       />
 
-      <main className="flex-1 min-w-0 h-dvh lg:h-screen overflow-hidden lg:ml-[200px] pb-14 lg:pb-0">
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={activeIndex}
-            custom={direction}
-            variants={panelVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="h-full overflow-y-auto overflow-x-hidden"
-          >
-            {renderSection()}
-          </motion.div>
-        </AnimatePresence>
-
-        <CommandPalette sections={sections} onNavigate={navigateTo} />
+      <main className="pt-16 max-w-7xl mx-auto px-4 md:px-8 space-y-16 pb-16">
+        <Hero onNavigate={navigateTo} />
+        <hr className="border-t-2 border-foreground/15 my-8" />
+        <Studio />
+        <hr className="border-t-2 border-foreground/15 my-8" />
+        <Projects />
+        <hr className="border-t-2 border-foreground/15 my-8" />
+        <Skills />
+        <hr className="border-t-2 border-foreground/15 my-8" />
+        <Education />
+        <hr className="border-t-2 border-foreground/15 my-8" />
+        <Contact />
       </main>
+
+      <Footer />
+
+      <CommandPalette sections={sections} onNavigate={navigateTo} />
     </div>
   )
 }
