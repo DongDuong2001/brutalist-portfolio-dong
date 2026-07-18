@@ -52,6 +52,36 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "FORTIFY KITCHEN",
+    category: "WEB APP / SYSTEM DESIGN",
+    year: "2026",
+    description:
+      "A modern kitchen operations and inventory platform. Currently in active maintenance and hotfix stage.",
+    tech: ["Next.js", "System Design", "Database Design", "Backend APIs"],
+    link: "https://fortifykitchen.vercel.app/",
+    highlighted: true,
+    role: "System Architect",
+    proof: "Active live MVP (Maintenance phase)",
+    recruiterTakeaway: "Designed the end-to-end system architecture for robust order management and reliable performance.",
+    stage: "shipped",
+    contributors: [
+      { name: "Duong Phu Dong", github: "https://github.com/DongDuong2001" },
+      { name: "Hao Vu", github: "#" },
+      { name: "Thu Tran", github: "#" },
+    ],
+    kpis: {
+      users: "Beta users",
+      launchTime: "Jul 2026",
+      coreImpact: "Streamlined order workflows",
+      performance: "Highly optimized database queries",
+    },
+    caseStudy: {
+      problem: "Kitchen staff needed a real-time, low-latency interface to manage tickets, orders, and ingredients without data sync lag.",
+      build: "Designed system architecture using decoupled components, optimized backend schemas, and structured state flows.",
+      result: "Shipped a responsive, highly available platform that is currently serving active maintenance traffic.",
+    },
+  },
+  {
     title: "LAB68DEV PLATFORM",
     category: "STARTUP CREATOR PROJECT",
     year: "2025 - Current",
@@ -391,22 +421,22 @@ export const projects: Project[] = [
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "E-commerce"],
     link: "https://sukajanrandomphitruong.com/",
     role: "Full-stack Developer / Project Lead",
-    proof: "Production storefront shipped for client launch",
+    proof: "5,700+ unique visitors & 13.5K+ page views within 30 days of launch",
     stage: "shipped",
     contributors: [
       { name: "Huynh Quang Dong", github: "https://github.com/quangdong26" },
       { name: "Ho Quang Huy", github: "https://github.com/HoHuy2402" },
     ],
     kpis: {
-      users: "Production ready",
+      users: "5,700+ unique visitors",
       launchTime: "Jun 2026",
-      coreImpact: "Live e-commerce platform",
-      performance: "SEO-optimized storefront",
+      coreImpact: "13,500+ page views",
+      performance: "900+ Instagram organic referrals",
     },
     caseStudy: {
       problem: "The client needed a specialized e-commerce storefront for selling premium Sukajan souvenir jackets with rich visual showcase and intuitive buying flow.",
       build: "Designed and implemented a responsive catalog, fast filtering, localized shopping experience, and order placement workflow.",
-      result: "Shipped the production platform on a custom domain, optimizing loading times and user retention during catalog browsing.",
+      result: "Shipped the platform to production, successfully securing 5,700+ unique visitors and 13.5K+ page views within the first month.",
     },
   },
 ]
