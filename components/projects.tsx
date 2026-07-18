@@ -184,6 +184,7 @@ export function Projects() {
                     {highlighted && (
                       <span
                         title="Highlighted project"
+                        role="img"
                         aria-label="Highlighted project"
                         className="inline-flex h-8 w-8 shrink-0 items-center justify-center border-2 border-foreground bg-foreground text-background"
                       >
@@ -282,6 +283,7 @@ export function Projects() {
                     <a
                       href={`/projects/${slug}`}
                       className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background"
+                      aria-label={`View details of project ${project.title}`}
                     >
                       <ArrowUpRight className="h-3.5 w-3.5" />
                       DETAILS
@@ -292,6 +294,7 @@ export function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-accent text-accent-foreground transition-colors hover:bg-foreground hover:text-background"
+                        aria-label={`Visit live website of project ${project.title}`}
                       >
                         <ExternalLink className="h-4 w-4" />
                       </a>
@@ -302,6 +305,7 @@ export function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground transition-colors hover:bg-foreground hover:text-background"
+                        aria-label={`Visit GitHub repository of project ${project.title}`}
                       >
                         <Github className="h-4 w-4" />
                       </a>
