@@ -75,19 +75,18 @@ export function Projects() {
   }
 
   const getKpis = (project: Project): ProjectKpis => project.kpis ?? DEFAULT_KPIS
-
   const getCaseStudy = (project: Project): ProjectCaseStudy => project.caseStudy ?? DEFAULT_CASE_STUDY
 
   return (
-    <section id="projects">
-      <div className="container mx-auto px-4 py-12 md:py-20">
+    <section id="projects" className="scroll-mt-20">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6 md:mb-10">
           <div className="self-start">
             <div className="border-2 border-foreground p-2 inline-block">
-              <h2 className="font-mono text-3xl md:text-5xl lg:text-6xl font-bold">{">"}  PROJECTS</h2>
+              <h2 className="font-mono text-2xl md:text-4xl font-bold">{">"} PROJECTS</h2>
             </div>
             <p className="mt-3 font-mono text-xs md:text-sm text-muted-foreground max-w-3xl leading-relaxed">
-              Proof-first case studies for fast recruiter scanning: role, problem, build, result, stack, and links.
+              Product case studies: role, problem, build, result, stack, and links.
             </p>
           </div>
 
@@ -96,15 +95,12 @@ export function Projects() {
               href="/api/project-index"
               target="_blank"
               rel="noopener noreferrer"
-              className="tab-animated-btn"
+              className="border-2 border-foreground px-3 py-1 font-mono text-xs font-bold hover:bg-secondary transition-colors"
             >
-              <span>PROJECT INDEX PDF</span>
+              PROJECT INDEX PDF
             </a>
-            <div className="border-2 md:border-4 border-foreground bg-accent px-4 md:px-6 py-2 md:py-3 inline-block">
-              <p className="font-mono text-sm md:text-base font-bold text-accent-foreground">
-                {filteredProjects.length} PROJECT{filteredProjects.length !== 1 && "S"}
-                {activeFilter !== "ALL" && ` IN ${activeFilter}`}
-              </p>
+            <div className="border-2 border-foreground bg-accent px-4 py-2 inline-block text-accent-foreground font-mono text-xs font-bold">
+              {filteredProjects.length} PROJECT{filteredProjects.length !== 1 && "S"}
             </div>
           </div>
         </div>
@@ -120,21 +116,21 @@ export function Projects() {
           ))}
         </div>
 
-        <div className="flex gap-2 mb-8 md:mb-10 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap md:overflow-visible md:pb-0 scrollbar-hide">
+        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
           {CATEGORIES.map((category) => (
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`tab-animated-btn whitespace-nowrap shrink-0 md:shrink ${
-                activeFilter === category ? "tab-animated-btn-active" : ""
+              className={`border-2 border-foreground px-3 py-1 font-mono text-xs font-bold transition-all ${
+                activeFilter === category ? "bg-accent text-accent-foreground" : "bg-card hover:bg-secondary"
               }`}
             >
-              <span>{category}</span>
+              {category}
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project) => {
             const featured = project.year.includes("Current")
             const highlighted = Boolean(project.highlighted)
@@ -202,14 +198,14 @@ export function Projects() {
                     {project.description}
                   </p>
 
-                  <div className="border-l-4 border-accent bg-secondary/35 px-3 py-2.5">
+                  <div className="border-l-4 border-accent bg-secondary/35 px-3 py-2">
                     <p className="font-mono text-[10px] font-bold uppercase text-muted-foreground">Impact</p>
-                    <p className="mt-1 text-sm font-medium leading-relaxed">
+                    <p className="mt-1 text-xs font-medium leading-relaxed">
                       {project.recruiterTakeaway ?? caseStudy.result}
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-3 border-y border-foreground/20 py-3 sm:grid-cols-2">
+                  <div className="grid grid-cols-2 gap-3 border-y border-foreground/20 py-2.5">
                     <div>
                       <p className="font-mono text-[10px] font-bold uppercase text-muted-foreground">Proof</p>
                       <p className="mt-1 text-xs font-medium leading-relaxed">{project.proof ?? kpis.coreImpact}</p>
@@ -223,19 +219,14 @@ export function Projects() {
                   <button
                     type="button"
                     onClick={() => setExpandedProject((prev) => (prev === project.title ? null : project.title))}
-                    aria-expanded={isExpanded}
-                    aria-controls={`project-case-study-${slug}`}
-                    className="flex min-h-10 w-full items-center justify-between gap-3 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold uppercase transition-colors hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    className="flex min-h-10 w-full items-center justify-between gap-3 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold uppercase hover:bg-foreground hover:text-background transition-colors"
                   >
                     <span>{isExpanded ? "Hide case study" : "Case study"}</span>
-                    <ChevronDown
-                      className={`h-4 w-4 shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`}
-                      aria-hidden="true"
-                    />
+                    <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
                   </button>
 
                   {isExpanded && (
-                    <div id={`project-case-study-${slug}`} className="space-y-4 border-2 border-foreground p-3">
+                    <div className="space-y-4 border-2 border-foreground p-3 bg-secondary/5">
                       <div>
                         <p className="font-mono text-[10px] font-bold text-accent mb-1">Problem</p>
                         <p className="text-xs leading-relaxed">{caseStudy.problem}</p>
@@ -249,22 +240,13 @@ export function Projects() {
                         <p className="text-xs leading-relaxed">{caseStudy.result}</p>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
-                          <span className="text-muted-foreground">Users:</span> {kpis.users}
-                        </div>
-                        <div className="border border-foreground/30 px-2.5 py-1.5 font-mono text-[10px]">
-                          <span className="text-muted-foreground">Performance:</span> {kpis.performance}
-                        </div>
-                      </div>
-
                       {project.contributors && project.contributors.length > 0 && (
                         <div className="border-t border-foreground/20 pt-3">
                           <p className="font-mono text-[10px] font-bold text-accent mb-1">Contributors</p>
                           <div className="flex flex-wrap gap-2">
                             {project.contributors.map((c) => (
                               <a
-                                key={c.github}
+                                key={c.name}
                                 href={c.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -276,62 +258,32 @@ export function Projects() {
                           </div>
                         </div>
                       )}
-
-                      {awards.length > 0 && (
-                        <div className="flex flex-wrap gap-2 border-t border-foreground/20 pt-3">
-                          {awards.map((award, awardIndex) => (
-                            <a
-                              key={`${award.platform}-${award.label}-${awardIndex}`}
-                              href={award.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center self-start border-2 border-foreground bg-accent/10 px-3 py-1.5 font-mono text-[10px] font-bold transition-colors hover:bg-accent hover:text-accent-foreground md:text-xs"
-                            >
-                              {award.badge ? (
-                                <img
-                                  src={award.badge.src}
-                                  alt={award.badge.alt}
-                                  width={award.badge.width}
-                                  height={award.badge.height}
-                                  className="h-8 w-auto max-w-full"
-                                  loading="lazy"
-                                />
-                              ) : (
-                                `${award.label} - ${award.platform}`
-                              )}
-                            </a>
-                          ))}
-                        </div>
-                      )}
                     </div>
                   )}
 
-                  <div className="flex flex-wrap gap-1.5">
-                    <span className="inline-flex items-center gap-1 border border-foreground/60 px-2 py-0.5 font-mono text-[10px] md:text-xs text-muted-foreground">
-                      <Code2 className="h-3 w-3" aria-hidden="true" />
+                  <div className="flex flex-wrap gap-1.5 mt-auto">
+                    <span className="inline-flex items-center gap-1 border border-foreground/60 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                      <Code2 className="h-3 w-3" />
                       STACK
                     </span>
                     {visibleTech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] md:text-xs text-muted-foreground"
-                      >
+                      <span key={tech} className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
                         {tech}
                       </span>
                     ))}
                     {hiddenTechCount > 0 && (
-                      <span className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground md:text-xs">
+                      <span className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
                         +{hiddenTechCount}
                       </span>
                     )}
                   </div>
 
-                  <div className="mt-auto flex items-center gap-2 pt-2">
+                  <div className="flex items-center gap-2 pt-2">
                     <a
                       href={`/projects/${slug}`}
-                      className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 border-2 border-foreground px-3 py-2.5 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background"
+                      className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background"
                     >
-                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      <ArrowUpRight className="h-3.5 w-3.5" />
                       DETAILS
                     </a>
                     {project.link && (
@@ -339,32 +291,20 @@ export function Projects() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title="Live site"
-                        aria-label={`${project.title} live site`}
                         className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-accent text-accent-foreground transition-colors hover:bg-foreground hover:text-background"
                       >
-                        <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                        <ExternalLink className="h-4 w-4" />
                       </a>
                     )}
-                    {project.github ? (
+                    {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title="Source code"
-                        aria-label={`${project.title} source code`}
                         className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground transition-colors hover:bg-foreground hover:text-background"
                       >
-                        <Github className="h-4 w-4" aria-hidden="true" />
+                        <Github className="h-4 w-4" />
                       </a>
-                    ) : (
-                      <span
-                        title="Private repository"
-                        aria-label={`${project.title} private repository`}
-                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-muted text-muted-foreground"
-                      >
-                        <LockKeyhole className="h-4 w-4" aria-hidden="true" />
-                      </span>
                     )}
                   </div>
                 </div>
