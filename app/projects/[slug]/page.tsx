@@ -227,7 +227,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <div className="flex flex-wrap gap-2">
               {project.contributors.map((c) => (
                 <a
-                  key={c.github}
+                  key={c.name}
                   href={c.github}
                   target="_blank"
                   rel="noopener noreferrer"
