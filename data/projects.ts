@@ -52,6 +52,32 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "GEMMA LOCAL API SERVER",
+    category: "AI INFRASTRUCTURE",
+    year: "2026",
+    description:
+      "A professional Python package hosting google/gemma-4-E2B-it locally with FastAPI, Hugging Face Transformers, and CUDA acceleration. Custom built for testing capstone features offline.",
+    tech: ["Python", "FastAPI", "Gemma-4", "CUDA", "PyTorch", "Hugging Face"],
+    link: "",
+    github: "https://github.com/DongDuong2001/gemma-api-local-host",
+    highlighted: true,
+    role: "AI Developer / Devops",
+    proof: "GitHub Repository (Host Local)",
+    recruiterTakeaway: "Constructed an efficient offline testbench for capstone testing via local Hugging Face quantised runtime.",
+    stage: "shipped",
+    kpis: {
+      users: "Capstone Dev Team",
+      launchTime: "1 week",
+      coreImpact: "Offline testing setup",
+      performance: "Quantised 4-bit CUDA",
+    },
+    caseStudy: {
+      problem: "Testing capstone models online incurred high latencies and token bills.",
+      build: "Configured an E2B FastAPI microservice to load quantization configurations locally.",
+      result: "Achieved seamless offline test cycles for the entire capstone team.",
+    }
+  },
+  {
     title: "FORTIFY KITCHEN",
     category: "WEB APP / SYSTEM DESIGN",
     year: "2026",
