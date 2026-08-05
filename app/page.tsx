@@ -1,5 +1,6 @@
 "use client"
 
+
 import { useState, useEffect } from "react"
 import { Hero } from "@/components/hero"
 import { Studio } from "@/components/studio"
@@ -10,14 +11,16 @@ import { Skills } from "@/components/skills"
 import { SideNavigation } from "@/components/navigation"
 import { CommandPalette } from "@/components/command-palette"
 import { Footer } from "@/components/footer"
+import { GemmaConsole } from "@/components/gemma-console"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
   { id: "studio", label: "STUDIO", shortcut: "02" },
   { id: "projects", label: "PROJECTS", shortcut: "03" },
-  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "04" },
-  { id: "education", label: "EDUCATION", shortcut: "05" },
-  { id: "contact", label: "CONTACT", shortcut: "06" },
+  { id: "gemma", label: "GEMMA AI", shortcut: "04" },
+  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "05" },
+  { id: "education", label: "EDUCATION", shortcut: "06" },
+  { id: "contact", label: "CONTACT", shortcut: "07" },
 ]
 
 export default function Home() {
@@ -73,17 +76,13 @@ export default function Home() {
         onNavigate={navigateTo}
       />
 
-      <main className="pt-16 max-w-7xl mx-auto px-4 md:px-8 space-y-16 pb-16">
+      <main className="pt-16 max-w-7xl mx-auto px-4 md:px-8 space-y-8 pb-16">
         <Hero onNavigate={navigateTo} />
-        <hr className="border-t-2 border-foreground/15 my-8" />
         <Studio />
-        <hr className="border-t-2 border-foreground/15 my-8" />
         <Projects />
-        <hr className="border-t-2 border-foreground/15 my-8" />
+        <GemmaConsole />
         <Skills />
-        <hr className="border-t-2 border-foreground/15 my-8" />
         <Education />
-        <hr className="border-t-2 border-foreground/15 my-8" />
         <Contact />
       </main>
 
