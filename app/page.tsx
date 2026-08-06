@@ -1,6 +1,5 @@
 "use client"
 
-
 import { useState, useEffect } from "react"
 import { Hero } from "@/components/hero"
 import { Studio } from "@/components/studio"
@@ -11,16 +10,14 @@ import { Skills } from "@/components/skills"
 import { SideNavigation } from "@/components/navigation"
 import { CommandPalette } from "@/components/command-palette"
 import { Footer } from "@/components/footer"
-import { GemmaConsole } from "@/components/gemma-console"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
   { id: "studio", label: "STUDIO", shortcut: "02" },
   { id: "projects", label: "PROJECTS", shortcut: "03" },
-  { id: "gemma", label: "GEMMA AI", shortcut: "04" },
-  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "05" },
-  { id: "education", label: "EDUCATION", shortcut: "06" },
-  { id: "contact", label: "CONTACT", shortcut: "07" },
+  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "04" },
+  { id: "education", label: "EDUCATION", shortcut: "05" },
+  { id: "contact", label: "CONTACT", shortcut: "06" },
 ]
 
 export default function Home() {
@@ -80,7 +77,6 @@ export default function Home() {
         <Hero onNavigate={navigateTo} />
         <Studio />
         <Projects />
-        <GemmaConsole />
         <Skills />
         <Education />
         <Contact />
