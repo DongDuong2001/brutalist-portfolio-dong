@@ -1,6 +1,6 @@
 "use client"
 
-import { GraduationCap, MapPin, Calendar } from "lucide-react"
+import { Teacher, Location } from "reicon-react"
 
 const education = [
   {
@@ -26,7 +26,7 @@ export function Education() {
     <section id="education" className="scroll-mt-20">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="mb-8">
-          <div className="border-2 border-foreground p-2 inline-block">
+          <div className="border-2 border-foreground p-2 inline-block rounded-xl">
             <h2 className="font-mono text-2xl md:text-4xl font-bold">{">"} EDUCATION</h2>
           </div>
           <p className="mt-2 font-mono text-xs md:text-sm text-muted-foreground leading-relaxed">
@@ -38,13 +38,13 @@ export function Education() {
           {education.map((item) => (
             <div
               key={item.degree}
-              className="border-2 border-foreground bg-card p-6 hover:shadow-[4px_4px_0_0_var(--foreground)] transition-shadow flex flex-col justify-between"
+              className="border-2 border-foreground bg-card p-6 rounded-xl hover:shadow-[4px_4px_0_0_var(--foreground)] transition-shadow flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between border-b border-foreground/10 pb-3 mb-4">
                   <div className="flex items-center gap-2">
-                    <GraduationCap className="h-5 w-5 text-accent" />
-                    <span className="font-mono text-[10px] font-bold bg-accent text-accent-foreground px-2 py-0.5">
+                    <Teacher className="h-5 w-5 text-accent" />
+                    <span className="font-mono text-[10px] font-bold bg-accent text-accent-foreground px-2 py-0.5 rounded-md">
                       {item.status}
                     </span>
                   </div>
@@ -55,7 +55,7 @@ export function Education() {
                 <p className="text-sm font-medium mt-1 text-foreground/80">{item.institution}</p>
 
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-3">
-                  <MapPin className="h-3.5 w-3.5" />
+                  <Location className="h-3.5 w-3.5" />
                   <span>{item.campus}</span>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export function Education() {
                   {item.focus.map((skill) => (
                     <span
                       key={skill}
-                      className="border border-foreground/30 px-2 py-0.5 font-mono text-[10px] text-muted-foreground bg-secondary/20"
+                      className="border border-foreground/30 px-2 py-0.5 font-mono text-[10px] text-muted-foreground bg-secondary/20 rounded-md"
                     >
                       {skill}
                     </span>
