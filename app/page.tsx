@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { Hero } from "@/components/hero"
-import { Studio } from "@/components/studio"
 import { Projects } from "@/components/projects"
 import { Education } from "@/components/education"
 import { Contact } from "@/components/contact"
@@ -13,11 +12,10 @@ import { Footer } from "@/components/footer"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
-  { id: "studio", label: "STUDIO", shortcut: "02" },
-  { id: "projects", label: "PROJECTS", shortcut: "03" },
-  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "04" },
-  { id: "education", label: "EDUCATION", shortcut: "05" },
-  { id: "contact", label: "CONTACT", shortcut: "06" },
+  { id: "projects", label: "PROJECTS", shortcut: "02" },
+  { id: "technical-skills", label: "TECHNICAL SKILLS", shortcut: "03" },
+  { id: "education", label: "EDUCATION", shortcut: "04" },
+  { id: "contact", label: "CONTACT", shortcut: "05" },
 ]
 
 export default function Home() {
@@ -75,7 +73,6 @@ export default function Home() {
 
       <main className="pt-16 max-w-7xl mx-auto px-4 md:px-8 space-y-8 pb-16">
         <Hero onNavigate={navigateTo} />
-        <Studio />
         <Projects />
         <Skills />
         <Education />
