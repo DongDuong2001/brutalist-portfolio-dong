@@ -1,13 +1,13 @@
 "use client"
 
 import { skills as skillCategories } from "@/data/skills"
-import { Code, Server, Wrench, Shield } from "lucide-react"
+import { Code, Server, Designtools, ShieldCheck } from "reicon-react"
 
 const iconsMap: Record<string, any> = {
   LANGUAGES: Code,
   "FRAMEWORKS & LIBRARIES": Server,
-  "TOOLS & INFRASTRUCTURE": Wrench,
-  CONCEPTS: Shield,
+  "DATABASES & INFRASTRUCTURE": Designtools,
+  "SYSTEMS & ARCHITECTURE": ShieldCheck,
 }
 
 export function Skills() {
@@ -15,11 +15,11 @@ export function Skills() {
     <section id="technical-skills" className="scroll-mt-20">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="mb-8">
-          <div className="border-2 border-foreground p-2 inline-block">
-            <h2 className="font-mono text-2xl md:text-4xl font-bold">{">"} TECHNICAL SKILLS</h2>
+          <div className="border-2 border-foreground p-2 inline-block rounded-xl">
+            <h2 className="font-mono text-2xl md:text-4xl font-bold">{">"} TECHNICAL SKILLS & STACK</h2>
           </div>
-          <p className="mt-2 font-mono text-xs md:text-sm text-muted-foreground leading-relaxed">
-            Core stack, frameworks, developer tooling, and systems concepts.
+          <p className="mt-2 font-mono text-xs md:text-sm text-muted-foreground leading-relaxed max-w-2xl">
+            Technologies, frameworks, and architecture patterns I actively use in production, hackathons, and local AI engineering.
           </p>
         </div>
 
@@ -29,30 +29,32 @@ export function Skills() {
             return (
               <div
                 key={cat.category}
-                className="border-2 border-foreground bg-card p-6 hover:shadow-[4px_4px_0_0_var(--foreground)] transition-shadow"
+                className="border-2 border-foreground bg-card p-5 md:p-6 rounded-xl hover:shadow-[4px_4px_0_0_var(--foreground)] transition-shadow flex flex-col justify-between"
               >
-                <div className="flex items-center gap-3 border-b border-foreground/10 pb-4 mb-4">
-                  <div className="h-8 w-8 bg-secondary border border-foreground flex items-center justify-center">
-                    <Icon className="h-4 w-4" />
-                  </div>
-                  <h3 className="font-mono text-sm font-black uppercase tracking-wider">{cat.category}</h3>
-                </div>
-
-                <div className="space-y-4">
-                  {cat.skills.map((skill) => (
-                    <div key={skill.name} className="space-y-1">
-                      <div className="flex items-center justify-between text-xs font-mono">
-                        <span className="font-bold">{skill.name}</span>
-                        <span className="text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <div className="h-2 border border-foreground bg-secondary/35 overflow-hidden">
-                        <div
-                          className="h-full bg-accent border-r border-foreground"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
+                <div>
+                  <div className="flex items-center gap-3 border-b border-foreground/10 pb-3 mb-3">
+                    <div className="h-8 w-8 bg-secondary border-2 border-foreground rounded-lg flex items-center justify-center shrink-0">
+                      <Icon className="h-4 w-4 text-foreground" />
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="font-mono text-sm font-black uppercase tracking-wider">{cat.category}</h3>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+                    {cat.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {cat.items.map((item) => (
+                      <span
+                        key={item}
+                        className="inline-flex items-center border border-foreground/30 bg-secondary/35 px-2.5 py-1.5 font-mono text-xs font-semibold text-foreground rounded-md transition-colors hover:border-foreground hover:bg-secondary"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             )
