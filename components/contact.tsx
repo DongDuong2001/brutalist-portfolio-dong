@@ -135,7 +135,7 @@ export function Contact() {
       href={href}
       target={href.startsWith("mailto:") ? undefined : "_blank"}
       rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-      className={`group border-2 border-foreground p-3 md:p-4 transition-colors ${
+      className={`group border-2 border-foreground p-3 md:p-4 rounded-xl transition-all hover:shadow-[3px_3px_0_0_var(--foreground)] ${
         primary
           ? "bg-accent text-accent-foreground hover:bg-foreground hover:text-background"
           : "bg-card hover:bg-foreground hover:text-background"
@@ -156,7 +156,7 @@ export function Contact() {
     <section id="contact" className="scroll-mt-20">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="mb-6 md:mb-8">
-          <div className="border-2 border-foreground p-2 inline-block">
+          <div className="border-2 border-foreground p-2 inline-block rounded-xl">
             <h2 className="font-mono text-2xl md:text-4xl font-bold">{">"} CONTACT</h2>
           </div>
           <p className="mt-3 font-mono text-xs md:text-sm text-muted-foreground max-w-3xl leading-relaxed">
@@ -166,33 +166,35 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-5 md:gap-6">
           <div className="space-y-5">
-            <article className="border-2 md:border-4 border-foreground bg-card p-4 md:p-5">
+            <article className="border-2 md:border-4 border-foreground bg-card p-4 md:p-5 rounded-2xl">
               <div className="flex items-center gap-2 border-b-2 border-foreground pb-3 mb-4">
                 <MessageSquare className="h-4 w-4 text-accent" aria-hidden="true" />
                 <h3 className="font-mono text-lg md:text-xl font-bold">HIRING SNAPSHOT</h3>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {hiringSignals.map(({ label, value, Icon }) => (
-                  <div key={label} className="border-2 border-foreground bg-background/70 px-3 py-2.5">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Icon className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-                      <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{label}</p>
+                  <div key={label} className="border-2 border-foreground bg-card p-3 rounded-xl hover:shadow-[3px_3px_0_0_var(--foreground)] transition-all">
+                    <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                      <div className="h-6 w-6 rounded-md bg-secondary border border-foreground flex items-center justify-center shrink-0">
+                        <Icon className="h-3.5 w-3.5 text-accent" />
+                      </div>
+                      <span className="font-mono text-[10px] font-bold uppercase">{label}</span>
                     </div>
-                    <p className="font-mono text-xs md:text-sm font-bold">{value}</p>
+                    <p className="text-xs font-bold pl-8">{value}</p>
                   </div>
                 ))}
               </div>
             </article>
 
-            <article className="border-2 md:border-4 border-foreground bg-card p-4 md:p-5">
+            <article className="border-2 md:border-4 border-foreground bg-card p-4 md:p-5 rounded-2xl">
               <h3 className="font-mono text-lg md:text-xl font-bold border-b-2 border-foreground pb-3 mb-4">
                 DIRECT LINKS
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">{primaryLinks.map(renderLink)}</div>
             </article>
 
-            <article className="border-2 border-foreground bg-secondary p-4">
+            <article className="border-2 border-foreground bg-secondary p-4 rounded-2xl">
               <h3 className="font-mono text-sm font-bold border-b-2 border-foreground pb-2 mb-3">
                 PRODUCT PROOF
               </h3>
@@ -200,7 +202,7 @@ export function Contact() {
             </article>
           </div>
 
-          <div className="border-2 md:border-4 border-foreground p-4 md:p-6 bg-card h-fit">
+          <div className="border-2 md:border-4 border-foreground p-4 md:p-6 bg-card h-fit rounded-2xl">
             <div className="flex items-center justify-between gap-3 border-b-2 border-foreground pb-3 mb-4">
               <h3 className="font-mono text-lg md:text-xl font-bold">SEND MESSAGE</h3>
               <Mail className="h-4 w-4 text-accent" aria-hidden="true" />
@@ -219,7 +221,7 @@ export function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                    className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm rounded-lg"
                   />
                 </div>
 
@@ -234,7 +236,7 @@ export function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                    className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm rounded-lg"
                   />
                 </div>
               </div>
@@ -250,7 +252,7 @@ export function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                  className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm rounded-lg"
                 />
               </div>
 
@@ -265,13 +267,13 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent resize-none text-sm"
+                  className="w-full border-2 border-foreground p-2.5 bg-background focus:outline-none focus:ring-2 focus:ring-accent resize-none text-sm rounded-lg"
                 />
               </div>
 
               {statusMessage && (
                 <p
-                  className={`border-2 px-3 py-2 font-mono text-xs font-bold ${
+                  className={`border-2 px-3 py-2 font-mono text-xs font-bold rounded-lg ${
                     status === "success"
                       ? "border-foreground bg-accent text-accent-foreground"
                       : "border-destructive text-destructive"
@@ -284,7 +286,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full inline-flex items-center justify-center gap-2 border-2 border-foreground p-2.5 font-mono text-sm font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center gap-2 border-2 border-foreground p-2.5 font-mono text-sm font-bold bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-all rounded-lg shadow-[2px_2px_0_0_var(--foreground)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="h-4 w-4" aria-hidden="true" />
                 {status === "loading" ? "SENDING..." : "SEND MESSAGE"}
