@@ -82,7 +82,7 @@ export function Projects() {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6 md:mb-10">
           <div className="self-start">
-            <div className="border-2 border-foreground p-2 inline-block">
+            <div className="border-2 border-foreground p-2 inline-block rounded-xl">
               <h2 className="font-mono text-2xl md:text-4xl font-bold">{">"} PROJECTS</h2>
             </div>
             <p className="mt-3 font-mono text-xs md:text-sm text-muted-foreground max-w-3xl leading-relaxed">
@@ -95,11 +95,11 @@ export function Projects() {
               href="/api/project-index"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-foreground px-3 py-1 font-mono text-xs font-bold hover:bg-secondary transition-colors"
+              className="border-2 border-foreground px-3 py-1 font-mono text-xs font-bold hover:bg-secondary transition-colors rounded-lg"
             >
               PROJECT INDEX PDF
             </a>
-            <div className="border-2 border-foreground bg-accent px-4 py-2 inline-block text-accent-foreground font-mono text-xs font-bold">
+            <div className="border-2 border-foreground bg-accent px-4 py-2 inline-block text-accent-foreground font-mono text-xs font-bold rounded-lg shadow-[2px_2px_0_0_var(--foreground)]">
               {filteredProjects.length} PROJECT{filteredProjects.length !== 1 && "S"}
             </div>
           </div>
@@ -107,7 +107,7 @@ export function Projects() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 mb-6 md:mb-8">
           {projectSummary.map((item) => (
-            <div key={item.label} className="border-2 border-foreground bg-card px-3 py-2.5">
+            <div key={item.label} className="border-2 border-foreground bg-card px-3 py-2.5 rounded-xl">
               <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-wide text-muted-foreground">
                 {item.label}
               </p>
@@ -121,8 +121,8 @@ export function Projects() {
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`border-2 border-foreground px-3 py-1 font-mono text-xs font-bold transition-all ${
-                activeFilter === category ? "bg-accent text-accent-foreground" : "bg-card hover:bg-secondary"
+              className={`border-2 border-foreground px-3 py-1 font-mono text-xs font-bold transition-all rounded-lg ${
+                activeFilter === category ? "bg-accent text-accent-foreground shadow-[2px_2px_0_0_var(--foreground)]" : "bg-card hover:bg-secondary"
               }`}
             >
               {category}
@@ -148,18 +148,18 @@ export function Projects() {
               <article
                 key={project.title}
                 id={`project-${slug}`}
-                className={`group relative flex flex-col overflow-hidden border-2 border-foreground bg-card transition-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-secondary/55 hover:shadow-[4px_4px_0_0_var(--foreground)] ${
+                className={`group relative flex flex-col overflow-hidden border-2 border-foreground bg-card rounded-xl transition-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-secondary/55 hover:shadow-[4px_4px_0_0_var(--foreground)] ${
                   featured ? "ring-2 ring-accent ring-offset-2 ring-offset-background" : ""
                 } ${highlighted ? "border-l-4 border-l-accent" : ""}`}
               >
                 <div className="border-b-2 border-foreground bg-secondary/70 p-4 md:p-5">
                   <div className="mb-3 flex items-start justify-between gap-3">
                     <div className="flex min-w-0 flex-wrap items-center gap-2">
-                      <span className="border border-foreground/70 bg-background px-2 py-1 font-mono text-[10px] font-bold uppercase leading-none text-foreground">
+                      <span className="border border-foreground/70 bg-background px-2 py-1 font-mono text-[10px] font-bold uppercase leading-none text-foreground rounded-sm">
                         {project.category}
                       </span>
                       <span
-                        className={`inline-flex items-center gap-1 border px-2 py-1 font-mono text-[10px] font-bold uppercase leading-none ${
+                        className={`inline-flex items-center gap-1 border px-2 py-1 font-mono text-[10px] font-bold uppercase leading-none rounded-sm ${
                           activeProject
                             ? "border-accent bg-accent text-accent-foreground"
                             : "border-foreground/30 bg-card text-muted-foreground"
@@ -186,7 +186,7 @@ export function Projects() {
                         title="Highlighted project"
                         role="img"
                         aria-label="Highlighted project"
-                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center border-2 border-foreground bg-foreground text-background"
+                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center border-2 border-foreground bg-foreground text-background rounded-lg shadow-[1px_1px_0_0_var(--foreground)]"
                       >
                         <Trophy className="h-4 w-4" aria-hidden="true" />
                       </span>
@@ -199,7 +199,7 @@ export function Projects() {
                     {project.description}
                   </p>
 
-                  <div className="border-l-4 border-accent bg-secondary/35 px-3 py-2">
+                  <div className="border-l-4 border-accent bg-secondary/35 px-3 py-2 rounded-r-lg">
                     <p className="font-mono text-[10px] font-bold uppercase text-muted-foreground">Impact</p>
                     <p className="mt-1 text-xs font-medium leading-relaxed">
                       {project.recruiterTakeaway ?? caseStudy.result}
@@ -220,14 +220,14 @@ export function Projects() {
                   <button
                     type="button"
                     onClick={() => setExpandedProject((prev) => (prev === project.title ? null : project.title))}
-                    className="flex min-h-10 w-full items-center justify-between gap-3 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold uppercase hover:bg-foreground hover:text-background transition-colors"
+                    className="flex min-h-10 w-full items-center justify-between gap-3 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold uppercase hover:bg-foreground hover:text-background transition-colors rounded-lg"
                   >
                     <span>{isExpanded ? "Hide case study" : "Case study"}</span>
                     <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
                   </button>
 
                   {isExpanded && (
-                    <div className="space-y-4 border-2 border-foreground p-3 bg-secondary/5">
+                    <div className="space-y-4 border-2 border-foreground p-3.5 bg-secondary/5 rounded-xl">
                       <div>
                         <p className="font-mono text-[10px] font-bold text-accent mb-1">Problem</p>
                         <p className="text-xs leading-relaxed">{caseStudy.problem}</p>
@@ -251,7 +251,7 @@ export function Projects() {
                                 href={c.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-mono text-[10px] border border-foreground/30 px-2 py-0.5 hover:bg-foreground hover:text-background transition-colors"
+                                className="font-mono text-[10px] border border-foreground/30 px-2 py-0.5 hover:bg-foreground hover:text-background transition-colors rounded-md"
                               >
                                 {c.name}
                               </a>
@@ -263,17 +263,17 @@ export function Projects() {
                   )}
 
                   <div className="flex flex-wrap gap-1.5 mt-auto">
-                    <span className="inline-flex items-center gap-1 border border-foreground/60 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                    <span className="inline-flex items-center gap-1 border border-foreground/60 px-2 py-0.5 font-mono text-[10px] text-muted-foreground rounded-md">
                       <Code2 className="h-3 w-3" />
                       STACK
                     </span>
                     {visibleTech.map((tech) => (
-                      <span key={tech} className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                      <span key={tech} className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground rounded-md">
                         {tech}
                       </span>
                     ))}
                     {hiddenTechCount > 0 && (
-                      <span className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                      <span className="border border-foreground/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground rounded-md">
                         +{hiddenTechCount}
                       </span>
                     )}
@@ -282,7 +282,7 @@ export function Projects() {
                   <div className="flex items-center gap-2 pt-2">
                     <a
                       href={`/projects/${slug}`}
-                      className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold transition-colors hover:bg-foreground hover:text-background"
+                      className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 border-2 border-foreground px-3 py-2 font-mono text-xs font-bold transition-all hover:bg-foreground hover:text-background rounded-lg shadow-[2px_2px_0_0_var(--foreground)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
                       aria-label={`View details of project ${project.title}`}
                     >
                       <ArrowUpRight className="h-3.5 w-3.5" />
@@ -293,7 +293,7 @@ export function Projects() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-accent text-accent-foreground transition-colors hover:bg-foreground hover:text-background"
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground bg-accent text-accent-foreground transition-all hover:bg-foreground hover:text-background rounded-lg shadow-[2px_2px_0_0_var(--foreground)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
                         aria-label={`Visit live website of project ${project.title}`}
                       >
                         <ExternalLink className="h-4 w-4" />
@@ -304,7 +304,7 @@ export function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground transition-colors hover:bg-foreground hover:text-background"
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center border-2 border-foreground transition-all hover:bg-foreground hover:text-background rounded-lg shadow-[2px_2px_0_0_var(--foreground)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5"
                         aria-label={`Visit GitHub repository of project ${project.title}`}
                       >
                         <Github className="h-4 w-4" />
