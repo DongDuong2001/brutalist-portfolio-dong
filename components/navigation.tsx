@@ -64,86 +64,113 @@ export function SideNavigation({
   if (!mounted) return null
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 border-b-2 border-foreground bg-background z-50 flex items-center justify-between px-4 md:px-8">
-      {/* Brand logo */}
-      <div 
-        onClick={() => handleScrollTo("home", 0)} 
-        className="cursor-pointer flex items-center gap-2.5 font-mono text-sm font-black tracking-widest text-foreground hover:opacity-80 transition-opacity"
-      >
-        <span className="bg-foreground text-background px-2 py-0.5 text-xs font-black">3B</span>
-        <span className="hidden sm:inline">THREE BUGS STUDIO // DONG.DEV</span>
-        <span className="inline sm:hidden">DONG.DEV</span>
-      </div>
-
-      {/* Right control box */}
-      <div className="flex items-center gap-2">
-        {/* Theme button */}
-        <button
-          onClick={toggleTheme}
-          className="h-10 w-10 border-2 border-foreground bg-background hover:bg-secondary flex items-center justify-center transition-colors"
-          title="Toggle Theme"
-          aria-label="Toggle Theme"
+    <header className="fixed top-0 left-0 right-0 h-16 border-b-2 border-foreground bg-background/95 backdrop-blur-md z-50">
+      <div className="max-w-7xl mx-auto h-full px-4 md:px-8 flex items-center justify-between gap-4">
+        {/* Brand logo */}
+        <div 
+          onClick={() => handleScrollTo("home", 0)} 
+          className="cursor-pointer flex items-center gap-2.5 font-mono text-sm font-black tracking-wider text-foreground hover:opacity-80 transition-opacity shrink-0"
         >
-          {theme === "dark" ? (
-            <FontAwesomeIcon icon={faMoon} className="h-4 w-4" />
-          ) : (
-            <FontAwesomeIcon icon={faSun} className="h-4 w-4" />
-          )}
-        </button>
+          <img
+            src="/logo_banner/DuongPhuDong_Logo.jpg"
+            alt="Duong Phu Dong Logo"
+            className="h-8 w-8 rounded-lg border-2 border-foreground object-cover shadow-[1px_1px_0_0_var(--foreground)]"
+          />
+          <span className="bg-foreground text-background px-2 py-0.5 text-xs font-black rounded-md">DEV</span>
+          <span className="hidden sm:inline font-bold">DUONG PHU DONG</span>
+          <span className="inline sm:hidden font-bold">DONG.DEV</span>
+        </div>
 
-        {/* Dropdown Menu Trigger */}
-        <div className="relative">
+        {/* Desktop Direct Nav Links */}
+        <nav className="hidden md:flex items-center gap-1 font-mono text-xs">
+          {sections.map((section, index) => {
+            const isActive = activeIndex === index
+            return (
+              <button
+                key={section.id}
+                onClick={() => handleScrollTo(section.id, index)}
+                className={`px-3 py-1.5 font-bold transition-all rounded-md ${
+                  isActive
+                    ? "bg-foreground text-background shadow-[2px_2px_0_0_var(--foreground)]"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/70"
+                }`}
+              >
+                {section.label}
+              </button>
+            )
+          })}
+        </nav>
+
+        {/* Right control box */}
+        <div className="flex items-center gap-2 shrink-0">
+          {/* Theme button */}
           <button
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-2 h-10 border-2 border-foreground bg-accent px-4 py-2 font-mono text-xs font-black uppercase text-accent-foreground shadow-[2px_2px_0_0_var(--foreground)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
-            aria-expanded={dropdownOpen}
+            onClick={toggleTheme}
+            className="h-9 w-9 border-2 border-foreground bg-background hover:bg-secondary rounded-lg flex items-center justify-center transition-all shadow-[1px_1px_0_0_var(--foreground)]"
+            title="Toggle Theme"
+            aria-label="Toggle Theme"
           >
-            <span>{sections[activeIndex]?.label ?? "MENU"}</span>
-            <FontAwesomeIcon icon={dropdownOpen ? faXmark : faChevronDown} className="h-3 w-3" />
+            {theme === "dark" ? (
+              <FontAwesomeIcon icon={faMoon} className="h-3.5 w-3.5" />
+            ) : (
+              <FontAwesomeIcon icon={faSun} className="h-3.5 w-3.5" />
+            )}
           </button>
 
-          {/* Custom Dropdown List */}
-          <AnimatePresence>
-            {dropdownOpen && (
-              <>
-                <motion.div
-                  className="fixed inset-0 z-40 bg-transparent"
-                  onClick={() => setDropdownOpen(false)}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                />
-                <motion.div
-                  className="absolute right-0 mt-2 w-56 border-2 border-foreground bg-card shadow-[4px_4px_0_0_var(--foreground)] z-50 overflow-hidden flex flex-col"
-                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <div className="bg-foreground text-background px-3 py-1.5 font-mono text-[9px] font-bold tracking-widest uppercase">
-                    NAVIGATION SELECT
-                  </div>
-                  {sections.map((section, index) => {
-                    const isActive = activeIndex === index
-                    return (
-                      <button
-                        key={section.id}
-                        onClick={() => handleScrollTo(section.id, index)}
-                        className={`w-full text-left px-4 py-3 font-mono text-xs font-bold border-b border-foreground/10 last:border-b-0 transition-colors flex items-center justify-between ${
-                          isActive
-                            ? "bg-accent text-accent-foreground"
-                            : "bg-background hover:bg-secondary"
-                        }`}
-                      >
-                        <span>{section.label}</span>
-                        {isActive && <span className="text-[10px] opacity-75">●</span>}
-                      </button>
-                    )
-                  })}
-                </motion.div>
-              </>
-            )}
-          </AnimatePresence>
+          {/* Mobile Dropdown Menu Trigger */}
+          <div className="relative md:hidden">
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="flex items-center gap-2 h-9 border-2 border-foreground bg-accent px-3 py-1.5 font-mono text-xs font-black uppercase text-accent-foreground rounded-lg shadow-[2px_2px_0_0_var(--foreground)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+              aria-expanded={dropdownOpen}
+            >
+              <span>{sections[activeIndex]?.label ?? "MENU"}</span>
+              <FontAwesomeIcon icon={dropdownOpen ? faXmark : faChevronDown} className="h-3 w-3" />
+            </button>
+
+            {/* Custom Dropdown List on Mobile */}
+            <AnimatePresence>
+              {dropdownOpen && (
+                <>
+                  <motion.div
+                    className="fixed inset-0 z-40 bg-transparent"
+                    onClick={() => setDropdownOpen(false)}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  />
+                  <motion.div
+                    className="absolute right-0 mt-2 w-52 border-2 border-foreground bg-card shadow-[4px_4px_0_0_var(--foreground)] rounded-xl z-50 overflow-hidden flex flex-col"
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <div className="bg-foreground text-background px-3 py-1.5 font-mono text-[9px] font-bold tracking-widest uppercase">
+                      NAVIGATION SELECT
+                    </div>
+                    {sections.map((section, index) => {
+                      const isActive = activeIndex === index
+                      return (
+                        <button
+                          key={section.id}
+                          onClick={() => handleScrollTo(section.id, index)}
+                          className={`w-full text-left px-4 py-2.5 font-mono text-xs font-bold border-b border-foreground/10 last:border-b-0 transition-colors flex items-center justify-between ${
+                            isActive
+                              ? "bg-accent text-accent-foreground"
+                              : "bg-background hover:bg-secondary"
+                          }`}
+                        >
+                          <span>{section.label}</span>
+                          {isActive && <span className="text-[10px] opacity-75">●</span>}
+                        </button>
+                      )
+                    })}
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </header>
