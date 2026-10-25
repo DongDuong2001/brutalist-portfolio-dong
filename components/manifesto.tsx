@@ -23,7 +23,7 @@ export function Manifesto() {
     <section className="bg-ink text-[#e6edf3]">
       <div className="relative overflow-hidden py-28">
         <p className="absolute left-1/2 top-7 -translate-x-1/2 text-[10px] font-bold uppercase tracking-[0.18em] text-mist">
-          Engineering from Saigon
+          Based in Ho Chi Minh City
         </p>
         <div className="flex flex-col gap-1.5 leading-[0.98]">
           <MarqueeRow
