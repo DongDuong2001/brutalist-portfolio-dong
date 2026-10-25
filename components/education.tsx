@@ -22,8 +22,8 @@ export function Education() {
     <section id="education" className="scroll-mt-16 border-t border-[#d3d9e0] px-4 py-28 md:px-14">
       <div className="mx-auto max-w-[1240px]">
         <h2 className="mb-14 leading-[0.88]">
-          <span className="block text-[clamp(52px,6vw,96px)] font-light tracking-tighter">EDUCA</span>
-          <span className="block text-[clamp(52px,6vw,96px)] font-black tracking-tighter">TION</span>
+          <span className="block text-[clamp(52px,6vw,96px)] font-light tracking-tighter">ACADEMIC</span>
+          <span className="block text-[clamp(52px,6vw,96px)] font-black tracking-tighter">EDUCATION</span>
         </h2>
 
         <div className="border-t border-border">
