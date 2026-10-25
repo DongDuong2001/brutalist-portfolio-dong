@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { Hero } from "@/components/hero"
+import { Manifesto } from "@/components/manifesto"
+import { About } from "@/components/about"
+import { Disciplines } from "@/components/disciplines"
 import { Projects } from "@/components/projects"
 import { Education } from "@/components/education"
 import { Contact } from "@/components/contact"
@@ -9,8 +12,6 @@ import { Skills } from "@/components/skills"
 import { SideNavigation } from "@/components/navigation"
 import { CommandPalette } from "@/components/command-palette"
 import { Footer } from "@/components/footer"
-import FaultyTerminal from "@/components/faulty-terminal"
-import { SpotlightTracker } from "@/components/ui/spotlight"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
@@ -66,44 +67,23 @@ export default function Home() {
   }
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
-      {/* Interactive Cyber FaultyTerminal WebGL Canvas Background */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-40 dark:opacity-30">
-        <FaultyTerminal
-          scale={1.5}
-          digitSize={1.2}
-          timeScale={0.4}
-          scanlineIntensity={0.3}
-          curvature={0.08}
-          tint="#FF334E"
-          mouseReact
-          mouseStrength={0.4}
-          pageLoadAnimation
-          noiseAmp={0.8}
-          brightness={0.7}
-        />
-      </div>
+    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
+      <SideNavigation sections={sections} activeIndex={activeIndex} onNavigate={navigateTo} />
 
-      <div className="relative z-10">
-        <SideNavigation
-          sections={sections}
-          activeIndex={activeIndex}
-          onNavigate={navigateTo}
-        />
+      <main>
+        <Hero />
+        <Manifesto />
+        <About />
+        <Disciplines />
+        <Projects />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
 
-        <main className="pt-16 max-w-7xl mx-auto px-4 md:px-8 space-y-8 pb-16">
-          <Hero onNavigate={navigateTo} />
-          <Projects />
-          <Skills />
-          <Education />
-          <Contact />
-        </main>
+      <Footer />
 
-        <Footer />
-
-        <CommandPalette sections={sections} onNavigate={navigateTo} />
-        <SpotlightTracker />
-      </div>
+      <CommandPalette sections={sections} onNavigate={navigateTo} />
     </div>
   )
 }

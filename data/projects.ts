@@ -23,7 +23,7 @@ export type ProjectCaseStudy = {
   result: string
 }
 
-export type ProjectStage = "now-building" | "shipped"
+export type ProjectStage = "now-building" | "shipped" | "scaling"
 
 export type Contributor = {
   name: string
@@ -51,6 +51,31 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  {
+    title: "H1T MICRO",
+    category: "STARTUP / NUTRITION PLATFORM",
+    year: "Live",
+    description:
+      "A nutrition and micronutrient platform live at lehongkhanh.vn, co-founded with Hào. I designed the system architecture and technology stack, deployed it to production, and now own the backend as it scales past 1,600+ users.",
+    tech: ["Next.js", "Go", "Supabase", "PostgreSQL"],
+    link: "https://lehongkhanh.vn",
+    highlighted: true,
+    role: "Co-Founder / Solution Architect & Backend Engineer",
+    proof: "1,600+ users",
+    recruiterTakeaway: "Designed and deployed a production platform that is now scaling with real users.",
+    stage: "scaling",
+    kpis: {
+      users: "1,600+ users",
+      launchTime: "Live",
+      coreImpact: "Nutrition tracking in production",
+      performance: "Backend scaling",
+    },
+    caseStudy: {
+      problem: "People need a simple way to track nutrition and micronutrients in their daily diet.",
+      build: "Designed the system architecture and stack (Next.js, Go, Supabase, PostgreSQL) and deployed it to production at lehongkhanh.vn.",
+      result: "Live in production and scaling past 1,600+ users.",
+    },
+  },
   {
     title: "QMD-TECH",
     category: "E-COMMERCE / WEB APP",

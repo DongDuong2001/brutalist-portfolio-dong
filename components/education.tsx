@@ -1,7 +1,3 @@
-"use client"
-
-import { Teacher, Location } from "reicon-react"
-
 const education = [
   {
     degree: "BACHELOR OF SOFTWARE ENGINEERING",
@@ -23,57 +19,39 @@ const education = [
 
 export function Education() {
   return (
-    <section id="education" className="scroll-mt-20">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="mb-8">
-          <div className="border border-border/60 bg-card/70 backdrop-blur-md px-3 py-1.5 inline-block rounded-xl shadow-sm">
-            <h2 className="font-mono text-xl md:text-3xl font-bold tracking-tight text-foreground">{">"} EDUCATION</h2>
-          </div>
-          <p className="mt-3 font-mono text-xs md:text-sm text-muted-foreground leading-relaxed">
-            Academic pathways and core areas of focus.
-          </p>
-        </div>
+    <section id="education" className="scroll-mt-16 border-t border-[#d3d9e0] px-4 py-28 md:px-14">
+      <div className="mx-auto max-w-[1240px]">
+        <h2 className="mb-14 leading-[0.88]">
+          <span className="block text-[clamp(52px,6vw,96px)] font-light tracking-tighter">EDUCA</span>
+          <span className="block text-[clamp(52px,6vw,96px)] font-black tracking-tighter">TION</span>
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="border-t border-border">
           {education.map((item) => (
-            <div
+            <article
               key={item.degree}
-              className="spotlight border border-border/50 bg-card/75 backdrop-blur-xl p-6 rounded-2xl shadow-lg hover:border-accent/50 hover:shadow-2xl transition-all flex flex-col justify-between"
+              className="grid gap-4 border-b border-border py-8 md:grid-cols-[1fr_1.4fr_auto] md:items-start md:gap-10"
             >
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">{item.year}</span>
+                <span className="w-fit rounded-full bg-ink px-2.5 py-0.5 text-[10px] font-bold tracking-[0.08em] text-accent">
+                  {item.status}
+                </span>
+              </div>
               <div>
-                <div className="flex items-center justify-between border-b border-border/30 pb-3 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Teacher className="h-5 w-5 text-accent" />
-                    <span className="font-mono text-[10px] font-bold bg-accent/15 text-accent border border-accent/30 px-2.5 py-0.5 rounded-lg">
-                      {item.status}
-                    </span>
-                  </div>
-                  <span className="font-mono text-xs text-muted-foreground">{item.year}</span>
-                </div>
-
-                <h3 className="font-mono text-lg font-black tracking-tight leading-snug text-foreground">{item.degree}</h3>
-                <p className="text-sm font-medium mt-1 text-foreground/80">{item.institution}</p>
-
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-3">
-                  <Location className="h-3.5 w-3.5 text-accent" />
-                  <span>{item.campus}</span>
-                </div>
+                <h3 className="text-2xl font-black leading-tight tracking-tight">{item.degree}</h3>
+                <p className="mt-1 text-sm font-semibold text-muted-foreground">
+                  {item.institution} · {item.campus}
+                </p>
               </div>
-
-              <div className="mt-6 border-t border-border/30 pt-4">
-                <p className="font-mono text-[10px] uppercase text-muted-foreground font-bold mb-2 tracking-wider">Key Focus Area</p>
-                <div className="flex flex-wrap gap-2">
-                  {item.focus.map((skill) => (
-                    <span
-                      key={skill}
-                      className="border border-border/50 bg-secondary/30 backdrop-blur-md px-2.5 py-1 font-mono text-[10px] text-muted-foreground rounded-lg"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+              <ul className="flex flex-wrap gap-2 md:max-w-[280px] md:justify-end">
+                {item.focus.map((skill) => (
+                  <li key={skill} className="rounded-md border border-border bg-card px-2.5 py-1 text-[11px] font-bold">
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </article>
           ))}
         </div>
       </div>

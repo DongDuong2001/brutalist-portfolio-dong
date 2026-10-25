@@ -4,26 +4,32 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #f4f1e8;
-  --foreground: #1f2633;
-  --card: #fffdf6;
-  --card-foreground: #1f2633;
-  --popover: #fffdf8;
-  --popover-foreground: #1f2633;
-  --primary: #1f2633;
-  --primary-foreground: #f8f5ef;
-  --secondary: #d8e2ef;
-  --secondary-foreground: #1f2d40;
-  --muted: #e9e4d8;
-  --muted-foreground: #4b586b;
-  --accent: #c48b1b;
-  --accent-foreground: #111111;
+  /* Blueprint & Phosphor: cool paper sections, ink sections, amber accent */
+  --background: #eef0f2;
+  --foreground: #0e1116;
+  --card: #f7f8f9;
+  --card-foreground: #0e1116;
+  --popover: #f7f8f9;
+  --popover-foreground: #0e1116;
+  --primary: #0e1116;
+  --primary-foreground: #eef0f2;
+  --secondary: #dce1e6;
+  --secondary-foreground: #0e1116;
+  --muted: #dce1e6;
+  --muted-foreground: #4a5361;
+  --accent: #ffb224;
+  --accent-foreground: #0e1116;
   --destructive: #b3261e;
   --destructive-foreground: #fff8f6;
-  --border: #253247;
-  --input: #253247;
-  --ring: #c48b1b;
-  --radius: 0.625rem;
+  --border: #c9cfd6;
+  --input: #c9cfd6;
+  --ring: #ffb224;
+  --radius: 0.5rem;
+  --ink: #0e1116;
+  --ink-2: #161b22;
+  --line-dark: #262c36;
+  --mist: #9aa4b2;
+  --grid: #dce1e6;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -98,6 +104,11 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line-dark: var(--line-dark);
+  --color-mist: var(--mist);
+  --color-grid: var(--grid);
 }
 
 @layer base {
@@ -1198,21 +1209,29 @@
   }
 }
 
-/* Spotlight card (inspired by easemize's 21st.dev Spotlight Card): --mx/--my are set per card by SpotlightTracker */
-.spotlight {
-  position: relative;
-  background-image: radial-gradient(420px circle at var(--mx, -999px) var(--my, -999px), color-mix(in oklab, var(--accent) 9%, transparent), transparent 65%);
+/* Blueprint grid used on paper sections */
+.bg-blueprint {
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
 }
 
-.spotlight::before {
-  content: "";
-  position: absolute;
-  inset: -1px; /* sit on top of the card's own 1px border */
-  border-radius: inherit;
-  padding: 2px;
-  pointer-events: none;
-  background: radial-gradient(280px circle at var(--mx, -999px) var(--my, -999px), var(--accent), transparent 70%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+/* Infinite marquee rows: content is rendered twice, so -50% loops seamlessly */
+.marquee-row {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  white-space: nowrap;
+}
+.marquee-left { animation: marquee-left 38s linear infinite; }
+.marquee-right { animation: marquee-right 44s linear infinite; }
+@keyframes marquee-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left, .marquee-right { animation: none; }
+}
+
+/* Staggered project grid: every other card drops down on wide screens */
+@media (min-width: 721px) {
+  .stagger > :nth-child(4n + 2), .stagger > :nth-child(4n + 4) { transform: translateY(72px); }
 }

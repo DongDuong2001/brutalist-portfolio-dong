@@ -1,10 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useTheme } from "next-themes"
 import { AnimatePresence, motion } from "framer-motion"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faMoon, faSun, faXmark, faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import { Download } from "lucide-react"
 
 interface Section {
   id: string
@@ -17,165 +15,106 @@ interface SideNavigationProps {
   onNavigate: (index: number) => void
 }
 
-export function SideNavigation({
-  sections,
-  activeIndex,
-  onNavigate,
-}: SideNavigationProps) {
-  const [mounted, setMounted] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
+export function SideNavigation({ sections, activeIndex, onNavigate }: SideNavigationProps) {
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
-
-  const handleScrollTo = (id: string, index: number) => {
+  const handleNavigate = (index: number) => {
+    setMenuOpen(false)
     onNavigate(index)
-    setDropdownOpen(false)
-    const element = document.getElementById(id)
-    if (element) {
-      const offset = 80 // offset for sticky header
-      const bodyRect = document.body.getBoundingClientRect().top
-      const elementRect = element.getBoundingClientRect().top
-      const elementPosition = elementRect - bodyRect
-      const offsetPosition = elementPosition - offset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      })
-    }
   }
 
   useEffect(() => {
-    if (!dropdownOpen) return
+    if (!menuOpen) return
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setDropdownOpen(false)
+      if (event.key === "Escape") setMenuOpen(false)
     }
     window.addEventListener("keydown", closeOnEscape)
     return () => window.removeEventListener("keydown", closeOnEscape)
-  }, [dropdownOpen])
-
-  if (!mounted) return null
+  }, [menuOpen])
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 border-b border-border/40 bg-background/80 backdrop-blur-xl z-50 transition-colors">
-      <div className="max-w-7xl mx-auto h-full px-4 md:px-8 flex items-center justify-between gap-4">
-        {/* Brand logo */}
-        <div 
-          onClick={() => handleScrollTo("home", 0)} 
-          className="cursor-pointer flex items-center gap-2.5 font-mono text-sm font-black tracking-wider text-foreground hover:opacity-80 transition-opacity shrink-0"
+    <header className="fixed inset-x-0 top-0 z-50 bg-background/85 backdrop-blur-md">
+      <div className="flex items-center justify-between gap-4 px-4 py-3 md:px-14">
+        <button
+          type="button"
+          onClick={() => handleNavigate(0)}
+          className="flex cursor-pointer flex-col items-start leading-[0.9] text-foreground"
+          aria-label="Back to top"
         >
-          <img
-            src="/logo_banner/DuongPhuDong_Logo.jpg"
-            alt="Duong Phu Dong Logo"
-            className="h-8 w-8 rounded-lg border border-border/60 object-cover shadow-sm ring-1 ring-accent/30"
-          />
-          <span className="bg-accent text-accent-foreground px-2 py-0.5 text-xs font-black rounded-md">DEV</span>
-          <span className="hidden sm:inline font-bold">DUONG PHU DONG</span>
-          <span className="inline sm:hidden font-bold">DONG.DEV</span>
-        </div>
+          <span className="font-mono text-[15px] font-medium tracking-wide">duong.phu</span>
+          <span className="text-[27px] font-black tracking-tighter">DONG</span>
+        </button>
 
-        {/* Desktop Direct Nav Links */}
-        <nav className="hidden md:flex items-center gap-1.5 font-mono text-xs p-1 bg-secondary/30 rounded-xl border border-border/30 backdrop-blur-md">
-          {sections.map((section, index) => {
-            const isActive = activeIndex === index
-            return (
-              <button
-                key={section.id}
-                onClick={() => handleScrollTo(section.id, index)}
-                className={`relative px-3.5 py-1.5 font-bold transition-colors rounded-lg ${
-                  isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {/* Limelight: inspired by easemize's Limelight Nav on 21st.dev */}
-                {isActive && (
-                  <motion.span
-                    layoutId="nav-limelight"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                    className="pointer-events-none absolute inset-x-2 -top-1 h-full"
-                  >
-                    <span className="absolute inset-x-0 top-0 h-[3px] rounded-full bg-accent shadow-[0_0_12px_2px_var(--accent)]" />
-                    <span className="absolute inset-x-[-6px] top-[3px] bottom-0 bg-gradient-to-b from-accent/35 to-transparent [clip-path:polygon(12%_0,88%_0,100%_100%,0_100%)]" />
-                  </motion.span>
-                )}
-                <span className="relative">{section.label}</span>
-              </button>
-            )
-          })}
-        </nav>
-
-        {/* Right control box */}
-        <div className="flex items-center gap-2 shrink-0">
-          {/* Theme button */}
-          <button
-            onClick={toggleTheme}
-            className="h-9 w-9 border border-border/60 bg-card/80 hover:bg-secondary/70 backdrop-blur-md rounded-xl flex items-center justify-center transition-all shadow-sm"
-            title="Toggle Theme"
-            aria-label="Toggle Theme"
+        <div className="flex items-center gap-2.5">
+          <span className="hidden min-h-11 items-center gap-2 rounded-md border border-border px-3.5 text-xs font-bold text-muted-foreground sm:inline-flex">
+            <span className="h-2 w-2 rounded-full bg-[#1f8a3b]" />
+            Available for work
+          </span>
+          <a
+            href="/cv/DuongPhuDong_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-accent px-4 text-[13px] font-extrabold tracking-wide text-accent-foreground transition-opacity hover:opacity-90"
           >
-            {theme === "dark" ? (
-              <FontAwesomeIcon icon={faMoon} className="h-3.5 w-3.5" />
-            ) : (
-              <FontAwesomeIcon icon={faSun} className="h-3.5 w-3.5" />
-            )}
-          </button>
+            <Download className="h-3.5 w-3.5" strokeWidth={2.6} aria-hidden="true" />
+            RESUME
+          </a>
 
-          {/* Mobile Dropdown Menu Trigger */}
-          <div className="relative md:hidden">
+          <div className="relative">
             <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2 h-9 border-2 border-foreground bg-accent px-3 py-1.5 font-mono text-xs font-black uppercase text-accent-foreground rounded-lg shadow-[2px_2px_0_0_var(--foreground)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
-              aria-expanded={dropdownOpen}
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-md border-[1.5px] border-foreground transition-colors hover:bg-foreground hover:text-background"
             >
-              <span>{sections[activeIndex]?.label ?? "MENU"}</span>
-              <FontAwesomeIcon icon={dropdownOpen ? faXmark : faChevronDown} className="h-3 w-3" />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+                {menuOpen ? (
+                  <>
+                    <path d="M6 6l12 12" />
+                    <path d="M18 6L6 18" />
+                  </>
+                ) : (
+                  <>
+                    <path d="M4 9h16" />
+                    <path d="M10 15h10" />
+                  </>
+                )}
+              </svg>
             </button>
 
-            {/* Custom Dropdown List on Mobile */}
             <AnimatePresence>
-              {dropdownOpen && (
+              {menuOpen && (
                 <>
                   <motion.div
-                    className="fixed inset-0 z-40 bg-transparent"
-                    onClick={() => setDropdownOpen(false)}
+                    className="fixed inset-0 z-40"
+                    onClick={() => setMenuOpen(false)}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   />
-                  <motion.div
-                    className="absolute right-0 mt-2 w-52 border-2 border-foreground bg-card shadow-[4px_4px_0_0_var(--foreground)] rounded-xl z-50 overflow-hidden flex flex-col"
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  <motion.nav
+                    aria-label="Sections"
+                    className="absolute right-0 z-50 mt-2 w-60 overflow-hidden rounded-lg bg-ink text-[#e6edf3] shadow-2xl"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.15 }}
                   >
-                    <div className="bg-foreground text-background px-3 py-1.5 font-mono text-[9px] font-bold tracking-widest uppercase">
-                      NAVIGATION SELECT
-                    </div>
-                    {sections.map((section, index) => {
-                      const isActive = activeIndex === index
-                      return (
-                        <button
-                          key={section.id}
-                          onClick={() => handleScrollTo(section.id, index)}
-                          className={`w-full text-left px-4 py-2.5 font-mono text-xs font-bold border-b border-foreground/10 last:border-b-0 transition-colors flex items-center justify-between ${
-                            isActive
-                              ? "bg-accent text-accent-foreground"
-                              : "bg-background hover:bg-secondary"
-                          }`}
-                        >
-                          <span>{section.label}</span>
-                          {isActive && <span className="text-[10px] opacity-75">●</span>}
-                        </button>
-                      )
-                    })}
-                  </motion.div>
+                    {sections.map((section, index) => (
+                      <button
+                        key={section.id}
+                        type="button"
+                        onClick={() => handleNavigate(index)}
+                        className={`flex w-full cursor-pointer items-center justify-between border-b border-line-dark px-4 py-3 text-left text-lg font-black tracking-tight last:border-b-0 transition-colors hover:bg-ink-2 ${
+                          activeIndex === index ? "text-accent" : ""
+                        }`}
+                      >
+                        {section.label}
+                        <span className="text-[10px] font-bold tracking-widest text-mist">{String(index + 1).padStart(2, "0")}</span>
+                      </button>
+                    ))}
+                  </motion.nav>
                 </>
               )}
             </AnimatePresence>
