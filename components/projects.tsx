@@ -52,7 +52,7 @@ export function Projects() {
           <span className="block text-[clamp(56px,7vw,112px)] font-black tracking-tighter">PROJECTS</span>
         </h2>
         <p className="max-w-[360px] text-sm leading-relaxed text-mist">
-          From nutrition platforms to offline AI servers — every build has a problem, an architecture and a result.
+          From nutrition platforms to developer tooling — every build has a problem, an architecture and a result.
         </p>
       </div>
 

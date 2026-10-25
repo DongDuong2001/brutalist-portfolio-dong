@@ -16,9 +16,9 @@ const facts = [
       </>
     ),
   },
-  { label: "Role", value: "Full-stack Developer · System Architecture" },
+  { label: "Role", value: "Software Engineer — full-stack & system architecture" },
   { label: "Education", value: "B.Eng Software Engineering, RMIT '27" },
-  { label: "Focus", value: "Reliability & local LLMs" },
+  { label: "Focus", value: "Backend architecture & scalability" },
   { label: "Location", value: "Ho Chi Minh City, Vietnam" },
 ]
 
@@ -44,8 +44,8 @@ export function About() {
         <div className="flex flex-col gap-6 md:pt-20">
           <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">About</span>
           <p className="text-[clamp(22px,2.2vw,30px)] font-semibold leading-tight tracking-[-0.015em]">
-            Specialized in architecting robust backend APIs, building responsive frontends, and integrating local AI/LLMs
-            into production workflows.
+            Specialized in architecting robust backend APIs and building responsive frontends, while exploring local LLMs
+            through side projects.
           </p>
           <span className="text-[13px] font-bold text-muted-foreground">— Duong Phu Dong</span>
         </div>

@@ -12,7 +12,7 @@ const stack = [
   ["Tailwind CSS", "ui"],
   ["GitHub Actions", "ci/cd"],
   ["Vercel", "deploy"],
-  ["Gemma / HF", "local ai"],
+  ["Gemma / HF", "side projects"],
   ["C4 Modeling", "architecture"],
   ["OAuth & JWT", "security"],
 ]
@@ -26,7 +26,7 @@ export function Skills() {
           <span className="block text-[clamp(52px,6vw,96px)] font-light tracking-tighter">&amp; TOOLS</span>
         </h2>
         <p className="max-w-[340px] text-sm leading-relaxed text-muted-foreground">
-          Technologies I use in production, hackathons and local AI engineering — chosen for reliability first.
+          Technologies I use across shipped products, hackathons and side projects — chosen for reliability first.
         </p>
       </div>
 

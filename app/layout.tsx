@@ -18,8 +18,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Duong Phu Dong | Fullstack Developer",
-  description: "Portfolio of Duong Phu Dong - A brutalist showcase of projects, skills, and experience. Fullstack Developer & UI Designer based in Ho Chi Minh, Vietnam.",
+  title: "Duong Phu Dong | Software Engineer",
+  description: "Portfolio of Duong Phu Dong, a Software Engineer in Ho Chi Minh City, Vietnam. Founder of 3bstudio.me and co-founder of H1T Micro.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Duong Phu Dong | Fullstack Developer",
-    description: "Building digital experiences with a focus on brutalist aesthetics and robust functionality.",
+    title: "Duong Phu Dong | Software Engineer",
+    description: "Software Engineer in Ho Chi Minh City building reliable full-stack products and scalable backends.",
     url: "https://duongphudong2001.vercel.app/", // Placeholder URL, update if known
     siteName: "Duong Phu Dong Portfolio",
     locale: "en_US",
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Duong Phu Dong | Fullstack Developer",
-    description: "Building digital experiences with a focus on brutalist aesthetics and robust functionality.",
+    title: "Duong Phu Dong | Software Engineer",
+    description: "Software Engineer in Ho Chi Minh City building reliable full-stack products and scalable backends.",
     creator: "@lab68dev",
   },
   metadataBase: new URL("https://duongphudong2001.vercel.app/"), // Placeholder

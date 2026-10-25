@@ -80,7 +80,7 @@ export function Hero() {
           <img src="/logo_banner/DuongPhuDong_Logo.jpg" alt="Duong Phu Dong logo" className="h-full w-full object-cover" />
         </div>
         <h1 className="text-center text-[clamp(13px,1.2vw,16px)] font-extrabold uppercase tracking-[0.14em]">
-          Full-stack Developer · System Architecture
+          Software Engineer · Ho Chi Minh City
         </h1>
         <div className="flex flex-wrap justify-center gap-2.5">
           <a

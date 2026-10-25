@@ -34,8 +34,8 @@ const TITLE_SIZE = 20
 const LINE_HEIGHT = 16
 
 const profileSummary = [
-  "Full-stack Developer and Technical Leader with production delivery experience across web products, backend systems, and startup execution.",
-  "Founder of lab68dev and active builder of products recognized on Unikorn and Forg.",
+  "Software Engineer in Ho Chi Minh City with production delivery experience across web products, backend systems, and startup execution.",
+  "Founder of 3bstudio.me, co-founder of H1T Micro, and builder of products recognized on Unikorn and Forg.",
 ]
 
 const contactDetails = [

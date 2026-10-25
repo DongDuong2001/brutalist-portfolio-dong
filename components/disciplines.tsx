@@ -9,7 +9,7 @@ const disciplines = [
   {
     href: "#technical-skills",
     top: "BACK",
-    copy: "APIs, databases and offline AI servers — Go, FastAPI, PostgreSQL, Docker, Gemma.",
+    copy: "APIs, databases and system design — Go, Express.js, PostgreSQL, Supabase, Docker.",
   },
 ]
 
