@@ -38,7 +38,7 @@ export function Education() {
           {education.map((item) => (
             <div
               key={item.degree}
-              className="border border-border/50 bg-card/75 backdrop-blur-xl p-6 rounded-2xl shadow-lg hover:border-accent/50 hover:shadow-2xl transition-all flex flex-col justify-between"
+              className="spotlight border border-border/50 bg-card/75 backdrop-blur-xl p-6 rounded-2xl shadow-lg hover:border-accent/50 hover:shadow-2xl transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between border-b border-border/30 pb-3 mb-4">

@@ -148,7 +148,7 @@ export function Projects() {
               <article
                 key={project.title}
                 id={`project-${slug}`}
-                className={`group relative flex flex-col justify-between overflow-hidden border border-border/50 bg-card/80 backdrop-blur-xl rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-2xl ${
+                className={`spotlight group relative flex flex-col justify-between overflow-hidden border border-border/50 bg-card/80 backdrop-blur-xl rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-2xl ${
                   featured ? "ring-2 ring-accent/60" : ""
                 } ${highlighted ? "border-l-4 border-l-accent" : ""}`}
               >

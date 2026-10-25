@@ -1197,3 +1197,22 @@
     color: black !important;
   }
 }
+
+/* Spotlight card (inspired by easemize's 21st.dev Spotlight Card): --mx/--my are set per card by SpotlightTracker */
+.spotlight {
+  position: relative;
+  background-image: radial-gradient(420px circle at var(--mx, -999px) var(--my, -999px), color-mix(in oklab, var(--accent) 9%, transparent), transparent 65%);
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: -1px; /* sit on top of the card's own 1px border */
+  border-radius: inherit;
+  padding: 2px;
+  pointer-events: none;
+  background: radial-gradient(280px circle at var(--mx, -999px) var(--my, -999px), var(--accent), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}

@@ -89,13 +89,22 @@ export function SideNavigation({
               <button
                 key={section.id}
                 onClick={() => handleScrollTo(section.id, index)}
-                className={`px-3.5 py-1.5 font-bold transition-all rounded-lg ${
-                  isActive
-                    ? "bg-foreground text-background shadow-md"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                className={`relative px-3.5 py-1.5 font-bold transition-colors rounded-lg ${
+                  isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {section.label}
+                {/* Limelight: inspired by easemize's Limelight Nav on 21st.dev */}
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-limelight"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    className="pointer-events-none absolute inset-x-2 -top-1 h-full"
+                  >
+                    <span className="absolute inset-x-0 top-0 h-[3px] rounded-full bg-accent shadow-[0_0_12px_2px_var(--accent)]" />
+                    <span className="absolute inset-x-[-6px] top-[3px] bottom-0 bg-gradient-to-b from-accent/35 to-transparent [clip-path:polygon(12%_0,88%_0,100%_100%,0_100%)]" />
+                  </motion.span>
+                )}
+                <span className="relative">{section.label}</span>
               </button>
             )
           })}

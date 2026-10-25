@@ -15,6 +15,7 @@ import {
   Rocket,
   Trophy,
 } from "lucide-react"
+import { AsciiVideo } from "@/components/ui/ascii-video"
 
 interface HeroProps {
   onNavigate?: (index: number) => void
@@ -108,7 +109,7 @@ export function Hero({ onNavigate }: HeroProps) {
     <section id="home" className="relative flex flex-col pt-2 space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-6 w-full items-stretch">
         {/* Left Column: Software Engineer Profile & Terminal */}
-        <article className="border border-border/50 bg-card/75 backdrop-blur-xl p-5 sm:p-7 md:p-8 flex flex-col justify-between rounded-2xl shadow-lg hover:border-accent/40 transition-all">
+        <article className="spotlight border border-border/50 bg-card/75 backdrop-blur-xl p-5 sm:p-7 md:p-8 flex flex-col justify-between rounded-2xl shadow-lg hover:border-accent/40 transition-all">
           <div className="space-y-6">
             {/* Header identity bar */}
             <div className="flex items-center justify-between border-b border-border/30 pb-4">
@@ -200,21 +201,11 @@ export function Hero({ onNavigate }: HeroProps) {
         <aside className="space-y-6 flex flex-col justify-between">
           {/* Clean Showcase Video Frame without unnecessary banners */}
           <div className="border border-border/50 bg-black/90 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg ring-1 ring-border/20 flex items-center justify-center">
-            <div className="relative w-full aspect-video flex items-center justify-center bg-black">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-contain pointer-events-none block"
-              >
-                <source src="/logo_banner/duongphudong_banner.mp4" type="video/mp4" />
-              </video>
-            </div>
+            <AsciiVideo src="/logo_banner/duongphudong_banner.mp4" className="w-full aspect-video" />
           </div>
 
           {/* Stats & Dossier Card */}
-          <div className="border border-border/50 bg-card/75 backdrop-blur-xl flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg hover:border-accent/40 transition-all flex-1">
+          <div className="spotlight border border-border/50 bg-card/75 backdrop-blur-xl flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg hover:border-accent/40 transition-all flex-1">
             <div className="flex items-center justify-between border-b border-border/30 bg-secondary/40 backdrop-blur-md px-5 py-3">
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground">ENGINEER MANIFEST</span>
               <span className="font-mono text-[10px] font-bold text-accent">

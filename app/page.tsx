@@ -10,6 +10,7 @@ import { SideNavigation } from "@/components/navigation"
 import { CommandPalette } from "@/components/command-palette"
 import { Footer } from "@/components/footer"
 import FaultyTerminal from "@/components/faulty-terminal"
+import { SpotlightTracker } from "@/components/ui/spotlight"
 
 const sections = [
   { id: "home", label: "HOME", shortcut: "01" },
@@ -101,6 +102,7 @@ export default function Home() {
         <Footer />
 
         <CommandPalette sections={sections} onNavigate={navigateTo} />
+        <SpotlightTracker />
       </div>
     </div>
   )
