@@ -1310,7 +1310,3 @@
   .marquee-right { animation-duration: 160s; }
 }
 
-/* Staggered project grid: every other card drops down on wide screens */
-@media (min-width: 721px) {
-  .stagger > :nth-child(4n + 2), .stagger > :nth-child(4n + 4) { transform: translateY(72px); }
-}

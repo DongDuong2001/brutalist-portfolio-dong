@@ -52,6 +52,76 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "3BCAD",
+    category: "OPEN SOURCE / DESKTOP CAD",
+    year: "2026 - Current",
+    description:
+      "An open-source parametric 3D CAD app written in Rust, with assemblies and a built-in 3D-print studio. Built and maintained by Three Bugs Studio; v1.0.1 is out on GitHub with a full user guide.",
+    tech: ["Rust", "egui", "wgpu", "Python"],
+    link: "https://three-bugs-studio.github.io/3bcad/",
+    github: "https://github.com/Three-Bugs-Studio/3bcad",
+    role: "Founder, Three Bugs Studio",
+    proof: "v1.0.1 released",
+    stage: "shipped",
+    kpis: {
+      users: "Open source",
+      launchTime: "v1.0.1 · Nov 2026",
+      coreImpact: "Parametric CAD + 3D-print studio",
+      performance: "Native Rust on wgpu",
+    },
+    caseStudy: {
+      problem: "Makers want one free tool that takes a part from a parametric model to a print without switching apps.",
+      build: "Built in Rust with egui and wgpu: parametric modelling, assemblies and a 3D-print studio in the same app.",
+      result: "Released v1.0.1 as open source, with a user guide at three-bugs-studio.github.io/3bcad.",
+    },
+  },
+  {
+    title: "3B INFRASTRUCTURE",
+    category: "EDUCATION / NOTEBOOK",
+    year: "2026 - Current",
+    description:
+      "A hand-drawn software engineering notebook covering system architecture, database concepts and university courses, published as an open-source SvelteKit site.",
+    tech: ["SvelteKit", "TypeScript", "System Design"],
+    link: "https://3binfrastructure.vercel.app",
+    github: "https://github.com/Three-Bugs-Studio/3binfrastructure",
+    role: "Founder, Three Bugs Studio",
+    stage: "shipped",
+    kpis: {
+      users: "Public notebook",
+      launchTime: "Live",
+      coreImpact: "Architecture & database notes",
+      performance: "Static SvelteKit site",
+    },
+    caseStudy: {
+      problem: "Architecture and database concepts are easier to remember drawn than written.",
+      build: "Hand-drew the notes and published them as a searchable SvelteKit site.",
+      result: "Live at 3binfrastructure.vercel.app and open source on GitHub.",
+    },
+  },
+  {
+    title: "3BEDITOR",
+    category: "OPEN SOURCE / CLAUDE CODE PLUGIN",
+    year: "2026 - Current",
+    description:
+      "A Claude Code plugin that edits raw clips into TikTok, Reels and Shorts videos: it plans a storyboard, then cuts, reframes, captions and mixes the footage with FFmpeg.",
+    tech: ["Claude Code", "FFmpeg", "Python", "JavaScript"],
+    link: "https://github.com/Three-Bugs-Studio/3beditor",
+    github: "https://github.com/Three-Bugs-Studio/3beditor",
+    role: "Founder, Three Bugs Studio",
+    stage: "shipped",
+    kpis: {
+      users: "Claude Code users",
+      launchTime: "Nov 2026",
+      coreImpact: "Clips to 9:16 shorts",
+      performance: "FFmpeg pipeline",
+    },
+    caseStudy: {
+      problem: "Cutting raw footage into short vertical videos is slow, repetitive editing.",
+      build: "A plugin that storyboards the edit, then cuts, reframes to 9:16, adds captions from speech, colour and music.",
+      result: "Open source under Three Bugs Studio on GitHub.",
+    },
+  },
+  {
     title: "H1T MICRO",
     category: "STARTUP / NUTRITION PLATFORM",
     year: "Live",
@@ -190,106 +260,6 @@ export const projects: Project[] = [
       problem: "Kitchen staff needed a real-time, low-latency interface to manage tickets, orders, and ingredients without data sync lag.",
       build: "Designed system architecture using decoupled components, optimized backend schemas, and structured state flows.",
       result: "Shipped a responsive, highly available platform that is currently serving active maintenance traffic.",
-    },
-  },
-  {
-    title: "LAB68DEV PLATFORM",
-    category: "STARTUP CREATOR PROJECT",
-    year: "2025 - Current",
-    description:
-      "Lab68 Dev Platform is a monorepo that powers a collaborative product development workspace. It provides dashboards for planning, documentation, meetings, AI-assisted workflows, and role-aware access controls built on top of Next.js App Router, TypeScript, and a modular component system.",
-    tech: ["Next.js", "JavaScript", "TypeScript", "API Integration"],
-    link: "https://lab68devplatform.vercel.app/",
-    github: "https://github.com/lab68dev/lab68dev-platform",
-    highlighted: true,
-    role: "Founder / Full-stack Developer",
-    proof: "#1 Product of the Day on Unikorn",
-    recruiterTakeaway: "Can turn a broad startup workflow into a usable production platform.",
-    stage: "shipped",
-    awards: [
-      {
-        label: "#1 Product of the Day",
-        platform: "Unikorn",
-        url: "https://unikorn.vn/p/lab68studio?ref=embed-lab68studio",
-        badge: {
-          src: "https://unikorn.vn/api/widgets/badge/lab68studio/rank?theme=light&type=daily",
-          alt: "lab68studio - Hang ngay",
-          width: 250,
-          height: 64,
-        },
-      },
-      {
-        label: "Featured on Unikorn",
-        platform: "Unikorn",
-        url: "https://unikorn.vn/p/lab68studio?ref=embed-lab68studio",
-        badge: {
-          src: "https://unikorn.vn/api/widgets/badge/lab68studio?theme=light",
-          alt: "lab68studio tren Unikorn.vn",
-          width: 256,
-          height: 64,
-        },
-      },
-    ],
-    kpis: {
-      users: "30+ users",
-      launchTime: "Nov 2025",
-      coreImpact: "Unified startup workflow",
-      performance: "Fast dashboard rendering",
-    },
-    caseStudy: {
-      problem: "Startup teams were juggling docs, tasks, and meetings in disconnected tools.",
-      build: "Built a monorepo workspace with role-aware modules for planning, docs, and AI-assisted flows.",
-      result: "Launched in Nov 2025, reached 30+ users, and won Product of the Day on Unikorn.",
-    },
-  },
-  {
-    title: "LAB68 CV BUILDER",
-    category: "STARTUP CREATOR PROJECT",
-    year: "2026 - Current",
-    description:
-      "A modern, multilingual CV/resume builder that lets users create professional resumes with real-time preview, customizable templates, and export functionality built for speed and simplicity.",
-    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    link: "https://lab68cvbuilder.vercel.app/en",
-    github: "https://github.com/lab68dev/lab68cvbuilder",
-    highlighted: true,
-    role: "Founder / Product Engineer",
-    proof: "#1 Product of the Week on Forg, #1 Product of the Day on Unikorn",
-    recruiterTakeaway: "Strongest proof of user-focused product execution and launch quality.",
-    stage: "shipped",
-    awards: [
-      {
-        label: "#1 Product of the Week",
-        platform: "Forg",
-        url: "https://forg.to/products/lab68-cv-builder",
-        badge: {
-          src: "https://forg.to/api/badges/launch-winner/lab68-cv-builder",
-          alt: "lab68 CV Builder - 1st Place on Forg",
-          width: 200,
-          height: 64,
-        },
-      },
-      {
-        label: "#1 Product of the Day",
-        platform: "Unikorn",
-        url: "https://unikorn.vn/p/lab68dev-cv-builder?ref=embed-lab68dev-cv-builder",
-        badge: {
-          src: "https://unikorn.vn/api/widgets/badge/lab68dev-cv-builder/rank?theme=light&type=daily",
-          alt: "lab68CV Builder - Hang ngay",
-          width: 250,
-          height: 64,
-        },
-      },
-    ],
-    kpis: {
-      users: "100+ users",
-      launchTime: "Feb 2026",
-      coreImpact: "Faster resume creation",
-      performance: "Real-time preview under 60ms",
-    },
-    caseStudy: {
-      problem: "Users needed a fast way to build strong CVs without design tools.",
-      build: "Designed a multilingual builder with instant preview, reusable templates, and export support.",
-      result: "Launched in Feb 2026, reached 100+ users, and hit #1 on both Forg and Unikorn.",
     },
   },
   {
