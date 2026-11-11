@@ -48,8 +48,10 @@ export function Projects() {
     <section id="projects" className="scroll-mt-16 bg-ink pb-40 text-[#e6edf3]">
       <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line-dark px-4 pb-14 pt-24 md:px-14">
         <h2 className="leading-[0.85]">
-          <span className="mb-3.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-mist">Selected work</span>
-          <span className="block text-[clamp(56px,7vw,112px)] font-black tracking-tighter">PROJECTS</span>
+          <span className="file-label mb-3.5">
+            02 // Selected work <span className="font-jp text-accent">実績</span>
+          </span>
+          <span className="glitch block text-[clamp(56px,7vw,112px)] font-black tracking-tighter">PROJECTS</span>
         </h2>
         <p className="max-w-[360px] text-sm leading-relaxed text-mist">
           From nutrition platforms to developer tooling — every build has a problem, an architecture and a result.
@@ -64,9 +66,9 @@ export function Projects() {
               key={project.title}
               id={`project-${slug}`}
               href={`/projects/${slug}`}
-              className="group flex aspect-square flex-col justify-between rounded-lg border border-line-dark bg-ink-2 p-4 transition-colors hover:border-accent"
+              className="chamfer-lg group flex aspect-square flex-col justify-between border border-line-dark bg-ink-2 p-4 transition-colors hover:border-accent hover:bg-[#1a0a0d]"
             >
-              <span className="flex justify-between gap-2 text-[10px] font-bold uppercase tracking-widest text-mist">
+              <span className="flex justify-between gap-2 font-mono text-[10px] font-bold uppercase tracking-widest text-mist">
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <span>{projectStatus(project)}</span>
               </span>
@@ -95,7 +97,7 @@ export function Projects() {
           <button
             type="button"
             onClick={() => setShowAll((value) => !value)}
-            className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-md bg-accent px-5 text-xs font-extrabold tracking-wider text-accent-foreground transition-opacity hover:opacity-90"
+            className="chamfer inline-flex min-h-11 cursor-pointer items-center gap-2 bg-accent px-5 text-xs font-extrabold tracking-wider text-accent-foreground transition-opacity hover:opacity-90"
           >
             {showAll ? "SHOW FEWER PROJECTS" : `VIEW ALL ${projects.length} PROJECTS`}
             <ArrowUpRight className="h-3 w-3" strokeWidth={2.6} aria-hidden="true" />

@@ -74,10 +74,13 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-16 border-t border-[#d3d9e0] px-4 py-28 md:px-14">
+    <section id="contact" className="scroll-mt-16 border-t border-border px-4 py-28 md:px-14">
       <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <h2 className="leading-[0.88]">
+            <span className="file-label mb-3.5">
+              05 // Contact <span className="font-jp text-accent">連絡</span>
+            </span>
             <span className="block text-[clamp(52px,6vw,96px)] font-light tracking-tighter">GET IN</span>
             <span className="block text-[clamp(52px,6vw,96px)] font-black tracking-tighter">TOUCH</span>
           </h2>
@@ -108,8 +111,10 @@ export function Contact() {
           </ul>
         </div>
 
-        <form onSubmit={handleSubmit} className="h-fit space-y-4 rounded-lg bg-ink p-5 text-[#e6edf3] md:p-8">
-          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-mist">Send a message</p>
+        <form onSubmit={handleSubmit} className="h-fit space-y-4 border border-line-dark border-t-2 border-t-accent bg-ink p-5 text-[#e6edf3] md:p-8">
+          <p className="file-label">
+            Transmission <span className="font-jp text-accent">送信</span>
+          </p>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className={labelClass}>
@@ -150,8 +155,8 @@ export function Contact() {
           {statusMessage && (
             <p
               role="status"
-              className={`rounded-md px-3 py-2 text-xs font-bold ${
-                status === "success" ? "bg-accent text-accent-foreground" : "border border-[#f87171] text-[#fca5a5]"
+              className={`px-3 py-2 text-xs font-bold ${
+                status === "success" ? "border border-[#e6edf3]/60 text-[#e6edf3]" : "border border-accent text-[#ff8a99]"
               }`}
             >
               {statusMessage}
@@ -163,7 +168,7 @@ export function Contact() {
             disabled={status === "loading"}
             onMouseEnter={() => plugIconRef.current?.startAnimation()}
             onMouseLeave={() => plugIconRef.current?.stopAnimation()}
-            className="inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2.5 rounded-md bg-accent text-sm font-extrabold tracking-wider text-accent-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+            className="chamfer inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-2.5 bg-accent text-sm font-extrabold tracking-wider text-accent-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <PlugConnectedIcon ref={plugIconRef} size={18} />
             {status === "loading" ? "SENDING..." : "SEND MESSAGE"}

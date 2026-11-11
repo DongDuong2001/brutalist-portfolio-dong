@@ -33,9 +33,15 @@ export function Footer() {
         </nav>
       </div>
 
-      <footer className="relative mx-auto max-w-[1360px] rounded-[18px] bg-ink px-5 pt-[88px] text-[#e6edf3] md:px-14">
-        {/* Tab on top of the card, borrowed from the reference layout */}
-        <div aria-hidden="true" className="absolute -top-[38px] left-1/2 h-10 w-[min(360px,60%)] -translate-x-1/2 rounded-t-[40px] bg-ink" />
+      <footer className="relative mx-auto max-w-[1360px] border border-line-dark bg-ink px-5 pt-[88px] text-[#e6edf3] md:px-14">
+        {/* File tab on top of the card */}
+        <div
+          aria-hidden="true"
+          className="absolute -top-[38px] left-1/2 flex h-10 w-[min(360px,60%)] -translate-x-1/2 items-center justify-center bg-ink font-jp text-xs tracking-[0.3em] text-accent [clip-path:polygon(24px_0,calc(100%-24px)_0,100%_100%,0_100%)]"
+        >
+          ファイル終了
+        </div>
+        <div aria-hidden="true" className="hazard absolute inset-x-0 top-0 h-2" />
 
         <h2 className="text-center text-[clamp(44px,6.4vw,100px)] font-black leading-[0.92] tracking-[-0.045em]">
           ALWAYS <span className={accentWord}>shipping</span>
@@ -56,7 +62,7 @@ export function Footer() {
             </a>
           </nav>
 
-          <div className="aspect-square w-[clamp(160px,18vw,240px)] overflow-hidden rounded-full border border-[#30363f]">
+          <div className="aspect-square w-[clamp(160px,18vw,240px)] overflow-hidden rounded-full border border-accent/60">
             <img src="/logo_banner/DuongPhuDong_Logo.jpg" alt="" className="h-full w-full object-cover" />
           </div>
 
@@ -73,15 +79,15 @@ export function Footer() {
         <div className="mt-12 flex justify-center">
           <a
             href="mailto:dongduong840@gmail.com"
-            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-accent px-5 text-xs font-extrabold tracking-wider text-accent-foreground transition-opacity hover:opacity-90"
+            className="chamfer inline-flex min-h-11 items-center gap-2 bg-accent px-5 text-xs font-extrabold tracking-wider text-accent-foreground transition-opacity hover:opacity-90"
           >
             WORK WITH ME
             <ArrowUpRight className="h-3 w-3" strokeWidth={2.6} aria-hidden="true" />
           </a>
         </div>
 
-        <div className="mt-14 flex flex-wrap justify-between gap-3 border-t border-line-dark pb-7 pt-5 text-[10px] font-bold tracking-[0.08em] text-mist">
-          <span>© 2026 DUONG PHU DONG · @3BSTUDIO</span>
+        <div className="mt-14 flex flex-wrap justify-between gap-3 border-t border-line-dark pb-7 pt-5 font-mono text-[10px] font-bold tracking-[0.12em] text-mist">
+          <span>© 2026 DUONG PHU DONG · @3BSTUDIO · END OF FILE</span>
           <span>HO CHI MINH CITY, VIETNAM</span>
         </div>
       </footer>

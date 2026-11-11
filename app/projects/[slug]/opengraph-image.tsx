@@ -25,13 +25,13 @@ export default async function Image({ params }: OgProps) {
 
   return new ImageResponse(
     (
-      <div tw="flex h-full w-full flex-col justify-between border-[16px] border-black bg-[#f5f4f0] p-[54px] text-black">
+      <div tw="flex h-full w-full flex-col justify-between border-[16px] border-[#ff1f3d] bg-[#050505] p-[54px] text-[#ececec]">
         <div tw="flex items-center justify-between">
-          <div tw="flex border-4 border-black px-[14px] py-[8px] text-[24px] font-bold tracking-[0.08em]">
+          <div tw="flex border-4 border-[#ececec] px-[14px] py-[8px] text-[24px] font-bold tracking-[0.08em]">
             PROJECT CASE STUDY
           </div>
 
-          <div tw="flex border-[3px] border-black bg-[#f59e0b] px-[14px] py-[8px] text-[20px] font-bold">
+          <div tw="flex bg-[#ff1f3d] text-[#050505] px-[14px] py-[8px] text-[20px] font-bold">
             {year}
           </div>
         </div>
@@ -42,7 +42,7 @@ export default async function Image({ params }: OgProps) {
         </div>
 
         <div tw="flex items-center justify-between">
-          <div tw="flex max-w-[78%] border-[3px] border-black px-[14px] py-[10px] text-[22px]">
+          <div tw="flex max-w-[78%] border-[3px] border-[#3a3a3e] px-[14px] py-[10px] text-[22px]">
             {tech}
           </div>
           <div tw="flex text-[22px] font-bold">duongphudong2001.vercel.app</div>
