@@ -21,9 +21,10 @@ function MarqueeRow({ items, className }: { items: string[]; className: string }
 export function Manifesto() {
   return (
     <section className="bg-ink text-[#e6edf3]">
+      <div aria-hidden="true" className="hazard h-2" />
       <div className="relative overflow-hidden py-28">
-        <p className="absolute left-1/2 top-7 -translate-x-1/2 text-[10px] font-bold uppercase tracking-[0.18em] text-mist">
-          Based in Ho Chi Minh City
+        <p className="absolute left-1/2 top-7 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-mist">
+          Based in Ho Chi Minh City <span className="font-jp text-accent">ホーチミン市</span>
         </p>
         <div className="flex flex-col gap-1.5 leading-[0.98]">
           <MarqueeRow

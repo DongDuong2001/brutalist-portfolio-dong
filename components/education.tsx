@@ -19,9 +19,12 @@ const education = [
 
 export function Education() {
   return (
-    <section id="education" className="scroll-mt-16 border-t border-[#d3d9e0] px-4 py-28 md:px-14">
+    <section id="education" className="scroll-mt-16 border-t border-border px-4 py-28 md:px-14">
       <div className="mx-auto max-w-[1240px]">
         <h2 className="mb-14 leading-[0.88]">
+          <span className="file-label mb-3.5">
+            04 // Education <span className="font-jp text-accent">学歴</span>
+          </span>
           <span className="block text-[clamp(52px,6vw,96px)] font-light tracking-tighter">ACADEMIC</span>
           <span className="block text-[clamp(52px,6vw,96px)] font-black tracking-tighter">EDUCATION</span>
         </h2>
@@ -33,8 +36,8 @@ export function Education() {
               className="grid gap-4 border-b border-border py-8 md:grid-cols-[1fr_1.4fr_auto] md:items-start md:gap-10"
             >
               <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">{item.year}</span>
-                <span className="w-fit rounded-full bg-ink px-2.5 py-0.5 text-[10px] font-bold tracking-[0.08em] text-accent">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">{item.year}</span>
+                <span className="w-fit border border-accent/60 px-2.5 py-0.5 font-mono text-[10px] font-bold tracking-[0.12em] text-accent">
                   {item.status}
                 </span>
               </div>
@@ -46,7 +49,7 @@ export function Education() {
               </div>
               <ul className="flex flex-wrap gap-2 md:max-w-[280px] md:justify-end">
                 {item.focus.map((skill) => (
-                  <li key={skill} className="rounded-md border border-border bg-card px-2.5 py-1 text-[11px] font-bold">
+                  <li key={skill} className="border border-border bg-card px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.06em]">
                     {skill}
                   </li>
                 ))}

@@ -33,7 +33,7 @@ export function SideNavigation({ sections, activeIndex, onNavigate }: SideNaviga
   }, [menuOpen])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-background/85 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-accent/40 bg-background/85 backdrop-blur-md">
       <div className="flex items-center justify-between gap-4 px-4 py-3 md:px-14">
         <button
           type="button"
@@ -41,20 +41,22 @@ export function SideNavigation({ sections, activeIndex, onNavigate }: SideNaviga
           className="flex cursor-pointer flex-col items-start leading-[0.9] text-foreground"
           aria-label="Back to top"
         >
-          <span className="font-mono text-[15px] font-medium tracking-wide">duong.phu</span>
-          <span className="text-[27px] font-black tracking-tighter">DONG</span>
+          <span className="font-mono text-[13px] font-medium tracking-[0.2em] text-accent">DUONG.PHU</span>
+          <span className="text-[27px] font-black tracking-tighter">
+            DONG <span className="font-jp align-middle text-[11px] font-bold tracking-[0.2em] text-mist">ドン</span>
+          </span>
         </button>
 
         <div className="flex items-center gap-2.5">
-          <span className="hidden min-h-11 items-center gap-2 rounded-md border border-border px-3.5 text-xs font-bold text-muted-foreground sm:inline-flex">
-            <span className="h-2 w-2 rounded-full bg-[#1f8a3b]" />
+          <span className="hidden min-h-11 items-center gap-2.5 border border-border px-3.5 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground sm:inline-flex">
+            <span className="signal" aria-hidden="true" />
             Available for work
           </span>
           <a
             href="/cv/DuongPhuDong_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-accent px-4 text-[13px] font-extrabold tracking-wide text-accent-foreground transition-opacity hover:opacity-90"
+            className="chamfer inline-flex min-h-11 items-center gap-2 bg-accent px-4 text-[13px] font-extrabold tracking-wide text-accent-foreground transition-opacity hover:opacity-90"
           >
             <Download className="h-3.5 w-3.5" strokeWidth={2.6} aria-hidden="true" />
             RESUME
@@ -95,7 +97,7 @@ export function SideNavigation({ sections, activeIndex, onNavigate }: SideNaviga
                   />
                   <motion.nav
                     aria-label="Sections"
-                    className="absolute right-0 z-50 mt-2 w-60 overflow-hidden rounded-lg bg-ink text-[#e6edf3] shadow-2xl"
+                    className="absolute right-0 z-50 mt-2 w-60 overflow-hidden border border-line-dark border-t-2 border-t-accent bg-ink text-[#e6edf3] shadow-2xl"
                     initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}

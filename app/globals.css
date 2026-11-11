@@ -4,32 +4,34 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Blueprint & Phosphor: cool paper sections, ink sections, amber accent */
-  --background: #eef0f2;
-  --foreground: #0e1116;
-  --card: #f7f8f9;
-  --card-foreground: #0e1116;
-  --popover: #f7f8f9;
-  --popover-foreground: #0e1116;
-  --primary: #0e1116;
-  --primary-foreground: #eef0f2;
-  --secondary: #dce1e6;
-  --secondary-foreground: #0e1116;
-  --muted: #dce1e6;
-  --muted-foreground: #4a5361;
-  --accent: #ffb224;
-  --accent-foreground: #0e1116;
-  --destructive: #b3261e;
-  --destructive-foreground: #fff8f6;
-  --border: #c9cfd6;
-  --input: #c9cfd6;
-  --ring: #ffb224;
-  --radius: 0.5rem;
-  --ink: #0e1116;
-  --ink-2: #161b22;
-  --line-dark: #262c36;
-  --mist: #9aa4b2;
-  --grid: #dce1e6;
+  /* Personnel file: black sheet, crimson signal, sharp corners.
+     Accent #ff1f3d keeps 5.3:1 against #050505 both as text and as a fill behind black text. */
+  color-scheme: dark;
+  --background: #050505;
+  --foreground: #ececec;
+  --card: #0d0d0e;
+  --card-foreground: #ececec;
+  --popover: #0d0d0e;
+  --popover-foreground: #ececec;
+  --primary: #ececec;
+  --primary-foreground: #050505;
+  --secondary: #151517;
+  --secondary-foreground: #ececec;
+  --muted: #19191b;
+  --muted-foreground: #8d8d93;
+  --accent: #ff1f3d;
+  --accent-foreground: #050505;
+  --destructive: #ff1f3d;
+  --destructive-foreground: #050505;
+  --border: #2a2a2e;
+  --input: #2a2a2e;
+  --ring: #ff1f3d;
+  --radius: 0rem;
+  --ink: #0b0b0c;
+  --ink-2: #131315;
+  --line-dark: #26262a;
+  --mist: #8d8d93;
+  --grid: #141416;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -1209,11 +1211,86 @@
   }
 }
 
-/* Blueprint grid used on paper sections */
+/* Grid + CRT scanlines used on the open (non-ink) sections */
 .bg-blueprint {
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-image:
+    repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.018) 0 1px, transparent 1px 4px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
   background-position: center;
+}
+
+/* ---- Personnel-file motifs ---- */
+.font-jp {
+  font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", "Noto Sans JP", "MS Gothic", sans-serif;
+}
+
+/* Cut top-left and bottom-right corners, like a stamped plate */
+.chamfer {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+.chamfer-lg {
+  clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
+}
+
+/* Four red corner brackets, drawn as background strokes so they need no extra markup */
+.brackets {
+  --b: linear-gradient(var(--accent), var(--accent));
+  background:
+    var(--b) top left / 26px 2px, var(--b) top left / 2px 26px,
+    var(--b) top right / 26px 2px, var(--b) top right / 2px 26px,
+    var(--b) bottom left / 26px 2px, var(--b) bottom left / 2px 26px,
+    var(--b) bottom right / 26px 2px, var(--b) bottom right / 2px 26px;
+  background-repeat: no-repeat;
+}
+
+.hazard {
+  background-image: repeating-linear-gradient(-45deg, var(--accent) 0 8px, transparent 8px 16px);
+}
+
+/* Section label: "02 // SELECTED WORK  実績" */
+.file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.file-label::before {
+  content: "";
+  width: 22px;
+  height: 3px;
+  background: var(--accent);
+}
+
+.signal {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  animation: signal-blink 1.2s steps(1) infinite;
+}
+@keyframes signal-blink { 50% { opacity: 0; } }
+
+/* Occasional red/white split on big headings */
+.glitch {
+  animation: glitch 7s steps(1) infinite;
+}
+@keyframes glitch {
+  0%, 100% { text-shadow: none; transform: none; }
+  92% { text-shadow: -3px 0 var(--accent), 3px 0 rgb(255 255 255 / 0.35); transform: translateX(2px); }
+  93% { text-shadow: none; transform: none; }
+  96% { text-shadow: 4px 0 var(--accent); transform: translateX(-3px); }
+  97% { text-shadow: none; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal, .glitch { animation: none; }
 }
 
 /* Infinite marquee rows: content is rendered twice, so -50% loops seamlessly */
@@ -1233,7 +1310,3 @@
   .marquee-right { animation-duration: 160s; }
 }
 
-/* Staggered project grid: every other card drops down on wide screens */
-@media (min-width: 721px) {
-  .stagger > :nth-child(4n + 2), .stagger > :nth-child(4n + 4) { transform: translateY(72px); }
-}
